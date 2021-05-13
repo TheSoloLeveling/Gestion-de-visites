@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="parentContainer" onMouseEntered="#load" prefHeight="414.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.ScrolController">
+   <children>
+      <Pane layoutX="100.0" prefHeight="414.0" prefWidth="352.0">
+         <children>
+            <Pane layoutX="678.0" prefHeight="414.0" prefWidth="353.0" style="-fx-background-color: #ff3246;">
+               <children>
+                  <Label fx:id="helper" layoutX="260.0" layoutY="29.0" />
+               </children>
+            </Pane>
+            <Label layoutX="713.0" layoutY="14.0" text="Demand on Hold" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="756.0" layoutY="192.0" text="Company  User" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="761.0" layoutY="225.0" text="Mohamed Reda Falhi" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="757.0" layoutY="337.0" text="Himd EL Khoufi" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="761.0" layoutY="285.0" text="Rabat" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="710.0" layoutY="79.0" text="Date Created" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="710.0" layoutY="101.0" text="24" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="759.0" layoutY="109.0" text="APR" textFill="WHITE" />
+            <Label layoutX="759.0" layoutY="127.0" text="2020" textFill="WHITE" />
+            <Separator layoutX="804.0" layoutY="86.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="0.0" />
+            <Label layoutX="821.0" layoutY="80.0" text="Visit Starts" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="821.0" layoutY="100.0" text="25" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="870.0" layoutY="108.0" text="AUG" textFill="WHITE" />
+            <Label layoutX="870.0" layoutY="126.0" text="2020" textFill="WHITE" />
+            <Label layoutX="761.0" layoutY="257.0" text="Location" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="758.0" layoutY="311.0" text="The visitor" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</StackPane>

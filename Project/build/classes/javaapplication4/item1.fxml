@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.FXML1Controller">
+   <children>
+      <JFXButton buttonType="RAISED" layoutX="46.0" layoutY="20.0" ripplerFill="#ffcfcf" />
+      <JFXButton buttonType="RAISED" layoutX="126.0" layoutY="20.0" ripplerFill="#ffcfcf" />
+   </children>
+</Pane>
