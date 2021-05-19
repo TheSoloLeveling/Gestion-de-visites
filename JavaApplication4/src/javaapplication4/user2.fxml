@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="layer1" fx:id="layer1" prefHeight="754.0" prefWidth="990.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.User2Controller">
+   <children>
+      <Pane prefHeight="754.0" prefWidth="367.0" style="-fx-background-color: #1B6CD7;" />
+      <Label layoutX="450.0" layoutY="97.0" text="Driver's First Name ">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="450.0" layoutY="236.0" text="Driver's CNIE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Pane layoutX="476.0" layoutY="490.0" prefHeight="55.0" prefWidth="78.0" />
+      <Pane layoutX="660.0" layoutY="490.0" prefHeight="55.0" prefWidth="78.0" />
+      <Separator layoutX="371.0" layoutY="617.0" prefHeight="4.0" prefWidth="624.0" />
+      <JFXButton buttonType="RAISED" layoutX="758.0" layoutY="667.0" onMouseClicked="#load" prefHeight="44.0" prefWidth="150.0" style="-fx-background-color: #1B6CD7; -fx-background-radius: 5em;" text="Finish" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="425.0" layoutY="667.0" onMouseClicked="#load" prefHeight="44.0" prefWidth="150.0" style="-fx-background-color: #ffff; -fx-background-radius: 5em;" text="Back" textFill="#1b6cd7">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="450.0" layoutY="165.0" text="Driver's Second Name">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Spinner layoutX="450.0" layoutY="515.0" />
+      <Label layoutX="450.0" layoutY="316.0" text="Your Email">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="450.0" layoutY="395.0" text="The Person to See">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <JFXTextArea layoutX="450.0" layoutY="110.0" prefHeight="35.0" prefWidth="406.0" />
+      <JFXTextArea layoutX="450.0" layoutY="177.0" prefHeight="37.0" prefWidth="406.0" />
+      <JFXTextArea layoutX="450.0" layoutY="249.0" prefHeight="37.0" prefWidth="406.0" />
+      <JFXTextArea layoutX="450.0" layoutY="332.0" prefHeight="37.0" prefWidth="406.0" />
+      <JFXTextArea layoutX="450.0" layoutY="417.0" prefHeight="37.0" prefWidth="406.0" />
+      <Label layoutX="450.0" layoutY="478.0" text="Number of person">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="481.0" layoutY="27.0" text="Create a new demande">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

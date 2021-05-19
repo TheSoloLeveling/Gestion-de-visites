@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="layer1" fx:id="layer1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1514.0" style="-fx-background-color: #252645;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.FXML1Controller">
+   <children>
+      <BorderPane id="Hadi" fx:id="Hadi" layoutX="243.0" layoutY="123.0" prefHeight="538.0" prefWidth="1138.0" />
+      <Pane fx:id="layer2" layoutY="185.0" prefHeight="561.0" prefWidth="322.0" style="-fx-background-color: linear-gradient(to right,#795AF3 ,#3929E0);">
+         <children>
+            <JFXButton id="bt4" fx:id="bt41" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-6.0" layoutY="298.0" onMouseClicked="#loaditem4" prefHeight="43.0" prefWidth="332.0" ripplerFill="#bfadf8" text="User Management" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton id="bt5" fx:id="bt5" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-16.0" layoutY="517.0" prefHeight="43.0" prefWidth="337.0" ripplerFill="#bfadf8" text="About" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+         </children></Pane>
+      <Pane id="layer3" fx:id="layer3" layoutX="415.0" prefHeight="17.0" prefWidth="370.0" style="-fx-background-color: #252645;">
+         <children>
+            <Pane id="layer4" fx:id="layer4" layoutX="-415.0" layoutY="-130.0" prefHeight="130.0" prefWidth="1514.0" style="-fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0);" styleClass="head-background" stylesheets="@../../../../../Desktop/Drapo-Dashboard-JavaFX-master/src/drapo/dashboard/style.css">
+               <children>
+                  <Label layoutX="224.0" layoutY="47.0" text="Admin" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="227.0" layoutY="100.0" text="Saint Denis site" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXButton layoutX="1228.0" layoutY="74.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="163.0" ripplerFill="WHITE" style="-fx-background-color: #473E98;" text="Disconnect" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <Pane layoutX="68.0" layoutY="36.0" prefHeight="131.0" prefWidth="142.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <ImageView fitHeight="120.0" fitWidth="139.0" layoutX="11.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../Desktop/Drapo-Dashboard-JavaFX-master/src/drapo/dashboard/images/logo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane id="Helper" fx:id="Helper" layoutX="292.0" layoutY="27.0" prefHeight="4.0" prefWidth="6.0" />
+      <JFXButton id="close" fx:id="close" layoutX="1480.0" minWidth="34.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#close" prefHeight="30.0" prefWidth="34.0" ripplerFill="WHITE" style="-fx-background-color: #473E98;" text="X" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="bt4" fx:id="bt4" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-13.0" layoutY="428.0" onMouseClicked="#loaditem4" prefHeight="43.0" prefWidth="332.0" ripplerFill="#bfadf8" text="Charl List" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton id="bt1" fx:id="bt1" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-12.0" layoutY="268.0" onMouseClicked="#loaditem1" prefHeight="43.0" prefWidth="332.0" ripplerFill="#bfadf8" text="Main Menu" textFill="#fffefe">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton id="bt2" fx:id="bt2" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-12.0" layoutY="321.0" onMouseClicked="#loaditem2" prefHeight="43.0" prefWidth="332.0" ripplerFill="#bfadf8" text="Demand Management" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton id="bt3" fx:id="bt3" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-12.0" layoutY="374.0" onMouseClicked="#loaditem3" prefHeight="43.0" prefWidth="332.0" ripplerFill="#bfadf8" text="  Site Management" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+      </JFXButton>
+      <Label id="menu" fx:id="menu" layoutX="11.0" layoutY="196.0" onMouseClicked="#Slidemenu" onMouseEntered="#hoverM" onMouseExited="#rhoverM" style="-fx-translate-z: 10;" text="☰" textFill="#fcfcfc">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label id="item2" fx:id="item2" layoutX="8.0" layoutY="328.0" onMouseClicked="#loaditem2" text="📅" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label id="item3" fx:id="item3" layoutX="8.0" layoutY="378.0" onMouseClicked="#loaditem3" text="🏗" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label id="item1" fx:id="item1" layoutX="6.0" layoutY="486.0" onMouseClicked="#loaditem5" prefHeight="38.0" prefWidth="30.0" text="👤" textFill="#fcfafa">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="item4" layoutX="8.0" layoutY="433.0" onMouseClicked="#loaditem4" text="📈 " textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label id="a1" fx:id="a1" layoutX="1469.0" layoutY="701.0" onMouseClicked="#dark" text="☾" textFill="#252645">
+         <font>
+            <Font size="29.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label id="a2" fx:id="a2" layoutX="1470.0" layoutY="703.0" onMouseClicked="#dark" text="☀" textFill="WHITE">
+         <font>
+            <Font size="27.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label layoutX="345.0" layoutY="48.0" text="🔔" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label id="item5" fx:id="item5" layoutX="11.0" layoutY="706.0" text="ℹ" textFill="WHITE">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="item41" layoutX="4.0" layoutY="267.0" onMouseClicked="#loaditem1" text="🏠" textFill="WHITE">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="376.0" layoutY="48.0" text="📧" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
