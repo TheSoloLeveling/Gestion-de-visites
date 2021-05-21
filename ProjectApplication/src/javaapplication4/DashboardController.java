@@ -58,14 +58,14 @@ public class DashboardController implements Initializable {
       @FXML
      private void dark() {
         
-         if(FXML1Controller.c%2==0){
+         if(DashController.c%2==0){
              
        layer1.setStyle(HOVERED_BUTTON_STYLE);    
      
-      FXML1Controller.c++ ; 
+      DashController.c++ ; 
          }
          else{
-           FXML1Controller.  c++ ; 
+           DashController.  c++ ; 
         
            
              
@@ -82,7 +82,7 @@ public class DashboardController implements Initializable {
         try { 
             root= FXMLLoader.load(getClass().getResource("scrol.fxml")) ;
         } catch (IOException ex) {
-            Logger.getLogger(FXML1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DashController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
           bor.setCenter(root);

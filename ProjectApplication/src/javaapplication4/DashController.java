@@ -43,7 +43,7 @@ import javafx.util.Duration;
  *
  * @author hp
  */
-public class FXML1Controller implements Initializable {
+public class DashController implements Initializable {
 
     @FXML
     private JFXButton bt1;
@@ -433,7 +433,7 @@ System.out.print(Hadi.getChildren().get(0) )  ;
         try { 
             root= FXMLLoader.load(getClass().getResource(item+".fxml")) ;
         } catch (IOException ex) {
-            Logger.getLogger(FXML1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DashController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
            Hadi.setCenter(root);

@@ -1,6 +1,6 @@
 
 
-package javaapplication4;
+package Utils;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  */
 public class SingletonConnection {
     
-     private static Connection connection; 
+     private static Connection connection;
     
     static{
         try{

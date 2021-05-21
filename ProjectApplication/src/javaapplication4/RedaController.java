@@ -74,7 +74,7 @@ public class RedaController implements Initializable {
         try { 
             root= FXMLLoader.load(getClass().getResource(item+".fxml")) ;
         } catch (IOException ex) {
-            Logger.getLogger(FXML1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DashController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
        

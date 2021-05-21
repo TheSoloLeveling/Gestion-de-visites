@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="layer1" fx:id="layer1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1514.0" style="-fx-background-color: #252645;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.FXML1Controller">
+<AnchorPane id="layer1" fx:id="layer1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1514.0" style="-fx-background-color: #252645;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.DashController">
    <children>
       <BorderPane id="Hadi" fx:id="Hadi" layoutX="243.0" layoutY="123.0" prefHeight="538.0" prefWidth="1138.0" />
       <Pane fx:id="layer2" layoutY="185.0" prefHeight="561.0" prefWidth="322.0" style="-fx-background-color: linear-gradient(to right,#795AF3 ,#3929E0);">

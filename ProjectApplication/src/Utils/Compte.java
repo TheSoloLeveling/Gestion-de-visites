@@ -1,3 +1,5 @@
+package Utils;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,6 +9,7 @@
 
 
 import java.sql.*;
+import javaapplication4.MainController;
 import javafx.scene.control.Alert;
 import javafx.scene.paint.Color;
 
@@ -16,13 +19,15 @@ import javafx.scene.paint.Color;
  * @author yassine
  */
 public class Compte {
+    private int id;
     private String nom;
     private String prenom;
     private String email;
     private String login;
     private String motDePasse;
 
-    public Compte(String nom, String prenom, String email, String login, String motDePasse) {
+    public Compte(int id,String nom, String prenom, String email, String login, String motDePasse) {
+        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -30,7 +35,33 @@ public class Compte {
         this.motDePasse = motDePasse;
     }
     
-    public static void seConnecter(){
+    public static void RefreshListComptes(String Username, String Password){
+        
+        MainController.listComptes.removeAll(MainController.listComptes);
+        String sql = "SELECT * FROM compte";
+        
+        Connection conn = null;
+        Statement ps = null;
+        ResultSet rs = null;
+        
+        try{
+            conn = SingletonConnection.getconn();
+            ps = conn.createStatement();
+            rs = ps.executeQuery(sql);
+            if(!rs.next()){
+               int id = rs.getInt(1);
+               String nom = rs.getString(2);
+               String prenom = rs.getString(3);
+               String email = rs.getString(4);
+               String login = rs.getString(5);
+               String pwd = rs.getString(6);
+               
+               Compte c = new Compte(id, nom, prenom, email, login, pwd);
+               MainController.listComptes.add(c);   
+            }
+        }catch(Exception e){
+            e.printStackTrace();    
+        }
         
     }
 

@@ -9,6 +9,7 @@ package javaapplication4;
 
 
 
+import Utils.Compte;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXToggleButton;
@@ -17,7 +18,7 @@ import static java.lang.Thread.sleep;
 import java.sql.*;
 import javafx.scene.control.Alert;
 import javafx.scene.paint.Color;
-import javaapplication4.SingletonConnection;
+import Utils.SingletonConnection;
 
 
 import java.net.URL;
@@ -36,6 +37,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.LinkedList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -83,7 +85,8 @@ public class MainController implements Initializable {
     
     
     public static int c =0 ; 
-    public static int cnt =0 ; 
+    public static int cnt =0 ;
+    public static String dashInterface;
     
     @FXML
     private JFXButton close;
@@ -166,14 +169,21 @@ public class MainController implements Initializable {
     private Label lbError;
     
     
+    public static LinkedList<Compte> listComptes = new LinkedList<Compte>();
     private static final String HOVERED_BUTTON_STYLE = "-fx-background-color:#ffff";
     private static final String HOVERED_BUTTON_STYLE2 = "-fx-background-color: #252645";
     
-    public boolean login(){
+    public String login(){
         String userName = u1.getText();
         String password = p1.getText();
         
-        String sql = "SELECT * FROM compte WHERE login = ? and motDePasse = ? ";
+        String table = findAccountJob(userName, password);
+        if (table.equals("null")){
+            lbError.setTextFill(Color.TOMATO);
+            lbError.setText("Username/Password erroné");
+            return "null";
+        }
+        String sql = "SELECT * FROM " + table + " WHERE login = ? and motDePasse = ? ";
         
         Connection conn = null;
         PreparedStatement ps = null;
@@ -186,41 +196,59 @@ public class MainController implements Initializable {
             ps.setString(2, password);
             rs = ps.executeQuery();
             if(!rs.next()){
-               
                 lbError.setTextFill(Color.TOMATO);
-                lbError.setText("Username/Password erroné");
-                return false;
+                lbError.setText("Username/Password erroné"); 
             }
             else{
-                showDialogAuthentification("Login Successuful", null, "Success");
+                lbError.setTextFill(Color.GREEN);
+                lbError.setText("Authentification .......");
                 loadingImg.setVisible(true);
-                btnsignin.setDisable(true);
-                
-                return true;
+                btnsignin.setDisable(true);                    
             }
             
         }catch(Exception e){
             e.printStackTrace();
-            return false;
         }
+        return table;
     }
     
-    public void showDialogAuthentification(String name, String header, String title){
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText(name);
-        alert.setHeaderText(header);
+    public String findAccountJob(String userName, String password){
         
         
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(
-        getClass().getResource("AlertStyle.css").toExternalForm());
-        dialogPane.getStyleClass().add("myDialog");
+        String table = "null";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         
-        Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK){
-                lbError.setTextFill(Color.GREEN);
-                lbError.setText("Authentification ......");
-            }
+        try{
+            
+            String sql = "SELECT * FROM responsablesite WHERE login = ? and motDePasse = ? ";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, userName);
+            ps.setString(2, password);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                table = "responsablesite";
+            }                                 
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        try{
+            String sql = "SELECT * FROM userentreprise WHERE login = ? and motDePasse = ? ";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, userName);
+            ps.setString(2, password);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                table = "userentreprise";
+            }                                 
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return table;
     }
     
 
@@ -289,15 +317,21 @@ public class MainController implements Initializable {
     @FXML
     private void btn() throws InterruptedException  {
          
-        if(login()){
-            new Dash().start();
-        } 
-}
+        if(!login().equals("null")){
+            switch(login()){
+            case "responsablesite":
+                dashInterface = "Dash.fxml";
+                break;
+            case "userentreprise":
+                dashInterface = "user2.fxml";
+                break;
+            }
+             new Dash().start();
+        }
+           
+    }
 
-        
-     
-    
-    
+         
    
     @FXML
   private void Slidemenu() {
@@ -382,9 +416,12 @@ public class MainController implements Initializable {
              
          }
      
+         public void print(){
+             
+         }
          class Dash extends Thread {
             @Override  
-       public void run(){
+            public void run(){
                 try {
                     Thread.sleep(3000);
                     menu.setVisible(true);
@@ -406,31 +443,25 @@ public class MainController implements Initializable {
                 }
             Platform.runLater(new Runnable() {
                 @Override  
-       public void run(){
+            public void run(){
+                
             Parent root = null ;
-        try {
-             root = FXMLLoader.load (getClass().getResource("all.fxml"));
+                try {
+                root = FXMLLoader.load (getClass().getResource(dashInterface));
            
-            
-        } catch (IOException ex) {
-            Logger.getLogger(SplashScreenController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         Scene secene = new Scene(root) ; 
-            Stage stage = new Stage() ; 
-            stage.setScene(secene);
-            stage.initStyle(StageStyle.TRANSPARENT);
-            stage.show() ; 
-            close.getScene().getWindow().hide();
-       }
-          }) ;    
-       
-        
-  
-     
-    
-        
+            } catch (IOException ex) {
+                Logger.getLogger(SplashScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+             Scene secene = new Scene(root) ; 
+                Stage stage = new Stage() ; 
+                stage.setScene(secene);
+                stage.initStyle(StageStyle.TRANSPARENT);
+                stage.show() ; 
+                close.getScene().getWindow().hide();
+           }
+              }) ;    
+             
     }
-    
     
     }
      
