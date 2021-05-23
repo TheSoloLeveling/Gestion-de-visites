@@ -18,7 +18,7 @@
                   <Font size="43.0" />
                </font>
             </Label>
-            <Label layoutX="295.0" layoutY="54.0" text="10" textFill="WHITE">
+            <Label id="nbrVisiteurs" fx:id="nbrVisiteurs" layoutX="295.0" layoutY="54.0" textFill="WHITE">
                <font>
                   <Font size="25.0" />
                </font>
@@ -33,7 +33,7 @@
                   <Font size="43.0" />
                </font>
             </Label>
-            <Label layoutX="627.0" layoutY="56.0" text="10" textFill="WHITE">
+            <Label id="nbrSites" fx:id="nbrSites" layoutX="627.0" layoutY="56.0" textFill="WHITE">
                <font>
                   <Font size="25.0" />
                </font>
@@ -108,7 +108,7 @@
             <Font size="43.0" />
          </font>
       </Label>
-      <Label layoutX="944.0" layoutY="101.0" text="10" textFill="WHITE">
+      <Label id="nbrUsers" fx:id="nbrUsers" layoutX="944.0" layoutY="101.0" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
