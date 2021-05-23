@@ -6,7 +6,6 @@
 package javaapplication4;
 
 
-import java.io.IOException;
 import java.util.Random;
 import javafx.application.Application;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -36,23 +35,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.StageStyle;
-import javafx.util.Duration;
 
 public class TableController implements Initializable {
     @FXML
      private TableView tableView ;
-    @FXML
-     private AnchorPane layer1 ;
     @FXML
     private Button btnNew ;
     
@@ -231,14 +219,14 @@ public class TableController implements Initializable {
             //generate new Record with random number
             Record newRec = new Record(
                     data_nextId,
-                    1, 
-                    random.nextInt(1), 
-                    random.nextInt(1), 
-                    random.nextInt(1), 
-                    random.nextInt(1));
+                    random.nextInt(100), 
+                    random.nextInt(100), 
+                    random.nextInt(100), 
+                    random.nextInt(100), 
+                    random.nextInt(100));
             data.add(newRec);
             data_nextId++;
-            load() ;
+            
         }
     };
          class EditingCell extends TableCell<XYChart.Data, Number> {
@@ -310,23 +298,4 @@ public class TableController implements Initializable {
             return getItem() == null ? "" : getItem().toString();
         }
     }
-         
-         @FXML
-    private void load() {
-    Parent root=null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("addrec.fxml"));
-        } catch (IOException ex) {
-           ex.printStackTrace();
-        }
-      Scene secene = new Scene(root) ; 
-            Stage stage = new Stage() ; 
-            stage.setScene(secene);
-            stage.initStyle(StageStyle.TRANSPARENT);
-            stage.show() ; 
-         
-  
-
-    }
-   
 }
