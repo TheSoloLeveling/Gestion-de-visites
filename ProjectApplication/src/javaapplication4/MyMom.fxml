@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MapController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.MapController">
    <children>
       <WebView id="webView" fx:id="webView" layoutX="97.0" layoutY="126.0" prefHeight="692.0" prefWidth="736.0" AnchorPane.bottomAnchor="-148.0" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="147.0" AnchorPane.topAnchor="126.0" />
       <Label layoutX="465.0" layoutY="199.0" prefHeight="31.0" prefWidth="43.0" text="❌" textFill="RED" />
