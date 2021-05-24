@@ -152,10 +152,14 @@ public class TableController implements Initializable {
         
     };
     
-    ObservableList<Record> data = FXCollections.observableArrayList();
+    ObservableList<Record> data1 = FXCollections.observableArrayList();
+    ObservableList<Record> data2 = FXCollections.observableArrayList();
+    ObservableList<Record> data3 = FXCollections.observableArrayList();
+    ObservableList<Record> data4 = FXCollections.observableArrayList();
+    ObservableList<Record> data5 = FXCollections.observableArrayList();
     int data_nextId = 0;
     
-    public void createTable(String[] headers, TableView table){
+    public void createTable(String[] headers, TableView table, ObservableList<Record> data){
         Callback<TableColumn, TableCell> cellFactory =
                 new Callback<TableColumn, TableCell>() {
                     
@@ -219,21 +223,31 @@ public class TableController implements Initializable {
             admin.setToggleGroup(accounts);
             btnNew.setOnAction(btnNewHandler);
             
-            tableView1.setVisible(true);
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+              @Override
+              public void run() {
+                if(accounts.getSelectedToggle() != null)
+                    btnNew.setDisable(false);
+              }
+            }, 0, 1);
+            
+            btnNew.setDisable(true);
+            tableView1.setVisible(false);
             String[] header1 = {"nom", "prenom", "email", "login", "motDePasse", "telephone"};
-            createTable(header1, tableView1);
+            createTable(header1, tableView1, data1);
             tableView2.setVisible(false);
             String[] header2 = {"nom", "prenom"};
-            createTable(header2, tableView2);
+            createTable(header2, tableView2, data2);
             tableView3.setVisible(false);
             String[] header3 = {"nom"};
-            createTable(header3, tableView3);
+            createTable(header3, tableView3, data3);
             tableView4.setVisible(false);
             String[] header4 = {"nom", "prenom", "email", "login"};
-            createTable(header4, tableView4);
+            createTable(header4, tableView4, data4);
             tableView5.setVisible(false);
             String[] header5 = {"nom", "prenom", "email"};
-            createTable(header5, tableView5);
+            createTable(header5, tableView5, data5);
             
             accounts.selectedToggleProperty().addListener(
                 (observable, oldToggle, newToggle) -> {
@@ -272,11 +286,33 @@ public class TableController implements Initializable {
                         tableView4.setVisible(false);
                         tableView5.setVisible(true);
                     }
+                    else{
+                        tableView1.setVisible(false);
+                        tableView2.setVisible(false);
+                        tableView3.setVisible(false);
+                        tableView4.setVisible(false);
+                        tableView5.setVisible(false);
+                        btnNew.setDisable(true);
+                    }
                 }
             );
                     
     }
-
+    
+    public ObservableList<Record> checkVisibleTable(){
+        if (accounts.getSelectedToggle() == UE)
+            return data1;
+        else if (accounts.getSelectedToggle() == admin)
+            return data2;
+        else if (accounts.getSelectedToggle() == SA)
+            return data3;
+        else if (accounts.getSelectedToggle() == guerite)
+            return data4;
+        else if (accounts.getSelectedToggle() == RS)
+            return data5;
+        else
+            return null;
+    }
    private class ButtonCell extends TableCell<Record, Boolean> {
         final Button cellButton = new Button("Delete");
         
@@ -288,7 +324,7 @@ public class TableController implements Initializable {
                 public void handle(ActionEvent t) {
                     int selectdIndex = getTableRow().getIndex();
                     //delete the selected item in data
-                    data.remove(selectdIndex);
+                    checkVisibleTable().remove(selectdIndex);
                 }
             });
         }
@@ -311,12 +347,12 @@ public class TableController implements Initializable {
             //generate new Record with random number
             Record newRec = new Record(
                     data_nextId,
-                    1, 
-                    random.nextInt(1), 
+                    60, 
+                    4, 
                     random.nextInt(1), 
                     random.nextInt(1), 
                     random.nextInt(1));
-            data.add(newRec);
+            checkVisibleTable().add(newRec);
             data_nextId++;
             load() ;
         }
