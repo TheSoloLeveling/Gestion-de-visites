@@ -17,8 +17,11 @@ import javafx.scene.control.Button;
  * @author hp
  */
 public class AddrecController implements Initializable {
-@FXML
-    private Button cancel ; 
+    @FXML
+    private Button cancel;
+    @FXML
+    private Button add;
+    
    
     
     /**

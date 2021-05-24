@@ -36,6 +36,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -43,27 +45,44 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 public class TableController implements Initializable {
     @FXML
-     private TableView tableView ;
+    private TableView tableView1;
     @FXML
-     private AnchorPane layer1 ;
+    private TableView tableView2;
     @FXML
-    private Button btnNew ;
+    private TableView tableView3;
+    @FXML
+    private TableView tableView4;
+    @FXML
+    private TableView tableView5;
+    @FXML
+    private AnchorPane layer1;
+    @FXML
+    private Button btnNew;
+    @FXML
+    private ToggleGroup accounts;
+    @FXML
+    private ToggleButton UE;
+    @FXML
+    private ToggleButton guerite;
+    @FXML
+    private ToggleButton RS;
+    @FXML
+    private ToggleButton admin;
+    @FXML
+    private ToggleButton SA;
     
     static Random random = new Random();
     
-    static final String Day[] = {
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday"};
 
     public static class Record {
         private final SimpleIntegerProperty id;
@@ -135,10 +154,8 @@ public class TableController implements Initializable {
     
     ObservableList<Record> data = FXCollections.observableArrayList();
     int data_nextId = 0;
-
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-            tableView.setEditable(true);
+    
+    public void createTable(String[] headers, TableView table){
         Callback<TableColumn, TableCell> cellFactory =
                 new Callback<TableColumn, TableCell>() {
                     
@@ -147,23 +164,20 @@ public class TableController implements Initializable {
                         return new EditingCell();
                     }
                 };
-        
-        btnNew.setOnAction(btnNewHandler);
-        
-        //init table
+         //init table
         //Un-editable column of "id"
         TableColumn col_id = new TableColumn("ID");
-        tableView.getColumns().add(col_id);
+        table.getColumns().add(col_id);
         col_id.setCellValueFactory(
                     new PropertyValueFactory<Record, String>("id"));
         
         //Editable columns
-        for(int i=0; i<Day.length; i++){
-            TableColumn col = new TableColumn(Day[i]);
+        for(int i=0; i<headers.length; i++){
+            TableColumn col = new TableColumn(headers[i]);
             col.setCellValueFactory(
                     new PropertyValueFactory<Record, String>(
                             "value_" + String.valueOf(i)));
-            tableView.getColumns().add(col);
+            table.getColumns().add(col);
             col.setCellFactory(cellFactory);
         }
         
@@ -186,15 +200,81 @@ public class TableController implements Initializable {
 
             @Override
             public TableCell<Record, Boolean> call(TableColumn<Record, Boolean> p) {
-                return new ButtonCell(tableView);
+                return new ButtonCell(table);
             }
         
         });
-        tableView.getColumns().add(col_action);
+        table.getColumns().add(col_action);
         
-        tableView.setItems(data);
-        
-   
+        table.setItems(data);
+    }
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+            tableView1.setEditable(true);
+            UE.setToggleGroup(accounts);
+            RS.setToggleGroup(accounts);
+            guerite.setToggleGroup(accounts);
+            SA.setToggleGroup(accounts);
+            admin.setToggleGroup(accounts);
+            btnNew.setOnAction(btnNewHandler);
+            
+            tableView1.setVisible(true);
+            String[] header1 = {"nom", "prenom", "email", "login", "motDePasse", "telephone"};
+            createTable(header1, tableView1);
+            tableView2.setVisible(false);
+            String[] header2 = {"nom", "prenom"};
+            createTable(header2, tableView2);
+            tableView3.setVisible(false);
+            String[] header3 = {"nom"};
+            createTable(header3, tableView3);
+            tableView4.setVisible(false);
+            String[] header4 = {"nom", "prenom", "email", "login"};
+            createTable(header4, tableView4);
+            tableView5.setVisible(false);
+            String[] header5 = {"nom", "prenom", "email"};
+            createTable(header5, tableView5);
+            
+            accounts.selectedToggleProperty().addListener(
+                (observable, oldToggle, newToggle) -> {
+                    if (newToggle == UE) {
+                        tableView1.setVisible(true);
+                        tableView2.setVisible(false);
+                        tableView3.setVisible(false);
+                        tableView4.setVisible(false);
+                        tableView5.setVisible(false);
+                    }
+                    else if(newToggle == admin){
+                        tableView1.setVisible(false);
+                        tableView2.setVisible(true);
+                        tableView3.setVisible(false);
+                        tableView4.setVisible(false);
+                        tableView5.setVisible(false);
+                    }
+                    else if(newToggle == SA){
+                        tableView1.setVisible(false);
+                        tableView2.setVisible(false);
+                        tableView3.setVisible(true);
+                        tableView4.setVisible(false);
+                        tableView5.setVisible(false);
+                    }
+                    else if(newToggle == guerite){
+                        tableView1.setVisible(false);
+                        tableView2.setVisible(false);
+                        tableView3.setVisible(false);
+                        tableView4.setVisible(true);
+                        tableView5.setVisible(false);
+                    }
+                    else if(newToggle == RS){
+                        tableView1.setVisible(false);
+                        tableView2.setVisible(false);
+                        tableView3.setVisible(false);
+                        tableView4.setVisible(false);
+                        tableView5.setVisible(true);
+                    }
+                }
+            );
+                    
     }
 
    private class ButtonCell extends TableCell<Record, Boolean> {
