@@ -38,6 +38,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -83,6 +85,21 @@ public class TableController implements Initializable {
     
     static Random random = new Random();
     
+    public String getToggleButtonName(){
+        if (accounts.getSelectedToggle() == UE)
+            return "userentreprise";
+        else if (accounts.getSelectedToggle() == admin)
+            return "admin";
+        else if (accounts.getSelectedToggle() == SA)
+            return "superadmin";
+        else if (accounts.getSelectedToggle() == guerite)
+            return "guerite";
+        else if (accounts.getSelectedToggle() == RS)
+            return "responsablesite";
+        else
+            return null;
+        
+    }
 
     public static class Record {
         private final SimpleIntegerProperty id;
@@ -426,23 +443,35 @@ public class TableController implements Initializable {
             return getItem() == null ? "" : getItem().toString();
         }
     }
-         
+    private Stage stage;
+    private Scene scene;
+    private Parent root;  
          @FXML
     private void load() {
-    Parent root=null;
+    
+        String text = getToggleButtonName();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("addrec.fxml"));
         try {
-            root = FXMLLoader.load(getClass().getResource("addrec.fxml"));
+            root = loader.load();
         } catch (IOException ex) {
-           ex.printStackTrace();
+            Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
         }
-      Scene secene = new Scene(root) ; 
-            Stage stage = new Stage() ; 
-            stage.setScene(secene);
-            stage.initStyle(StageStyle.TRANSPARENT);
-            stage.show() ; 
-         
-  
+                
+                AddrecController addrecController = loader.getController();
+                addrecController.getTable(text);
+
+                stage = new Stage();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+       
 
     }
+    
+  
+    
+    public void add(ActionEvent event) throws IOException {
+         
+     } 
    
 }

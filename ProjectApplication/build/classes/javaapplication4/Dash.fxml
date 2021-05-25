@@ -38,7 +38,7 @@
          <children>
             <Pane id="layer4" fx:id="layer4" layoutX="-415.0" layoutY="-130.0" prefHeight="130.0" prefWidth="1514.0" style="-fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0);" styleClass="head-background" stylesheets="@../../../../../Desktop/Drapo-Dashboard-JavaFX-master/src/drapo/dashboard/style.css">
                <children>
-                  <Label layoutX="224.0" layoutY="47.0" text="Admin" textFill="WHITE">
+                  <Label id="name" fx:id="name" layoutX="224.0" layoutY="47.0" text="Admin" textFill="WHITE">
                      <font>
                         <Font size="36.0" />
                      </font>

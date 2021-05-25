@@ -10,6 +10,7 @@ package javaapplication4;
 
 
 import Utils.Compte;
+import Utils.ResponsableSite;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXToggleButton;
@@ -19,6 +20,7 @@ import java.sql.*;
 import javafx.scene.control.Alert;
 import javafx.scene.paint.Color;
 import Utils.SingletonConnection;
+import Utils.UserEntreprise;
 
 
 import java.net.URL;
@@ -169,7 +171,7 @@ public class MainController implements Initializable {
     private Label lbError;
     
     
-    public static LinkedList<Compte> listComptes = new LinkedList<Compte>();
+    public static Compte actualAccount;
     private static final String HOVERED_BUTTON_STYLE = "-fx-background-color:#ffff";
     private static final String HOVERED_BUTTON_STYLE2 = "-fx-background-color: #252645";
     
@@ -197,9 +199,23 @@ public class MainController implements Initializable {
             rs = ps.executeQuery();
             if(!rs.next()){
                 lbError.setTextFill(Color.TOMATO);
-                lbError.setText("Username/Password erroné"); 
+                lbError.setText("Username/Password erroné");
             }
             else{
+                int id = rs.getInt(1);
+                String firstName = rs.getString(2);
+                String lastName = rs.getString(3);
+                String email = rs.getString(4);
+                String login = rs.getString(5);
+                String pwd = rs.getString(6);
+                String telephone = rs.getString(7);
+                boolean etat = rs.getBoolean(8);
+                
+                if(table.equals("responsablesite"))
+                    actualAccount = new ResponsableSite(id, firstName, lastName, email, login, pwd, telephone);
+                else if(table.equals("UserEntreprise"))
+                    actualAccount = new UserEntreprise(id, firstName, lastName, email, login, pwd, telephone, etat);
+                
                 lbError.setTextFill(Color.GREEN);
                 lbError.setText("Authentification .......");
                 loadingImg.setVisible(true);
@@ -416,9 +432,7 @@ public class MainController implements Initializable {
              
          }
      
-         public void print(){
-             
-         }
+         
          class Dash extends Thread {
             @Override  
             public void run(){

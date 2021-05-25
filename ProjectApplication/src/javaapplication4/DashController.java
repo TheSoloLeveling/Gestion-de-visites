@@ -60,6 +60,8 @@ public class DashController implements Initializable {
     public static int cnt =0 ; 
        private static final String HOVERED_BUTTON_STYLE = "-fx-background-color:#ffff";
     private static final String HOVERED_BUTTON_STYLE2 = "-fx-background-color: #252645";
+     @FXML
+    private Label name;
     @FXML
     private JFXButton close;
      @FXML
@@ -165,6 +167,7 @@ public class DashController implements Initializable {
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        name.setText(MainController.actualAccount.getNom());
          load("reda") ;
         dark() ; 
         bt1.setText("");

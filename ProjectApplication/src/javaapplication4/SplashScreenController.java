@@ -58,7 +58,7 @@ public class SplashScreenController implements Initializable {
        public void run(){
             Parent root = null ;
         try {
-             root = FXMLLoader.load (getClass().getResource("Dash.fxml"));
+             root = FXMLLoader.load (getClass().getResource("FXML.fxml"));
            
             
         } catch (IOException ex) {

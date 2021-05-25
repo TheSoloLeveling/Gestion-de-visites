@@ -35,7 +35,7 @@ public class Compte {
         this.motDePasse = motDePasse;
     }
     
-    public static void RefreshListComptes(String Username, String Password){
+    /*public static void RefreshListComptes(String Username, String Password){
         
         MainController.listComptes.removeAll(MainController.listComptes);
         String sql = "SELECT * FROM compte";
@@ -63,7 +63,7 @@ public class Compte {
             e.printStackTrace();    
         }
         
-    }
+    }*/
 
     public String getNom() {
         return nom;
