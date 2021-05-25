@@ -6,6 +6,8 @@
 package javaapplication4;
 
 
+import Utils.Compte;
+import Utils.ResponsableSite;
 import java.io.IOException;
 import java.util.Random;
 import javafx.application.Application;
@@ -108,15 +110,17 @@ public class TableController implements Initializable {
         private final SimpleIntegerProperty value_2;
         private final SimpleIntegerProperty value_3;
         private final SimpleIntegerProperty value_4;
+         private final SimpleIntegerProperty value_5;
         
         Record(int i, int v0, int v1, int v2, int v3, 
-                int v4) {
+                int v4, int v5) {
             this.id = new SimpleIntegerProperty(i);
             this.value_0 = new SimpleIntegerProperty(v0);
             this.value_1 = new SimpleIntegerProperty(v1);
             this.value_2 = new SimpleIntegerProperty(v2);
             this.value_3 = new SimpleIntegerProperty(v3);
             this.value_4 = new SimpleIntegerProperty(v4);
+            this.value_5 = new SimpleIntegerProperty(v5);
         }
         
         public int getId() {
@@ -251,19 +255,19 @@ public class TableController implements Initializable {
             
             btnNew.setDisable(true);
             tableView1.setVisible(false);
-            String[] header1 = {"nom", "prenom", "email", "login", "motDePasse", "telephone"};
+            String[] header1 = {"nom", "prenom", "email", "login", "motDePasse", "telephone", "etat"};
             createTable(header1, tableView1, data1);
             tableView2.setVisible(false);
-            String[] header2 = {"nom", "prenom"};
+            String[] header2 = {"nom", "prenom", "email", "login", "motDePasse", "telephone"};
             createTable(header2, tableView2, data2);
             tableView3.setVisible(false);
-            String[] header3 = {"nom"};
+            String[] header3 = {"nom", "prenom", "email", "login", "motDePasse", "telephone"};
             createTable(header3, tableView3, data3);
             tableView4.setVisible(false);
-            String[] header4 = {"nom", "prenom", "email", "login"};
+            String[] header4 = {"nom", "prenom", "email", "login", "motDePasse", "Date de création", "CIN"};
             createTable(header4, tableView4, data4);
             tableView5.setVisible(false);
-            String[] header5 = {"nom", "prenom", "email"};
+            String[] header5 = {"nom", "prenom", "email", "login", "motDePasse", "telephone", "idSite"};
             createTable(header5, tableView5, data5);
             
             accounts.selectedToggleProperty().addListener(
@@ -362,13 +366,19 @@ public class TableController implements Initializable {
         public void handle(ActionEvent t) {
             
             //generate new Record with random number
+            if(getToggleButtonName().equals("responsablesite"))
+            {
+                //Compte c = new ResponsableSite();
+            }
             Record newRec = new Record(
                     data_nextId,
                     60, 
                     4, 
                     random.nextInt(1), 
                     random.nextInt(1), 
-                    random.nextInt(1));
+                    random.nextInt(1),
+                    5
+            );
             checkVisibleTable().add(newRec);
             data_nextId++;
             load() ;
@@ -450,14 +460,24 @@ public class TableController implements Initializable {
     private void load() {
     
         String text = getToggleButtonName();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("addrec.fxml"));
+        FXMLLoader loader = null;
+        if (text.equals("userentreprise"))
+            loader = new FXMLLoader(getClass().getResource("addrec1.fxml"));
+        else if (text.equals("amdin"))
+            loader = new FXMLLoader(getClass().getResource("addrec2.fxml"));
+        else if (text.equals("superadmin"))
+            loader = new FXMLLoader(getClass().getResource("addrec3.fxml"));
+        else if (text.equals("guerite"))
+            loader = new FXMLLoader(getClass().getResource("addrec4.fxml"));
+        else if (text.equals("responsablesite"))
+            loader = new FXMLLoader(getClass().getResource("addrec5.fxml"));
         try {
             root = loader.load();
         } catch (IOException ex) {
             Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
-                AddrecController addrecController = loader.getController();
+                AddrecController1 addrecController = loader.getController();
                 addrecController.getTable(text);
 
                 stage = new Stage();

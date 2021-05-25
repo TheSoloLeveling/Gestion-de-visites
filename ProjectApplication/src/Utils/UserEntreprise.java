@@ -14,10 +14,19 @@ public class UserEntreprise extends Compte{
     private String telephone;
     private boolean etat;
     
-    public UserEntreprise(int id, String nom, String prenom, String email, String login, String motDePasse, String telephone, boolean etat) {
-        super(id, nom, prenom, email, login, motDePasse);
+    public UserEntreprise(String nom, String prenom, String email, String login, String motDePasse, String telephone, boolean etat) {
+        super(nom, prenom, email, login, motDePasse);
         this.telephone = telephone;
         this.etat = etat;
     }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public boolean isEtat() {
+        return etat;
+    }
+    
     
 }

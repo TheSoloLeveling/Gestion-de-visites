@@ -26,8 +26,7 @@ public class Compte {
     private String login;
     private String motDePasse;
 
-    public Compte(int id,String nom, String prenom, String email, String login, String motDePasse) {
-        this.id = id;
+    public Compte(String nom, String prenom, String email, String login, String motDePasse) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;

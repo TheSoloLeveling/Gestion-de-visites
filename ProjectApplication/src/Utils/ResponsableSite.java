@@ -14,10 +14,15 @@ public class ResponsableSite extends Compte {
     private String telephone;
     
     
-    public ResponsableSite(int id, String nom, String prenom, String email, String login, String motDePasse, String telephone) {
-        super(id, nom, prenom, email, login, motDePasse);
+    public ResponsableSite(String nom, String prenom, String email, String login, String motDePasse, String telephone) {
+        super(nom, prenom, email, login, motDePasse);
         this.telephone = telephone;
         
     }
+
+    public String getTelephone() {
+        return telephone;
+    }
+    
     
 }
