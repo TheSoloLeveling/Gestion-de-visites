@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="566.0" prefWidth="491.0" style="-fx-background-color: #252645;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.AddrecController1">
+   <children>
+      <TextField id="lastName" fx:id="lastName" layoutX="100.0" layoutY="117.0" prefHeight="31.0" prefWidth="279.0" style="-fx-background-color: transparent; -fx-border-color: #795af3; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: #7173B2;" />
+      <Button id="cancel" fx:id="cancel" layoutX="278.0" layoutY="523.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0); -fx-background-radius: 200; -fx-text-fill: white;" stylesheets="@style.css" text="Cancel">
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
+      <Button id="add" fx:id="add" layoutX="95.0" layoutY="522.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0); -fx-background-radius: 200; -fx-text-fill: white;" stylesheets="@style.css" text="Add">
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
+      <TextField id="firstName" fx:id="firstName" layoutX="100.0" layoutY="43.0" prefHeight="31.0" prefWidth="279.0" style="-fx-background-color: transparent; -fx-border-color: #795af3; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: #7173B2;" />
+      <TextField id="email" fx:id="email" layoutX="100.0" layoutY="189.0" prefHeight="31.0" prefWidth="279.0" style="-fx-background-color: transparent; -fx-border-color: #795af3; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: #7173B2;" />
+      <TextField id="login" fx:id="login" layoutX="100.0" layoutY="256.0" prefHeight="31.0" prefWidth="279.0" style="-fx-background-color: transparent; -fx-border-color: #795af3; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: #7173B2;" />
+      <TextField id="password" fx:id="password" layoutX="100.0" layoutY="322.0" prefHeight="31.0" prefWidth="279.0" style="-fx-background-color: transparent; -fx-border-color: #795af3; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: #7173B2;" />
+      <Label layoutX="99.0" layoutY="14.0" text="First Name" textFill="#3929e0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="100.0" layoutY="90.0" text="Last Name" textFill="#3929e0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="103.0" layoutY="164.0" text="Email" textFill="#3929e0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="103.0" layoutY="238.0" text="Login" textFill="#3929e0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="103.0" layoutY="304.0" text="Password" textFill="#3929e0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="100.0" layoutY="369.0" text="Phone Number" textFill="#3929e0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField id="phoneNumber" fx:id="phoneNumber" layoutX="100.0" layoutY="387.0" prefHeight="31.0" prefWidth="279.0" style="-fx-background-color: transparent; -fx-border-color: #795af3; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: #7173B2;" />
+      <Label layoutX="100.0" layoutY="433.0" text="Etat" textFill="#3929e0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <ChoiceBox id="etat" fx:id="etat" layoutX="157.0" layoutY="466.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

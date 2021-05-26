@@ -8,6 +8,8 @@ package javaapplication4;
 
 import Utils.Compte;
 import Utils.ResponsableSite;
+import Utils.SingletonConnection;
+import Utils.UserEntreprise;
 import java.io.IOException;
 import java.util.Random;
 import javafx.application.Application;
@@ -35,6 +37,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -56,6 +61,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import java.sql.Statement;
 
 public class TableController implements Initializable {
     @FXML
@@ -84,6 +90,8 @@ public class TableController implements Initializable {
     private ToggleButton admin;
     @FXML
     private ToggleButton SA;
+    @FXML
+    private Button refresh;
     
     static Random random = new Random();
     
@@ -104,73 +112,91 @@ public class TableController implements Initializable {
     }
 
     public static class Record {
-        private final SimpleIntegerProperty id;
-        private final SimpleIntegerProperty value_0;
-        private final SimpleIntegerProperty value_1;
-        private final SimpleIntegerProperty value_2;
-        private final SimpleIntegerProperty value_3;
-        private final SimpleIntegerProperty value_4;
-         private final SimpleIntegerProperty value_5;
+        private  String value_0;
+        private  String value_1;
+        private  String value_2;
+        private  String value_3;
+        private  String value_4;
+        private  String value_5;
+         private  String value_6;
+         private  String value_7;
         
-        Record(int i, int v0, int v1, int v2, int v3, 
-                int v4, int v5) {
-            this.id = new SimpleIntegerProperty(i);
-            this.value_0 = new SimpleIntegerProperty(v0);
-            this.value_1 = new SimpleIntegerProperty(v1);
-            this.value_2 = new SimpleIntegerProperty(v2);
-            this.value_3 = new SimpleIntegerProperty(v3);
-            this.value_4 = new SimpleIntegerProperty(v4);
-            this.value_5 = new SimpleIntegerProperty(v5);
-        }
-        
-        public int getId() {
-            return id.get();
+        Record(String v0, String v1, String v2, String v3, String v4, 
+                String v5, String v6, String v7) {
+            this.value_0 = v0;
+            this.value_1 = v1;
+            this.value_2 = v2;
+            this.value_3 = v3;
+            this.value_4 = v4;
+            this.value_5 = v5;
+            this.value_6 = v6;
+            this.value_7 = v7;
         }
 
-        public void setId(int v) {
-            id.set(v);
-        }
-        
-        public int getValue_0() {
-            return value_0.get();
+        public String getValue_0() {
+            return value_0;
         }
 
-        public void setValue_0(int v) {
-            value_0.set(v);
-        }
-        
-        public int getValue_1() {
-            return value_1.get();
+        public String getValue_1() {
+            return value_1;
         }
 
-        public void setValue_1(int v) {
-            value_1.set(v);
-        }
-        
-        public int getValue_2() {
-            return value_2.get();
+        public String getValue_2() {
+            return value_2;
         }
 
-        public void setValue_2(int v) {
-            value_2.set(v);
-        }
-        
-        public int getValue_3() {
-            return value_3.get();
+        public String getValue_3() {
+            return value_3;
         }
 
-        public void setValue_3(int v) {
-            value_3.set(v);
-        }
-        
-        public int getValue_4() {
-            return value_4.get();
+        public String getValue_4() {
+            return value_4;
         }
 
-        public void setValue_4(int v) {
-            value_4.set(v);
+        public String getValue_5() {
+            return value_5;
+        }
+
+        public String getValue_6() {
+            return value_6;
         }
         
+        public String getValue_7() {
+            return value_7;
+        }
+        
+        
+        public void setValue_0(String v) {
+            value_0 = v;
+        }
+        
+        public void setValue_1(String v) {
+            value_1 = v;
+        }
+        
+        public void setValue_2(String v) {
+            value_2 = v;
+        }
+        
+        public void setValue_3(String v) {
+            value_3 = v;
+        }
+        
+        public void setValue_4(String v) {
+            value_4 = v;
+        }
+        
+        public void setValue_5(String v) {
+            value_5 = v;
+        }
+        
+        public void setValue_6(String v) {
+            value_6 = v;
+        }
+        
+        public void setValue_7(String v) {
+            value_7 = v;
+        }
     };
     
     ObservableList<Record> data1 = FXCollections.observableArrayList();
@@ -178,7 +204,7 @@ public class TableController implements Initializable {
     ObservableList<Record> data3 = FXCollections.observableArrayList();
     ObservableList<Record> data4 = FXCollections.observableArrayList();
     ObservableList<Record> data5 = FXCollections.observableArrayList();
-    int data_nextId = 0;
+    
     
     public void createTable(String[] headers, TableView table, ObservableList<Record> data){
         Callback<TableColumn, TableCell> cellFactory =
@@ -189,12 +215,7 @@ public class TableController implements Initializable {
                         return new EditingCell();
                     }
                 };
-         //init table
-        //Un-editable column of "id"
-        TableColumn col_id = new TableColumn("ID");
-        table.getColumns().add(col_id);
-        col_id.setCellValueFactory(
-                    new PropertyValueFactory<Record, String>("id"));
+         
         
         //Editable columns
         for(int i=0; i<headers.length; i++){
@@ -234,40 +255,84 @@ public class TableController implements Initializable {
         table.setItems(data);
     }
 
+    
+    public void refreshUser(String table){
+        
+        Connection conn = null;
+        Statement ps = null;
+        ResultSet rs = null;
+        
+        if (table.equals("userentreprise")){
+            data1.removeAll(data1);
+            try{
+            String sql = "SELECT * FROM " + table;
+            conn = SingletonConnection.getconn();
+            ps = conn.createStatement();
+            rs = ps.executeQuery(sql);
+            
+            while(rs.next()){
+                String id = rs.getString(1);
+                String nom = rs.getString(2);
+                String prenom = rs.getString(3);
+                String email = rs.getString(4);
+                String login = rs.getString(5);
+                String pass = rs.getString(6);
+                String telephone = rs.getString(7);
+                String etat = rs.getString(8);
+                
+                Record newRec = new Record(id, nom, prenom, email, login, pass, telephone, etat);
+                data1.add(newRec);
+            }
+            rs.close();
+            ps.close();
+                                        
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        }
+        
+    }
+    
+    
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
             tableView1.setEditable(true);
+            
             UE.setToggleGroup(accounts);
             RS.setToggleGroup(accounts);
             guerite.setToggleGroup(accounts);
             SA.setToggleGroup(accounts);
             admin.setToggleGroup(accounts);
             btnNew.setOnAction(btnNewHandler);
+            refresh.setOnAction(refreshHandler);
             
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {
               @Override
               public void run() {
-                if(accounts.getSelectedToggle() != null)
+                if(accounts.getSelectedToggle() != null){
                     btnNew.setDisable(false);
+                    refresh.setDisable(false);
+                }
               }
             }, 0, 1);
             
             btnNew.setDisable(true);
+            refresh.setDisable(true);
             tableView1.setVisible(false);
-            String[] header1 = {"nom", "prenom", "email", "login", "motDePasse", "telephone", "etat"};
+            String[] header1 = {"id", "nom", "prenom", "email", "login", "motDePasse", "telephone", "etat"};
             createTable(header1, tableView1, data1);
             tableView2.setVisible(false);
-            String[] header2 = {"nom", "prenom", "email", "login", "motDePasse", "telephone"};
+            String[] header2 = {"id", "nom", "prenom", "email", "login", "motDePasse", "telephone"};
             createTable(header2, tableView2, data2);
             tableView3.setVisible(false);
-            String[] header3 = {"nom", "prenom", "email", "login", "motDePasse", "telephone"};
+            String[] header3 = {"id", "nom", "prenom", "email", "login", "motDePasse", "telephone"};
             createTable(header3, tableView3, data3);
             tableView4.setVisible(false);
-            String[] header4 = {"nom", "prenom", "email", "login", "motDePasse", "Date de création", "CIN"};
+            String[] header4 = {"id", "nom", "prenom", "email", "login", "motDePasse", "Date de création", "CIN"};
             createTable(header4, tableView4, data4);
             tableView5.setVisible(false);
-            String[] header5 = {"nom", "prenom", "email", "login", "motDePasse", "telephone", "idSite"};
+            String[] header5 = {"id", "nom", "prenom", "email", "login", "motDePasse", "telephone", "idSite"};
             createTable(header5, tableView5, data5);
             
             accounts.selectedToggleProperty().addListener(
@@ -314,11 +379,27 @@ public class TableController implements Initializable {
                         tableView4.setVisible(false);
                         tableView5.setVisible(false);
                         btnNew.setDisable(true);
+                        refresh.setDisable(true);
                     }
                 }
             );
-                    
+            refreshUser("userentreprise");       
     }
+    
+    
+    EventHandler<ActionEvent> refreshHandler = 
+            new EventHandler<ActionEvent>(){
+
+        @Override
+        public void handle(ActionEvent t) {
+            refreshUser("userentreprise");
+            refreshUser("admin");
+            refreshUser("superadmin");
+            refreshUser("guerite");
+            refreshUser("responsablesite");
+        }
+            };
+    
     
     public ObservableList<Record> checkVisibleTable(){
         if (accounts.getSelectedToggle() == UE)
@@ -370,21 +451,11 @@ public class TableController implements Initializable {
             {
                 //Compte c = new ResponsableSite();
             }
-            Record newRec = new Record(
-                    data_nextId,
-                    60, 
-                    4, 
-                    random.nextInt(1), 
-                    random.nextInt(1), 
-                    random.nextInt(1),
-                    5
-            );
-            checkVisibleTable().add(newRec);
-            data_nextId++;
+           
             load() ;
         }
     };
-         class EditingCell extends TableCell<XYChart.Data, Number> {
+         class EditingCell extends TableCell<XYChart.Data, String> {
          
         private TextField textField;
          
@@ -413,7 +484,7 @@ public class TableController implements Initializable {
         }
          
         @Override
-        public void updateItem(Number item, boolean empty) {
+        public void updateItem(String item, boolean empty) {
             super.updateItem(item, empty);
              
             if (empty) {
@@ -441,7 +512,7 @@ public class TableController implements Initializable {
                 @Override
                 public void handle(KeyEvent t) {
                     if (t.getCode() == KeyCode.ENTER) {
-                        commitEdit(Integer.parseInt(textField.getText()));
+                        commitEdit(textField.getText());
                     } else if (t.getCode() == KeyCode.ESCAPE) {
                         cancelEdit();
                     }
