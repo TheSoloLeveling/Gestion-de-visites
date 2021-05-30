@@ -96,10 +96,12 @@ public class TableController implements Initializable {
     private Button refresh;
     @FXML
     private Button btnDel;
+    @FXML
+    private Button btnUpd;
     
     //private Button = 
     static Random random = new Random();
-    
+    public static boolean isAdd; 
     
     
     public String getToggleButtonName(){
@@ -396,22 +398,12 @@ public class TableController implements Initializable {
             btnNew.setOnAction(btnNewHandler);
             refresh.setOnAction(refreshHandler);
             btnDel.setOnAction(deleteHandler);
-                    
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-              @Override
-              public void run() {
-                if(accounts.getSelectedToggle() != null){
-                    btnNew.setDisable(false);
-                    refresh.setDisable(false);
-                    btnDel.setDisable(false);
-                }
-              }
-            }, 0, 1);
+            btnUpd.setOnAction(updateHandler);
             
             btnNew.setDisable(true);
             refresh.setDisable(true);
             btnDel.setDisable(true);
+            btnUpd.setDisable(true);
             
             tableView1.setVisible(false);
             String[] header1 = {"nom", "prenom", "email", "login", "motDePasse", "telephone", "etat"};
@@ -476,11 +468,27 @@ public class TableController implements Initializable {
                         btnNew.setDisable(true);
                         refresh.setDisable(true);
                         btnDel.setDisable(true);
+                        btnUpd.setDisable(true);
                     }
                 }
             );
             
             refreshUser();
+            
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+              @Override
+              public void run() {
+                if(accounts.getSelectedToggle() != null){
+                    btnNew.setDisable(false);
+                    refresh.setDisable(false);
+                    btnDel.setDisable(false);
+                    btnUpd.setDisable(false);
+                }
+
+                    
+              }
+            }, 0, 1);
     }
     
     
@@ -508,31 +516,31 @@ public class TableController implements Initializable {
                     }   
                 }
                 else if (accounts.getSelectedToggle() == admin){
-                    Record record = (Record) tableView2.getSelectionModel().getSelectedItem();
-                    if (record != null){  
-                        data2.remove(record);
-                        Crud.removeUser("admin", record.getValue_3());
+                    Record record2 = (Record) tableView2.getSelectionModel().getSelectedItem();
+                    if (record2 != null){  
+                        data2.remove(record2);
+                        Crud.removeUser("admin", record2.getValue_3());
                     }   
                 }
                 else if (accounts.getSelectedToggle() == SA){
-                    Record record = (Record) tableView3.getSelectionModel().getSelectedItem();
-                    if (record != null){  
-                        data3.remove(record);
-                        Crud.removeUser("superadmin", record.getValue_3());
+                    Record record3 = (Record) tableView3.getSelectionModel().getSelectedItem();
+                    if (record3 != null){  
+                        data3.remove(record3);
+                        Crud.removeUser("superadmin", record3.getValue_3());
                     }   
                 }
                 else if (accounts.getSelectedToggle() == guerite){
-                    Record record = (Record) tableView4.getSelectionModel().getSelectedItem();
-                    if (record != null){  
-                        data4.remove(record);
-                        Crud.removeUser("guerite", record.getValue_3());
+                    Record record4 = (Record) tableView4.getSelectionModel().getSelectedItem();
+                    if (record4 != null){  
+                        data4.remove(record4);
+                        Crud.removeUser("guerite", record4.getValue_3());
                     }   
                 } 
                 else if (accounts.getSelectedToggle() == RS){
-                    Record record = (Record) tableView5.getSelectionModel().getSelectedItem();
-                    if (record != null){  
-                        data5.remove(record);
-                        Crud.removeUser("responsablesite", record.getValue_3());
+                    Record record5 = (Record) tableView5.getSelectionModel().getSelectedItem();
+                    if (record5 != null){  
+                        data5.remove(record5);
+                        Crud.removeUser("responsablesite", record5.getValue_3());
                     }   
                 }
         
@@ -561,6 +569,17 @@ public class TableController implements Initializable {
         @Override
         public void handle(ActionEvent t) {
             
+            isAdd = true;
+            load() ;
+        }
+    };
+        EventHandler<ActionEvent> updateHandler = 
+            new EventHandler<ActionEvent>(){
+
+        @Override
+        public void handle(ActionEvent t) {
+  
+            isAdd = false;
             load() ;
         }
     };
@@ -572,22 +591,51 @@ public class TableController implements Initializable {
     private void load() {
     
         String text = getToggleButtonName();
-       
+ 
         FXMLLoader loader = null;
         
         if (text.equals("userentreprise")){
-            loader = new FXMLLoader(getClass().getResource("addrec1.fxml"));
-            try {
-                root = loader.load();
-            } catch (IOException ex) {
-                Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+            if(isAdd){
+                loader = new FXMLLoader(getClass().getResource("addrec1.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                AddrecController1 addrecController1 = loader.getController();
+                addrecController1.getTable("", text, "", "", "", "", "");
+                
             }
-            AddrecController1 addrecController1 = loader.getController();
-            addrecController1.getTable(text);
+            else{
+                loader = new FXMLLoader(getClass().getResource("addrec1.fxml"));
+                Record record = (Record) tableView1.getSelectionModel().getSelectedItem();
+                if (record != null){
+                    try {
+                        root = loader.load();
+                    } catch (IOException ex) {
+                        Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    AddrecController1 addrecController1 = loader.getController();
+                    String v1 = record.value_0;
+                    String v2 = record.value_1;
+                    String v3 = record.value_2;
+                    String v4 = record.value_3;
+                    String v5 = record.value_4;
+                    String v6 = record.value_5;    
+                    addrecController1.getTable(v1, text, v2, v3, v4, v5, v6);
+                }    
+            }    
         }  
-        else if (text.equals("amdin")){
+        
+        else if (text.equals("admin")){
             loader = new FXMLLoader(getClass().getResource("addrec2.fxml"));
-           
+            try {
+                  root = loader.load();
+              } catch (IOException ex) {
+                  Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+              }
+              AddrecController2 addrecController2 = loader.getController();
+              addrecController2.getTable(text);
         }
         else if (text.equals("superadmin")){
             loader = new FXMLLoader(getClass().getResource("addrec3.fxml"));
@@ -619,12 +667,15 @@ public class TableController implements Initializable {
             AddrecControlle5r addrecController5 = loader.getController();
             addrecController5.getTable(text);
         }
+          
         
-
-        stage = new Stage();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        //if(root != null){
+            stage = new Stage();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        //}
+        
     }
     
 }

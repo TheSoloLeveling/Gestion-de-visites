@@ -55,5 +55,10 @@
          </font>
       </Label>
       <TextField id="phoneNumber" fx:id="phoneNumber" layoutX="100.0" layoutY="387.0" prefHeight="31.0" prefWidth="279.0" style="-fx-background-color: transparent; -fx-border-color: #795af3; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: #7173B2;" />
+      <Button id="update" fx:id="update" layoutX="95.0" layoutY="448.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0); -fx-background-radius: 200; -fx-text-fill: white;" stylesheets="@style.css" text="Update" visible="false">
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

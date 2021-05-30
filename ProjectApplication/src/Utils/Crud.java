@@ -89,7 +89,7 @@ public class Crud {
             try{
             Admin u = (Admin) c;
             String sql = "INSERT INTO " + table +
-                                    " VALUES (null, ?, ?, ?, ?, ?); ";
+                                    " VALUES (null, ?, ?, ?, ?, ?, ?, ?); ";
             conn = SingletonConnection.getconn();
             ps = conn.prepareStatement(sql);
             ps.setString(1, u.getNom());
@@ -97,6 +97,8 @@ public class Crud {
             ps.setString(3, u.getEmail());
             ps.setString(4, u.getLogin());
             ps.setString(5, u.getMotDePasse());
+            ps.setString(6, u.getTelephone());
+            ps.setInt(7, u.getIdSite());
             ps.executeUpdate();
                                         
         }catch(Exception e){
@@ -143,6 +145,59 @@ public class Crud {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    
+    public static void updateUser(String table, String login, Compte c){
+        
+         Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        if (table.equals("userentreprise")){
+            try{
+            UserEntreprise u = (UserEntreprise) c;
+            String sql = "update " + table +
+                    " set nom = ?, prenom = ?, email = ?,"
+                    + "login = ?, motDePasse = ?, telephone = ? where login = ?";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, u.getNom());
+            ps.setString(2, u.getPrenom());
+            ps.setString(3, u.getEmail());
+            ps.setString(4, u.getLogin());
+            ps.setString(5, u.getMotDePasse());
+            ps.setString(6, u.getTelephone());
+            ps.setString(7, login);
+            ps.executeUpdate();
+                                        
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        }
+        
+        if (table.equals("admin")){
+            try{
+            UserEntreprise u = (UserEntreprise) c;
+            String sql = "update " + table +
+                    " set nom = ?, prenom = ?, email = ?,"
+                    + "login = ?, motDePasse = ?, telephone = ? where login = ?";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, u.getNom());
+            ps.setString(2, u.getPrenom());
+            ps.setString(3, u.getEmail());
+            ps.setString(4, u.getLogin());
+            ps.setString(5, u.getMotDePasse());
+            ps.setString(6, u.getTelephone());
+            ps.setString(7, login);
+            ps.executeUpdate();
+                                        
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        }
+        
+        
     }
         
 }
