@@ -588,16 +588,27 @@ public class TableController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
         }
-                
-                AddrecController1 addrecController = loader.getController();
-                addrecController.getTable(text);
+        
+        if (text.equals("userentreprise")){
+            AddrecController1 addrecController1 = loader.getController();
+            addrecController1.getTable(text);
+        }
+        else if (text.equals("amdin"))
+            loader = new FXMLLoader(getClass().getResource("addrec2.fxml"));
+        else if (text.equals("superadmin"))
+            loader = new FXMLLoader(getClass().getResource("addrec3.fxml"));
+        else if (text.equals("guerite"))
+            loader = new FXMLLoader(getClass().getResource("addrec4.fxml"));
+        
+        else if (text.equals("responsablesite")){
+            AddrecControlle5r addrecController5 = loader.getController();
+            addrecController5.getTable(text);
+        }
 
-                stage = new Stage();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-       
-
+        stage = new Stage();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
     
 }
