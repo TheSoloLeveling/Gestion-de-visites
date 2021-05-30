@@ -5,6 +5,7 @@
  */
 package javaapplication4;
 
+import Utils.Admin;
 import Utils.Compte;
 import Utils.Crud;
 import Utils.ResponsableSite;
@@ -29,7 +30,7 @@ import javafx.scene.control.TextField;
  *
  * @author yassine
  */
-public class AddrecControlle5r implements Initializable {
+public class AddrecController2 implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -97,7 +98,7 @@ public class AddrecControlle5r implements Initializable {
                 }
                 
                 
-               Compte compte = new ResponsableSite(a, b, c, d, e, f, id);
+               Compte compte = new Admin(a, b, c, d, e, f, id);
                Crud.addUser(table, compte);
                close();
          }

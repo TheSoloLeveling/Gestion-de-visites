@@ -572,38 +572,54 @@ public class TableController implements Initializable {
     private void load() {
     
         String text = getToggleButtonName();
+       
         FXMLLoader loader = null;
-        if (text.equals("userentreprise"))
-            loader = new FXMLLoader(getClass().getResource("addrec1.fxml"));
-        else if (text.equals("amdin"))
-            loader = new FXMLLoader(getClass().getResource("addrec2.fxml"));
-        else if (text.equals("superadmin"))
-            loader = new FXMLLoader(getClass().getResource("addrec3.fxml"));
-        else if (text.equals("guerite"))
-            loader = new FXMLLoader(getClass().getResource("addrec4.fxml"));
-        else if (text.equals("responsablesite"))
-            loader = new FXMLLoader(getClass().getResource("addrec5.fxml"));
-        try {
-            root = loader.load();
-        } catch (IOException ex) {
-            Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
         if (text.equals("userentreprise")){
+            loader = new FXMLLoader(getClass().getResource("addrec1.fxml"));
+            try {
+                root = loader.load();
+            } catch (IOException ex) {
+                Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             AddrecController1 addrecController1 = loader.getController();
             addrecController1.getTable(text);
-        }
-        else if (text.equals("amdin"))
+        }  
+        else if (text.equals("amdin")){
             loader = new FXMLLoader(getClass().getResource("addrec2.fxml"));
-        else if (text.equals("superadmin"))
+           
+        }
+        else if (text.equals("superadmin")){
             loader = new FXMLLoader(getClass().getResource("addrec3.fxml"));
-        else if (text.equals("guerite"))
+            try {
+                 root = loader.load();
+             } catch (IOException ex) {
+                 Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+             AddrecController3 addrecController3= loader.getController();
+             addrecController3.getTable(text);
+        }  
+        else if (text.equals("guerite")){
             loader = new FXMLLoader(getClass().getResource("addrec4.fxml"));
-        
+            try {
+                 root = loader.load();
+             } catch (IOException ex) {
+                 Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+             AddrecController4 addrecController4 = loader.getController();
+             addrecController4.getTable(text);
+        } 
         else if (text.equals("responsablesite")){
+            loader = new FXMLLoader(getClass().getResource("addrec5.fxml"));
+            try {
+                root = loader.load();
+            } catch (IOException ex) {
+                Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             AddrecControlle5r addrecController5 = loader.getController();
             addrecController5.getTable(text);
         }
+        
 
         stage = new Stage();
         scene = new Scene(root);
