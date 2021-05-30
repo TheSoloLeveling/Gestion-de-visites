@@ -9,7 +9,9 @@ package javaapplication4;
 
 
 
+import Utils.Admin;
 import Utils.Compte;
+import Utils.Guerite;
 import Utils.ResponsableSite;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -20,6 +22,7 @@ import java.sql.*;
 import javafx.scene.control.Alert;
 import javafx.scene.paint.Color;
 import Utils.SingletonConnection;
+import Utils.SuperAdmin;
 import Utils.UserEntreprise;
 
 
@@ -89,6 +92,7 @@ public class MainController implements Initializable {
     public static int c =0 ; 
     public static int cnt =0 ;
     public static String dashInterface;
+    public static LinkedList<Compte> allAccounts = new LinkedList<>();
     
     @FXML
     private JFXButton close;
@@ -202,20 +206,40 @@ public class MainController implements Initializable {
                 lbError.setText("Username/Password erroné");
             }
             else{
+                
                 int id = rs.getInt(1);
                 String firstName = rs.getString(2);
                 String lastName = rs.getString(3);
                 String email = rs.getString(4);
                 String login = rs.getString(5);
                 String pwd = rs.getString(6);
-                String telephone = rs.getString(7);
-                boolean etat = rs.getBoolean(8);
                 
-                if(table.equals("responsablesite"))
-                    actualAccount = new ResponsableSite(firstName, lastName, email, login, pwd, telephone);
-                else if(table.equals("UserEntreprise"))
+                if(table.equals("responsablesite")){
+                    String telephone = rs.getString(7);
+                    int idSite = rs.getInt(8);
+                    actualAccount = new ResponsableSite(firstName, lastName, email, login, pwd, telephone, idSite);
+                }
+                else if(table.equals("userentreprise")){
+                    String telephone = rs.getString(7);
+                    boolean etat = rs.getBoolean(8);
                     actualAccount = new UserEntreprise(firstName, lastName, email, login, pwd, telephone, etat);
-                
+                }                
+                else if(table.equals("admin")){
+                    String telephone = rs.getString(7);
+                    int idSite = rs.getInt(8);
+                    actualAccount = new Admin(firstName, lastName, email, login, pwd, telephone, idSite);
+                }
+                    
+                else if(table.equals("superadmin")){
+                    String telephone = rs.getString(7);
+                    actualAccount = new SuperAdmin(firstName, lastName, email, login, pwd, telephone);
+                }
+                else if(table.equals("guerite")){
+                    String date = rs.getString(7);
+                    int cin = rs.getInt(8);
+                    actualAccount = new Guerite(firstName, lastName, email, login, pwd, date, cin);
+                }
+                         
                 lbError.setTextFill(Color.GREEN);
                 lbError.setText("Authentification .......");
                 loadingImg.setVisible(true);
@@ -260,6 +284,48 @@ public class MainController implements Initializable {
             rs = ps.executeQuery();
             if(rs.next()){
                 table = "userentreprise";
+            }                                 
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        try{
+            String sql = "SELECT * FROM admin WHERE login = ? and motDePasse = ? ";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, userName);
+            ps.setString(2, password);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                table = "admin";
+            }                                 
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        try{
+            String sql = "SELECT * FROM superadmin WHERE login = ? and motDePasse = ? ";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, userName);
+            ps.setString(2, password);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                table = "superadmin";
+            }                                 
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        try{
+            String sql = "SELECT * FROM guerite WHERE login = ? and motDePasse = ? ";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, userName);
+            ps.setString(2, password);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                table = "guerite";
             }                                 
         }catch(Exception e){
             e.printStackTrace();
@@ -336,9 +402,18 @@ public class MainController implements Initializable {
         if(!login().equals("null")){
             switch(login()){
             case "responsablesite":
-                dashInterface = "Dash.fxml";
+                dashInterface = "user2.fxml";
                 break;
             case "userentreprise":
+                dashInterface = "user2.fxml";
+                break;
+            case "admin":
+                dashInterface = "user2.fxml";
+                break;
+            case "superadmin":
+                dashInterface = "Dash.fxml";
+                break;
+            case "guerite":
                 dashInterface = "user2.fxml";
                 break;
             }

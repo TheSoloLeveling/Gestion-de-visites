@@ -5,10 +5,11 @@
         <group>
             <file>file:/C:/Users/yassine/Desktop/Cours/Gestion-de-visites/ProjectApplication/src/javaapplication4/MainController.java</file>
             <file>file:/C:/Users/yassine/Desktop/Cours/Gestion-de-visites/ProjectApplication/src/javaapplication4/TableController.java</file>
-            <file>file:/C:/Users/yassine/Desktop/Cours/Gestion-de-visites/ProjectApplication/src/javaapplication4/AddrecController.java</file>
-            <file>file:/C:/Users/yassine/Desktop/Cours/Gestion-de-visites/ProjectApplication/src/javaapplication4/SplashScreenController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/Cours/Gestion-de-visites/ProjectApplication/src/Utils/UserEntreprise.java</file>
             <file>file:/C:/Users/yassine/Desktop/Cours/Gestion-de-visites/ProjectApplication/src/javaapplication4/DashController.java</file>
-            <file>file:/C:/Users/yassine/Desktop/Cours/Gestion-de-visites/ProjectApplication/src/javaapplication4/RedaController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/Cours/Gestion-de-visites/ProjectApplication/src/javaapplication4/AddrecController1.java</file>
+            <file>file:/C:/Users/yassine/Desktop/Cours/Gestion-de-visites/ProjectApplication/src/Utils/Compte.java</file>
+            <file>file:/C:/Users/yassine/Desktop/Cours/Gestion-de-visites/ProjectApplication/src/Utils/Crud.java</file>
         </group>
     </open-files>
 </project-private>

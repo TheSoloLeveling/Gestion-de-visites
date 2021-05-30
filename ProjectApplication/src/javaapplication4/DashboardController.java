@@ -5,12 +5,22 @@
  */
 package javaapplication4;
 
+import Utils.Admin;
+import Utils.Guerite;
+import Utils.ResponsableSite;
+import Utils.SingletonConnection;
+import Utils.SuperAdmin;
+import Utils.UserEntreprise;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javaapplication4.Item2Controller.c;
+import static javaapplication4.MainController.actualAccount;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections ;
 import static javafx.collections.FXCollections.observableList;
@@ -21,6 +31,7 @@ import javafx.scene.Parent;
 import javafx.scene.chart.PieChart;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 
 
 /**
@@ -45,13 +56,37 @@ public class DashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     dark() ;
     load() ; 
-        ObservableList<PieChart.Data> Data  = FXCollections.observableArrayList( new PieChart.Data("site", 13) ,new PieChart.Data("site", 25),
+        ObservableList<PieChart.Data> Data  = FXCollections.observableArrayList(
+                new PieChart.Data("site", 13) ,
+                new PieChart.Data("site", 25),
                 new PieChart.Data("site", 25) , 
-                new PieChart.Data("site", 10) ,new PieChart.Data("site", 22)
+                new PieChart.Data("site", 10) ,
+                new PieChart.Data("site", 22)
                 ) ;
         pie.setData(Data);
     } 
     
+    public void siteStats(){
+       
+        /*String sql = "SELECT * FROM re WHERE login = ? and motDePasse = ? ";
+        
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        try{
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, userName);
+            ps.setString(2, password);
+            rs = ps.executeQuery();
+           
+                
+        }catch(Exception e){
+            e.printStackTrace();
+        }*/
+        
+    }
     @FXML
      private AnchorPane layer1 ;
     

@@ -7,6 +7,7 @@ package javaapplication4;
 
 
 import Utils.Compte;
+import Utils.Crud;
 import Utils.ResponsableSite;
 import Utils.SingletonConnection;
 import Utils.UserEntreprise;
@@ -62,6 +63,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import java.sql.Statement;
+import javafx.scene.input.MouseEvent;
 
 public class TableController implements Initializable {
     @FXML
@@ -92,8 +94,13 @@ public class TableController implements Initializable {
     private ToggleButton SA;
     @FXML
     private Button refresh;
+    @FXML
+    private Button btnDel;
     
+    //private Button = 
     static Random random = new Random();
+    
+    
     
     public String getToggleButtonName(){
         if (accounts.getSelectedToggle() == UE)
@@ -117,20 +124,42 @@ public class TableController implements Initializable {
         private  String value_2;
         private  String value_3;
         private  String value_4;
-        private  String value_5;
+         private  String value_5;
          private  String value_6;
-         private  String value_7;
         
-        Record(String v0, String v1, String v2, String v3, String v4, 
-                String v5, String v6, String v7) {
+        Record(String v0, String v1, String v2 ,String v3 ,
+                String v4, String v5 ,String v6) {
+           
             this.value_0 = v0;
             this.value_1 = v1;
-            this.value_2 = v2;
-            this.value_3 = v3;
-            this.value_4 = v4;
+            this.value_2= v2;
+            this.value_3= v3;
+            this.value_4= v4;
             this.value_5 = v5;
             this.value_6 = v6;
-            this.value_7 = v7;
+        }
+        
+        Record(String v0, String v1, String v2 ,String v3 ,
+                String v4, String v5) {
+           
+            this.value_0 = v0;
+            this.value_1 = v1;
+            this.value_2= v2;
+            this.value_3= v3;
+            this.value_4= v4;
+            this.value_5 = v5;
+            
+        }
+        
+        Record(String v0, String v1, String v2 ,String v3 ,
+                String v4) {
+           
+            this.value_0 = v0;
+            this.value_1 = v1;
+            this.value_2= v2;
+            this.value_3= v3;
+            this.value_4= v4;
+            
         }
 
         public String getValue_0() {
@@ -160,43 +189,35 @@ public class TableController implements Initializable {
         public String getValue_6() {
             return value_6;
         }
-        
-        public String getValue_7() {
-            return value_7;
+
+        public void setValue_0(String value_0) {
+            this.value_0 = value_0;
         }
-        
-        
-        public void setValue_0(String v) {
-            value_0 = v;
+
+        public void setValue_1(String value_1) {
+            this.value_1 = value_1;
         }
-        
-        public void setValue_1(String v) {
-            value_1 = v;
+
+        public void setValue_2(String value_2) {
+            this.value_2 = value_2;
         }
-        
-        public void setValue_2(String v) {
-            value_2 = v;
+
+        public void setValue_3(String value_3) {
+            this.value_3 = value_3;
         }
-        
-        public void setValue_3(String v) {
-            value_3 = v;
+
+        public void setValue_4(String value_4) {
+            this.value_4 = value_4;
         }
-        
-        public void setValue_4(String v) {
-            value_4 = v;
+
+        public void setValue_5(String value_5) {
+            this.value_5 = value_5;
         }
-        
-        public void setValue_5(String v) {
-            value_5 = v;
+
+        public void setValue_6(String value_6) {
+            this.value_6 = value_6;
         }
-        
-        public void setValue_6(String v) {
-            value_6 = v;
-        }
-        
-        public void setValue_7(String v) {
-            value_7 = v;
-        }
+ 
     };
     
     ObservableList<Record> data1 = FXCollections.observableArrayList();
@@ -207,16 +228,7 @@ public class TableController implements Initializable {
     
     
     public void createTable(String[] headers, TableView table, ObservableList<Record> data){
-        Callback<TableColumn, TableCell> cellFactory =
-                new Callback<TableColumn, TableCell>() {
-                    
-                    @Override
-                    public TableCell call(TableColumn p) {
-                        return new EditingCell();
-                    }
-                };
-         
-        
+       
         //Editable columns
         for(int i=0; i<headers.length; i++){
             TableColumn col = new TableColumn(headers[i]);
@@ -224,72 +236,150 @@ public class TableController implements Initializable {
                     new PropertyValueFactory<Record, String>(
                             "value_" + String.valueOf(i)));
             table.getColumns().add(col);
-            col.setCellFactory(cellFactory);
         }
-        
-        //Insert Button
-        TableColumn col_action = new TableColumn<>("Action");
-        col_action.setSortable(false);
-        
-        col_action.setCellValueFactory(
-                new Callback<TableColumn.CellDataFeatures<Record, Boolean>, 
-                ObservableValue<Boolean>>() {
-
-            @Override
-            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Record, Boolean> p) {
-                return new SimpleBooleanProperty(p.getValue() != null);
-            }
-        });
-
-        col_action.setCellFactory(
-                new Callback<TableColumn<Record, Boolean>, TableCell<Record, Boolean>>() {
-
-            @Override
-            public TableCell<Record, Boolean> call(TableColumn<Record, Boolean> p) {
-                return new ButtonCell(table);
-            }
-        
-        });
-        table.getColumns().add(col_action);
-        
+            
         table.setItems(data);
     }
 
     
-    public void refreshUser(String table){
+    public void refreshUser(){
         
         Connection conn = null;
         Statement ps = null;
         ResultSet rs = null;
-        
-        if (table.equals("userentreprise")){
-            data1.removeAll(data1);
-            try{
-            String sql = "SELECT * FROM " + table;
-            conn = SingletonConnection.getconn();
-            ps = conn.createStatement();
-            rs = ps.executeQuery(sql);
             
-            while(rs.next()){
-                String id = rs.getString(1);
-                String nom = rs.getString(2);
-                String prenom = rs.getString(3);
-                String email = rs.getString(4);
-                String login = rs.getString(5);
-                String pass = rs.getString(6);
-                String telephone = rs.getString(7);
-                String etat = rs.getString(8);
-                
-                Record newRec = new Record(id, nom, prenom, email, login, pass, telephone, etat);
-                data1.add(newRec);
-            }
+        data1.removeAll(data1);
+        data2.removeAll(data2);
+        data3.removeAll(data3);
+        data4.removeAll(data4);
+        data5.removeAll(data5);
+
+      
+        try{
+        String sql = "SELECT * FROM guerite";
+        conn = SingletonConnection.getconn();
+        ps = conn.createStatement();
+        rs = ps.executeQuery(sql);
+
+        while(rs.next()){
+            String id = rs.getString(1);
+            String nom = rs.getString(2);
+            String prenom = rs.getString(3);
+            String email = rs.getString(4);
+            String login = rs.getString(5);
+            String pass = rs.getString(6);     
+            String dateCreation = rs.getString(7);
+            String cin = rs.getString(8);
+            Record newRec = new Record(nom, prenom, email, login, pass, dateCreation, cin);
+            data4.add(newRec);
+
+        }
             rs.close();
-            ps.close();
-                                        
+            ps.close();                             
         }catch(Exception e){
             e.printStackTrace();
         }
+        
+        try{
+        String sql = "SELECT * FROM userentreprise";
+        conn = SingletonConnection.getconn();
+        ps = conn.createStatement();
+        rs = ps.executeQuery(sql);
+
+        while(rs.next()){
+            String id = rs.getString(1);
+            String nom = rs.getString(2);
+            String prenom = rs.getString(3);
+            String email = rs.getString(4);
+            String login = rs.getString(5);
+            String pass = rs.getString(6);     
+            String telephone= rs.getString(7);
+            String etat = rs.getString(8);
+            Record newRec = new Record(nom, prenom, email, login, pass, telephone, etat);
+            data1.add(newRec);
+
         }
+            rs.close();
+            ps.close();                             
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+         try{
+        String sql = "SELECT * FROM admin";
+        conn = SingletonConnection.getconn();
+        ps = conn.createStatement();
+        rs = ps.executeQuery(sql);
+
+        while(rs.next()){
+            String id = rs.getString(1);
+            String nom = rs.getString(2);
+            String prenom = rs.getString(3);
+            String email = rs.getString(4);
+            String login = rs.getString(5);
+            String pass = rs.getString(6);     
+            String telephone= rs.getString(7);
+            String idSite = rs.getString(8);
+            Record newRec = new Record(nom, prenom, email, login, pass, telephone, idSite);
+            data2.add(newRec);
+
+        }
+            rs.close();
+            ps.close();                             
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+         
+          try{
+        String sql = "SELECT * FROM responsablesite";
+        conn = SingletonConnection.getconn();
+        ps = conn.createStatement();
+        rs = ps.executeQuery(sql);
+
+        while(rs.next()){
+            String id = rs.getString(1);
+            String nom = rs.getString(2);
+            String prenom = rs.getString(3);
+            String email = rs.getString(4);
+            String login = rs.getString(5);
+            String pass = rs.getString(6);     
+            String telephone= rs.getString(7);
+            String idSite = rs.getString(8);
+            Record newRec = new Record(nom, prenom, email, login, pass, telephone, idSite);
+            data5.add(newRec);
+
+        }
+            rs.close();
+            ps.close();                             
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+          
+         try{
+        String sql = "SELECT * FROM superadmin";
+        conn = SingletonConnection.getconn();
+        ps = conn.createStatement();
+        rs = ps.executeQuery(sql);
+
+        while(rs.next()){
+            String id = rs.getString(1);
+            String nom = rs.getString(2);
+            String prenom = rs.getString(3);
+            String email = rs.getString(4);
+            String login = rs.getString(5);
+            String pass = rs.getString(6);     
+            String telephone= rs.getString(7);
+            
+            Record newRec = new Record(nom, prenom, email, login, pass, telephone);
+            data3.add(newRec);
+
+        }
+            rs.close();
+            ps.close();                             
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
         
     }
     
@@ -305,7 +395,8 @@ public class TableController implements Initializable {
             admin.setToggleGroup(accounts);
             btnNew.setOnAction(btnNewHandler);
             refresh.setOnAction(refreshHandler);
-            
+            btnDel.setOnAction(deleteHandler);
+                    
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {
               @Override
@@ -313,27 +404,31 @@ public class TableController implements Initializable {
                 if(accounts.getSelectedToggle() != null){
                     btnNew.setDisable(false);
                     refresh.setDisable(false);
+                    btnDel.setDisable(false);
                 }
               }
             }, 0, 1);
             
             btnNew.setDisable(true);
             refresh.setDisable(true);
+            btnDel.setDisable(true);
+            
             tableView1.setVisible(false);
-            String[] header1 = {"id", "nom", "prenom", "email", "login", "motDePasse", "telephone", "etat"};
+            String[] header1 = {"nom", "prenom", "email", "login", "motDePasse", "telephone", "etat"};
             createTable(header1, tableView1, data1);
             tableView2.setVisible(false);
-            String[] header2 = {"id", "nom", "prenom", "email", "login", "motDePasse", "telephone"};
+            String[] header2 = {"nom", "prenom", "email", "login", "motDePasse", "telephone"};
             createTable(header2, tableView2, data2);
             tableView3.setVisible(false);
-            String[] header3 = {"id", "nom", "prenom", "email", "login", "motDePasse", "telephone"};
+            String[] header3 = {"nom", "prenom", "email", "login", "motDePasse", "telephone"};
             createTable(header3, tableView3, data3);
             tableView4.setVisible(false);
-            String[] header4 = {"id", "nom", "prenom", "email", "login", "motDePasse", "Date de création", "CIN"};
+            String[] header4 = {"nom", "prenom", "email", "login", "motDePasse", "Date de création", "CIN"};
             createTable(header4, tableView4, data4);
             tableView5.setVisible(false);
-            String[] header5 = {"id", "nom", "prenom", "email", "login", "motDePasse", "telephone", "idSite"};
+            String[] header5 = {"nom", "prenom", "email", "login", "motDePasse", "telephone", "Site"};
             createTable(header5, tableView5, data5);
+           
             
             accounts.selectedToggleProperty().addListener(
                 (observable, oldToggle, newToggle) -> {
@@ -380,10 +475,12 @@ public class TableController implements Initializable {
                         tableView5.setVisible(false);
                         btnNew.setDisable(true);
                         refresh.setDisable(true);
+                        btnDel.setDisable(true);
                     }
                 }
             );
-            refreshUser("userentreprise");       
+            
+            refreshUser();
     }
     
     
@@ -392,14 +489,56 @@ public class TableController implements Initializable {
 
         @Override
         public void handle(ActionEvent t) {
-            refreshUser("userentreprise");
-            refreshUser("admin");
-            refreshUser("superadmin");
-            refreshUser("guerite");
-            refreshUser("responsablesite");
+            
+           refreshUser();
+            
         }
             };
     
+    EventHandler<ActionEvent> deleteHandler = 
+            new EventHandler<ActionEvent>(){
+
+        @Override
+        public void handle(ActionEvent t) {
+                if (accounts.getSelectedToggle() == UE){
+                    Record record = (Record) tableView1.getSelectionModel().getSelectedItem();
+                    if (record != null){  
+                        data1.remove(record);
+                        Crud.removeUser("userentreprise", record.getValue_3());
+                    }   
+                }
+                else if (accounts.getSelectedToggle() == admin){
+                    Record record = (Record) tableView2.getSelectionModel().getSelectedItem();
+                    if (record != null){  
+                        data2.remove(record);
+                        Crud.removeUser("admin", record.getValue_3());
+                    }   
+                }
+                else if (accounts.getSelectedToggle() == SA){
+                    Record record = (Record) tableView3.getSelectionModel().getSelectedItem();
+                    if (record != null){  
+                        data3.remove(record);
+                        Crud.removeUser("superadmin", record.getValue_3());
+                    }   
+                }
+                else if (accounts.getSelectedToggle() == guerite){
+                    Record record = (Record) tableView4.getSelectionModel().getSelectedItem();
+                    if (record != null){  
+                        data4.remove(record);
+                        Crud.removeUser("guerite", record.getValue_3());
+                    }   
+                } 
+                else if (accounts.getSelectedToggle() == RS){
+                    Record record = (Record) tableView5.getSelectionModel().getSelectedItem();
+                    if (record != null){  
+                        data5.remove(record);
+                        Crud.removeUser("responsablesite", record.getValue_3());
+                    }   
+                }
+        
+            }
+    
+        };
     
     public ObservableList<Record> checkVisibleTable(){
         if (accounts.getSelectedToggle() == UE)
@@ -415,115 +554,17 @@ public class TableController implements Initializable {
         else
             return null;
     }
-   private class ButtonCell extends TableCell<Record, Boolean> {
-        final Button cellButton = new Button("Delete");
-        
-        ButtonCell(final TableView tblView){
-            
-            cellButton.setOnAction(new EventHandler<ActionEvent>(){
-
-                @Override
-                public void handle(ActionEvent t) {
-                    int selectdIndex = getTableRow().getIndex();
-                    //delete the selected item in data
-                    checkVisibleTable().remove(selectdIndex);
-                }
-            });
-        }
-
-        //Display button if the row is not empty
-        @Override
-        protected void updateItem(Boolean t, boolean empty) {
-            super.updateItem(t, empty);
-            if(!empty){
-                setGraphic(cellButton);
-            }
-        }
-    }
+   
        EventHandler<ActionEvent> btnNewHandler = 
             new EventHandler<ActionEvent>(){
 
         @Override
         public void handle(ActionEvent t) {
             
-            //generate new Record with random number
-            if(getToggleButtonName().equals("responsablesite"))
-            {
-                //Compte c = new ResponsableSite();
-            }
-           
             load() ;
         }
     };
-         class EditingCell extends TableCell<XYChart.Data, String> {
-         
-        private TextField textField;
-         
-        public EditingCell() {}
-         
-        @Override
-        public void startEdit() {
-             
-            super.startEdit();
-             
-            if (textField == null) {
-                createTextField();
-            }
-             
-            setGraphic(textField);
-            setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-            textField.selectAll();
-        }
-         
-        @Override
-        public void cancelEdit() {
-            super.cancelEdit();
-             
-            setText(String.valueOf(getItem()));
-            setContentDisplay(ContentDisplay.TEXT_ONLY);
-        }
-         
-        @Override
-        public void updateItem(String item, boolean empty) {
-            super.updateItem(item, empty);
-             
-            if (empty) {
-                setText(null);
-                setGraphic(null);
-            } else {
-                if (isEditing()) {
-                    if (textField != null) {
-                        textField.setText(getString());
-                    }
-                    setGraphic(textField);
-                    setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-                } else {
-                    setText(getString());
-                    setContentDisplay(ContentDisplay.TEXT_ONLY);
-                }
-            }
-        }
-         
-        private void createTextField() {
-            textField = new TextField(getString());
-            textField.setMinWidth(this.getWidth() - this.getGraphicTextGap()*2);
-            textField.setOnKeyPressed(new EventHandler<KeyEvent>() {
-                 
-                @Override
-                public void handle(KeyEvent t) {
-                    if (t.getCode() == KeyCode.ENTER) {
-                        commitEdit(textField.getText());
-                    } else if (t.getCode() == KeyCode.ESCAPE) {
-                        cancelEdit();
-                    }
-                }
-            });
-        }
-         
-        private String getString() {
-            return getItem() == null ? "" : getItem().toString();
-        }
-    }
+        
     private Stage stage;
     private Scene scene;
     private Parent root;  
@@ -559,10 +600,4 @@ public class TableController implements Initializable {
 
     }
     
-  
-    
-    public void add(ActionEvent event) throws IOException {
-         
-     } 
-   
 }

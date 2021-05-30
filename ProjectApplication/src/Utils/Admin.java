@@ -9,17 +9,15 @@ package Utils;
  *
  * @author yassine
  */
-public class ResponsableSite extends Compte {
-    
+public class Admin extends Compte {
+     
     private String telephone;
     private int idSite;
     
-    
-    public ResponsableSite(String nom, String prenom, String email, String login, String motDePasse, String telephone, int idSite) {
+    public Admin(String nom, String prenom, String email, String login, String motDePasse, String telephone, int idSite) {
         super(nom, prenom, email, login, motDePasse);
         this.telephone = telephone;
         this.idSite = idSite;
-        
     }
 
     public String getTelephone() {
@@ -29,6 +27,7 @@ public class ResponsableSite extends Compte {
     public int getIdSite() {
         return idSite;
     }
+    
     
     
 }

@@ -74,13 +74,8 @@ public class AddrecController1 implements Initializable {
                String d = login.getText();
                String e = password.getText();
                String f = phoneNumber.getText();
-               String g1 = (String) etat.getValue();
-               Boolean g2 = null;
-               if (g1.equals("Ouvert"))
-                   g2 = true;
-               else if (g1.equals("Fermé"))
-                   g2 = false;
-               Compte compte = new UserEntreprise(a, b, c, d, e, f, g2);
+               
+               Compte compte = new UserEntreprise(a, b, c, d, e, f, false);
                Crud.addUser(table, compte);
                close();
          }
@@ -94,8 +89,6 @@ public class AddrecController1 implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         add.setOnAction(addHandler);
-        etat.getItems().add("Ouvert");
-        etat.getItems().add("Fermé");
         
         
     }   

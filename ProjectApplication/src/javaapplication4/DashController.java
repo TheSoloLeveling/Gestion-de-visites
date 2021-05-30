@@ -14,6 +14,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -159,6 +161,9 @@ public class DashController implements Initializable {
         @FXML
     private ImageView im5;
     
+    @FXML
+    private JFXButton disconnect;
+    
    private Image img1 = new Image("/icons/projects.png") ;    
    private Image img2 =new Image("/icons/reliabilty.png") ;   ;    
    private Image img3=new Image("/icons/icons8_Share_64px.png") ;    
@@ -167,6 +172,7 @@ public class DashController implements Initializable {
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        disconnect.setOnAction(disconnectHandler);
         name.setText(MainController.actualAccount.getNom());
          load("reda") ;
         dark() ; 
@@ -265,10 +271,7 @@ public class DashController implements Initializable {
        close.setScaleY(1);
        
     }
-         @FXML
-    private void close() {
-       System.exit(0);
-    }
+    
     
      @FXML
      private void dark() {
@@ -442,5 +445,34 @@ System.out.print(Hadi.getChildren().get(0) )  ;
            Hadi.setCenter(root);
             
          
-  } 
+  }
+  
+    @FXML
+    private void close() {
+        System.exit(0);
+    }
+    
+    EventHandler<ActionEvent> disconnectHandler = 
+            new EventHandler<ActionEvent>(){
+
+        @Override
+        public void handle(ActionEvent t) {
+            Parent root = null ;
+        try {
+             root = FXMLLoader.load (getClass().getResource("FXML.fxml"));
+           
+            
+        } catch (IOException ex) {
+            Logger.getLogger(SplashScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         Scene secene = new Scene(root) ;
+         MainController.actualAccount = null;
+         
+            Stage stage = new Stage() ; 
+            stage.setScene(secene);
+            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.show() ; 
+            disconnect.getScene().getWindow().hide();
+        }
+            };
 }

@@ -7,47 +7,57 @@
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="layer1" fx:id="layer1" prefHeight="616.0" prefWidth="958.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.TableController">
+<AnchorPane id="layer1" fx:id="layer1" prefHeight="616.0" prefWidth="1092.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.TableController">
    <children>
-      <TableView id="tableView1" fx:id="tableView1" editable="true" layoutX="104.0" layoutY="88.0" prefHeight="506.0" prefWidth="765.0" stylesheets="@style_1.css" tableMenuButtonVisible="true">
+      <TableView id="tableView1" fx:id="tableView1" editable="true" layoutX="167.0" layoutY="75.0" prefHeight="506.0" prefWidth="765.0" stylesheets="@style_1.css" tableMenuButtonVisible="true">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button id="btnNew" fx:id="btnNew" layoutX="38.0" layoutY="40.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0); -fx-background-radius: 200; -fx-text-fill: white;" stylesheets="@style.css" text="Add new record">
+      <Button id="btnNew" fx:id="btnNew" layoutX="14.0" layoutY="197.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0); -fx-background-radius: 200; -fx-text-fill: white;" stylesheets="@style.css" text="Add new record">
          <effect>
             <Glow />
          </effect>
       </Button>
-      <ToggleButton id="admin" fx:id="admin" layoutX="364.0" layoutY="40.0" mnemonicParsing="false" text="Admin">
+      <ToggleButton id="admin" fx:id="admin" layoutX="977.0" layoutY="272.0" mnemonicParsing="false" text="Admin">
          <toggleGroup>
             <ToggleGroup fx:id="accounts" />
          </toggleGroup>
       </ToggleButton>
-      <ToggleButton id="UE" fx:id="UE" layoutX="254.0" layoutY="40.0" mnemonicParsing="false" text="UserEntreprise" toggleGroup="$accounts" />
-      <ToggleButton id="SA" fx:id="SA" layoutX="430.0" layoutY="40.0" mnemonicParsing="false" text="SuperAdmin" toggleGroup="$accounts" />
-      <ToggleButton id="guerite" fx:id="guerite" layoutX="527.0" layoutY="40.0" mnemonicParsing="false" text="Guerite" toggleGroup="$accounts" />
-      <ToggleButton id="RS" fx:id="RS" layoutX="598.0" layoutY="40.0" mnemonicParsing="false" text="ResponsableSite" toggleGroup="$accounts" />
-      <TableView id="tableView2" fx:id="tableView2" editable="true" layoutX="114.0" layoutY="98.0" prefHeight="506.0" prefWidth="765.0" stylesheets="@style_1.css" tableMenuButtonVisible="true">
+      <ToggleButton id="UE" fx:id="UE" layoutX="964.0" layoutY="158.0" mnemonicParsing="false" text="UserEntreprise" toggleGroup="$accounts" />
+      <ToggleButton id="SA" fx:id="SA" layoutX="962.0" layoutY="348.0" mnemonicParsing="false" text="SuperAdmin" toggleGroup="$accounts" />
+      <ToggleButton id="guerite" fx:id="guerite" layoutX="975.0" layoutY="442.0" mnemonicParsing="false" text="Guerite" toggleGroup="$accounts" />
+      <ToggleButton id="RS" fx:id="RS" layoutX="958.0" layoutY="504.0" mnemonicParsing="false" text="ResponsableSite" toggleGroup="$accounts" />
+      <TableView id="tableView2" fx:id="tableView2" editable="true" layoutX="177.0" layoutY="85.0" prefHeight="506.0" prefWidth="765.0" stylesheets="@style_1.css" tableMenuButtonVisible="true">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TableView id="tableView3" fx:id="tableView3" editable="true" layoutX="114.0" layoutY="98.0" prefHeight="506.0" prefWidth="765.0" stylesheets="@style_1.css" tableMenuButtonVisible="true">
+      <TableView id="tableView3" fx:id="tableView3" editable="true" layoutX="177.0" layoutY="85.0" prefHeight="506.0" prefWidth="765.0" stylesheets="@style_1.css" tableMenuButtonVisible="true">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TableView id="tableView4" fx:id="tableView4" editable="true" layoutX="114.0" layoutY="98.0" prefHeight="506.0" prefWidth="765.0" stylesheets="@style_1.css" tableMenuButtonVisible="true">
+      <TableView id="tableView4" fx:id="tableView4" editable="true" layoutX="177.0" layoutY="85.0" prefHeight="506.0" prefWidth="765.0" stylesheets="@style_1.css" tableMenuButtonVisible="true">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TableView id="tableView5" fx:id="tableView5" editable="true" layoutX="114.0" layoutY="98.0" prefHeight="506.0" prefWidth="765.0" stylesheets="@style_1.css" tableMenuButtonVisible="true">
+      <TableView id="tableView5" fx:id="tableView5" editable="true" layoutX="177.0" layoutY="85.0" prefHeight="506.0" prefWidth="765.0" stylesheets="@style_1.css" tableMenuButtonVisible="true">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button id="refresh" fx:id="refresh" layoutX="22.0" layoutY="259.0" mnemonicParsing="false" text="Refresh" />
+      <Button id="refresh" fx:id="refresh" layoutX="522.0" layoutY="27.0" mnemonicParsing="false" text="Refresh" />
+      <Button id="btnDel" fx:id="btnDel" layoutX="19.0" layoutY="388.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0); -fx-background-radius: 200; -fx-text-fill: white;" stylesheets="@style.css" text="Delete record">
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
+      <Button id="btnUpd" fx:id="btnUpd" layoutX="14.0" layoutY="295.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0); -fx-background-radius: 200; -fx-text-fill: white;" stylesheets="@style.css" text="Update record">
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>
