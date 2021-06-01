@@ -177,7 +177,7 @@ public class Crud {
         
         if (table.equals("admin")){
             try{
-            UserEntreprise u = (UserEntreprise) c;
+            Admin u = (Admin) c;
             String sql = "update " + table +
                     " set nom = ?, prenom = ?, email = ?,"
                     + "login = ?, motDePasse = ?, telephone = ? where login = ?";
@@ -198,6 +198,29 @@ public class Crud {
         }
         
         
+    }
+    
+    public static int getDemandNumber(){
+        
+         Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int count = 0;
+        
+       try{
+            String sql = "SELECT COUNT(*) as total FROM demande";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                count = rs.getInt("total");
+            }
+                                            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return count;
     }
         
 }

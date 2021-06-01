@@ -5,6 +5,7 @@
  */
 package javaapplication4;
 
+import Utils.Crud;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -53,6 +54,7 @@ private VBox pnl_scroll ;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
        refreshNodes() ; 
        p.setPageFactory(new Callback<Integer, Node>() {
             @Override
@@ -66,7 +68,7 @@ private VBox pnl_scroll ;
                 grid.setVgap(20);
                 grid.setPadding(new Insets(20, 20, 20, 20));
 
-                int total = 9 ; 
+                int total = Crud.getDemandNumber() ; 
                 int rows = 2 ; 
                 int cols = 2 ; 
 
@@ -107,7 +109,7 @@ private VBox pnl_scroll ;
       
          nodes = new  Node[15];
         
-        for(int i = 0; i<10; i++)
+        for(int i = 0; i<15; i++)
         {
             try {
                 nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));

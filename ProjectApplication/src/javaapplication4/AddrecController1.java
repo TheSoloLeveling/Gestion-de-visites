@@ -118,7 +118,7 @@ public class AddrecController1 implements Initializable {
         // TODO
         add.setOnAction(addHandler);
         update.setOnAction(updateHandler);
-        System.out.println(temp4);
+        
         if (!(TableController.isAdd)){
             update.setVisible(true);
             update.setDisable(false);

@@ -25,6 +25,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
+
 /**
  * FXML Controller class
  *
@@ -41,6 +42,8 @@ public class AddrecController2 implements Initializable {
     @FXML
     private Button add;
     @FXML
+    private Button update;
+    @FXML
     private TextField firstName;
     @FXML
     private TextField lastName;
@@ -55,15 +58,56 @@ public class AddrecController2 implements Initializable {
     @FXML
     private ChoiceBox site;
     
+    
+    
+    
     public String table;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
          add.setOnAction(addHandler);
+         update.setOnAction(updateHandler);
          populateJCB();
+         
+         if (!(TableController.isAdd)){
+            update.setVisible(true);
+            update.setDisable(false);
+            add.setVisible(false);
+            add.setDisable(true);
+            
+            firstName.setText(temp1);
+            lastName.setText(temp2);
+            email.setText(temp3);
+            login.setText(temp4);
+            password.setText(temp5);
+            phoneNumber.setText(temp6);
+            
+        }
+        else {
+            update.setVisible(false);
+            update.setDisable(true);
+            add.setVisible(true);
+            add.setDisable(false);
+        }
     }   
     
-    public void getTable(String text){
-        table = text;
+   
+    public String temp1;
+    public String temp2;
+    public String temp3;
+    public String temp4;
+    public String temp5;
+    public String temp6;
+    public String temp7;
+
+    public void getTable(String text, String nom, String prenom, String email, String login, String password, String telephone, String idSite){
+        table = nom;
+        temp1 = text;
+        temp2 = prenom;
+        temp3 = email;
+        temp4 = login;
+        temp5 = password;
+        temp6 = telephone;
+        temp7 = idSite;
         
     }
 
@@ -126,6 +170,46 @@ public class AddrecController2 implements Initializable {
                 }
     }
     
+    public String searchSiteId(String nom){
+        
+                Connection conn = null;
+                PreparedStatement ps = null;
+                ResultSet rs = null;
+
+                try{
+
+                    String sql = "SELECT id FROM site where nom = ?";
+                    conn = SingletonConnection.getconn();
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, nom);
+                    rs = ps.executeQuery();
+                    
+                    if(rs.next()){
+                        return rs.getString("id");
+                    }                                 
+                }catch(Exception ojkn){
+                    ojkn.printStackTrace();
+                }
+                
+                return null;
+    }
+    
+    EventHandler<ActionEvent> updateHandler = new EventHandler<ActionEvent>(){
+         @Override
+         public void handle(ActionEvent t) {
+             String a = firstName.getText();
+               String b = lastName.getText();
+               String c = email.getText();
+               String d = login.getText();
+               String e = password.getText();
+               String f = phoneNumber.getText();
+               String g = site.getValue().toString();
+               int h = Integer.parseInt(searchSiteId(g));
+              Compte compte = new Admin(a,b,c,d,e,f,h);
+              Crud.updateUser(table, temp4, compte);
+              close();
+         }
+             };
     @FXML
     private void close() {
         cancel.getScene().getWindow().hide();

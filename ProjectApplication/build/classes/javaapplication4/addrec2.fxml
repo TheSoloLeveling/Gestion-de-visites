@@ -62,5 +62,10 @@
          </font>
       </Label>
       <ChoiceBox id="site" fx:id="site" layoutX="157.0" layoutY="466.0" prefWidth="150.0" />
+      <Button id="update" fx:id="update" layoutX="103.0" layoutY="523.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0); -fx-background-radius: 200; -fx-text-fill: white;" stylesheets="@style.css" text="Update" visible="false">
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

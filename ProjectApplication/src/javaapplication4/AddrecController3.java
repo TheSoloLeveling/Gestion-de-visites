@@ -44,6 +44,8 @@ public class AddrecController3 implements Initializable {
     @FXML
     private Button add;
     @FXML
+    private Button update;
+    @FXML
     private TextField firstName;
     @FXML
     private TextField lastName;
@@ -60,8 +62,23 @@ public class AddrecController3 implements Initializable {
     
     public String table;
     
-    public void getTable(String text){
-        table = text;
+   
+    public String temp1;
+    public String temp2;
+    public String temp3;
+    public String temp4;
+    public String temp5;
+    public String temp6;
+    
+
+    public void getTable(String text, String nom, String prenom, String email, String login, String password, String telephone){
+        table = nom;
+        temp1 = text;
+        temp2 = prenom;
+        temp3 = email;
+        temp4 = login;
+        temp5 = password;
+        temp6 = telephone;
         
     }
 
@@ -81,6 +98,21 @@ public class AddrecController3 implements Initializable {
                close();
          }
     };
+    
+    EventHandler<ActionEvent> updateHandler = new EventHandler<ActionEvent>(){
+         @Override
+         public void handle(ActionEvent t) {
+             String a = firstName.getText();
+               String b = lastName.getText();
+               String c = email.getText();
+               String d = login.getText();
+               String e = password.getText();
+               String f = phoneNumber.getText();
+              Compte compte = new SuperAdmin(a,b,c,d,e,f);
+              Crud.updateUser(table, temp4, compte);
+              close();
+         }
+             };
    
 
     /**
@@ -90,7 +122,29 @@ public class AddrecController3 implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         add.setOnAction(addHandler);
+        update.setOnAction(updateHandler);
         
+        if (!(TableController.isAdd)){
+            update.setVisible(true);
+            update.setDisable(false);
+            add.setVisible(false);
+            add.setDisable(true);
+            
+            firstName.setText(temp1);
+            lastName.setText(temp2);
+            email.setText(temp3);
+            login.setText(temp4);
+            password.setText(temp5);
+            phoneNumber.setText(temp6);
+            
+        }
+        else {
+            update.setVisible(false);
+            update.setDisable(true);
+            add.setVisible(true);
+            add.setDisable(false);
+        }
+            
         
     }   
     

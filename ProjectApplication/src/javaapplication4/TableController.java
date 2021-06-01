@@ -409,7 +409,7 @@ public class TableController implements Initializable {
             String[] header1 = {"nom", "prenom", "email", "login", "motDePasse", "telephone", "etat"};
             createTable(header1, tableView1, data1);
             tableView2.setVisible(false);
-            String[] header2 = {"nom", "prenom", "email", "login", "motDePasse", "telephone"};
+            String[] header2 = {"nom", "prenom", "email", "login", "motDePasse", "telephone", "Site"};
             createTable(header2, tableView2, data2);
             tableView3.setVisible(false);
             String[] header3 = {"nom", "prenom", "email", "login", "motDePasse", "telephone"};
@@ -586,8 +586,9 @@ public class TableController implements Initializable {
         
     private Stage stage;
     private Scene scene;
-    private Parent root;  
-         @FXML
+    private Parent root;
+    
+    @FXML
     private void load() {
     
         String text = getToggleButtonName();
@@ -628,24 +629,69 @@ public class TableController implements Initializable {
         }  
         
         else if (text.equals("admin")){
-            loader = new FXMLLoader(getClass().getResource("addrec2.fxml"));
-            try {
-                  root = loader.load();
-              } catch (IOException ex) {
-                  Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
-              }
-              AddrecController2 addrecController2 = loader.getController();
-              addrecController2.getTable(text);
+            if(isAdd){
+                loader = new FXMLLoader(getClass().getResource("addrec2.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                AddrecController2 addrecController2 = loader.getController();
+                addrecController2.getTable("", text, "", "", "", "", "", "");
+                
+            }
+            else{
+                loader = new FXMLLoader(getClass().getResource("addrec2.fxml"));
+                Record record = (Record) tableView2.getSelectionModel().getSelectedItem();
+                if (record != null){
+                    try {
+                        root = loader.load();
+                    } catch (IOException ex) {
+                        Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    AddrecController2 addrecController2 = loader.getController();
+                    String v1 = record.value_0;
+                    String v2 = record.value_1;
+                    String v3 = record.value_2;
+                    String v4 = record.value_3;
+                    String v5 = record.value_4;
+                    String v6 = record.value_5;
+                    String v7 = record.value_6; 
+                    addrecController2.getTable(v1, text, v2, v3, v4, v5, v6, v7);
+                }    
+            }   
         }
         else if (text.equals("superadmin")){
-            loader = new FXMLLoader(getClass().getResource("addrec3.fxml"));
-            try {
-                 root = loader.load();
-             } catch (IOException ex) {
-                 Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
-             }
-             AddrecController3 addrecController3= loader.getController();
-             addrecController3.getTable(text);
+            if(isAdd){
+                loader = new FXMLLoader(getClass().getResource("addrec3.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                AddrecController3 addrecController3 = loader.getController();
+                addrecController3.getTable("", text, "", "", "", "", "");
+                
+            }
+            else{
+                loader = new FXMLLoader(getClass().getResource("addrec3.fxml"));
+                Record record = (Record) tableView1.getSelectionModel().getSelectedItem();
+                if (record != null){
+                    try {
+                        root = loader.load();
+                    } catch (IOException ex) {
+                        Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    AddrecController3 addrecController3 = loader.getController();
+                    String v1 = record.value_0;
+                    String v2 = record.value_1;
+                    String v3 = record.value_2;
+                    String v4 = record.value_3;
+                    String v5 = record.value_4;
+                    String v6 = record.value_5;    
+                    addrecController3.getTable(v1, text, v2, v3, v4, v5, v6);
+                }    
+            }
         }  
         else if (text.equals("guerite")){
             loader = new FXMLLoader(getClass().getResource("addrec4.fxml"));

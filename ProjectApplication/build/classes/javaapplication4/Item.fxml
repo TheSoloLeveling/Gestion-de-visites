@@ -23,12 +23,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="270.0" layoutY="113.0" text="The visitor" textFill="#aeacac">
+            <Label layoutX="220.0" layoutY="113.0" text="The visitor" textFill="#aeacac">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="270.0" layoutY="186.0" text="Time" textFill="#aeacac">
+            <Label layoutX="322.0" layoutY="176.0" text="Time" textFill="#aeacac">
                <font>
                   <Font size="14.0" />
                </font>
@@ -38,12 +38,12 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="278.0" layoutY="139.0" text="Himd EL Khoufi" textFill="#4d4c4c">
+            <Label layoutX="222.0" layoutY="139.0" text="Himd EL Khoufi" textFill="#4d4c4c">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="278.0" layoutY="211.0" text="Between 16:00 and 18:00" textFill="#4d4c4c">
+            <Label layoutX="309.0" layoutY="202.0" text="beetween" textFill="#4d4c4c">
                <font>
                   <Font size="13.0" />
                </font>
@@ -78,12 +78,22 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="176.0" text="Site" textFill="#aeacac">
+            <Label layoutX="116.0" layoutY="176.0" text="Site" textFill="#aeacac">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="53.0" layoutY="202.0" text="Site de  Saint Denis " textFill="#4d4c4c">
+            <Label layoutX="82.0" layoutY="202.0" text="Site de  Saint Denis " textFill="#4d4c4c">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="404.0" layoutY="113.0" text="CNIE" textFill="#aeacac">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="404.0" layoutY="139.0" text="AS98" textFill="#4d4c4c">
                <font>
                   <Font size="13.0" />
                </font>
