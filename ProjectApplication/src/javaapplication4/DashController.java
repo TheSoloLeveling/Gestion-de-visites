@@ -412,7 +412,7 @@ System.out.print(Hadi.getChildren().get(0) )  ;
   private void loaditem3() {
       
      
-         load("MyMom") ;
+         load("FXML3") ;
         
   } 
            @FXML

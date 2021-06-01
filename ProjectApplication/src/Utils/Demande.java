@@ -10,12 +10,27 @@ package Utils;
  * @author yassine
  */
 public class Demande {
+    private String id;
     private String nom;
     private String prenom;
     private String cnie;
     private String date;
     private String time;
     private String entreprise;
+
+    public Demande(String nom, String prenom, String cnie, String date, String time, String entreprise) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.cnie = cnie;
+        this.date = date;
+        this.time = time;
+        this.entreprise = entreprise;
+    }
+
+    public String getId() {
+        return id;
+    }
+
     
     public String getNom() {
         return nom;

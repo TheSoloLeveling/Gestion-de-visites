@@ -78,7 +78,7 @@ public class JavaBridge
       
       webView.getScene().getWindow().hide();
         String sql="insert into site.site values(?,?)" ;
-    Connection cnn =SingletonConnection.getconn() ;
+    Connection cnn =Utils.SingletonConnection.getconn() ;
     try{
     PreparedStatement ps =cnn.prepareStatement(sql) ; 
     ps.setDouble(1, SecondMapController.lt);

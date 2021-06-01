@@ -8,6 +8,7 @@ package Utils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.LinkedList;
 import javaapplication4.TableController;
 
 /**
@@ -221,6 +222,37 @@ public class Crud {
         }
         
         return count;
+    }
+    
+    public static LinkedList<Demande> getDemands(){
+        
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        LinkedList<Demande> t = new LinkedList<>();
+        
+       try{
+            String sql = "SELECT * FROM demande";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                String a = rs.getString(1);
+                String b = rs.getString(2);
+                String c = rs.getString(3);
+                String d = rs.getString(4);
+                String e = rs.getString(5);
+                String f = rs.getString(6);
+                
+                Demande dem = new Demande(a,b,c,d,e,f); 
+                t.add(dem);
+            }
+                                            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return t;
     }
         
 }

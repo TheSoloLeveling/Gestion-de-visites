@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -23,8 +24,14 @@ import javafx.util.Duration;
  */
 public class NewClass implements Initializable {
 
+    static String b = "";
+    @FXML
+    private Label lb;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        lol(b);
   
     }    
          @FXML
@@ -33,6 +40,10 @@ public class NewClass implements Initializable {
  
       
     }
+  
+  public void lol(String a){
+      lb.setText(a);
+  }
  
 }
       

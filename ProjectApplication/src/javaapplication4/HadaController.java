@@ -36,7 +36,7 @@ import javafx.util.Duration;
  * @author hp
  */
 public class HadaController implements Initializable {
-    Node [] nodes ;
+    Node [] nodes = new Node[15] ;
     @FXML
 private VBox pnl_scroll ;
        @FXML
@@ -55,7 +55,8 @@ private VBox pnl_scroll ;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
-       refreshNodes() ; 
+       
+       refreshNodes(); 
        p.setPageFactory(new Callback<Integer, Node>() {
             @Override
             public Node call(Integer index) {
@@ -69,11 +70,12 @@ private VBox pnl_scroll ;
                 grid.setPadding(new Insets(20, 20, 20, 20));
 
                 int total = Crud.getDemandNumber() ; 
-                int rows = 2 ; 
-                int cols = 2 ; 
+                int rows = 1 ; 
+                int cols = 1 ; 
 
                 int offset = rows * cols * index;
-
+                
+                
                 for (int row = 0; row < rows; row++) {
                     for (int col = 0; col < cols; col++) {
 
@@ -107,14 +109,19 @@ private VBox pnl_scroll ;
     {
        // pnl_scroll.getChildren().clear();
       
-         nodes = new  Node[15];
         
+        int j = 0;
         for(int i = 0; i<15; i++)
         {
             try {
+                
+                if(j == Crud.getDemands().size())
+                    break;
+                NewClass.b = "" + Crud.getDemands().get(j).getEntreprise();
                 nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
+                j++;
+  
              
-             //  pnl_scroll.getChildren().add(nodes[i]);
            //     
             } catch (IOException ex) {
               
