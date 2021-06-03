@@ -56,13 +56,7 @@ public class DashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     dark() ;
     load() ; 
-        ObservableList<PieChart.Data> Data  = FXCollections.observableArrayList(
-                new PieChart.Data("site", 13) ,
-                new PieChart.Data("site", 25),
-                new PieChart.Data("site", 25) , 
-                new PieChart.Data("site", 10) ,
-                new PieChart.Data("site", 22)
-                ) ;
+        //ObservableList<PieChart.Data> Data  = new ObservableList<>() ;
         pie.setData(Data);
     } 
     

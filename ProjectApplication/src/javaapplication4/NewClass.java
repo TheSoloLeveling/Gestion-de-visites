@@ -9,6 +9,7 @@ package javaapplication4;
 import Utils.Crud;
 import Utils.Demande;
 import Utils.SingletonConnection;
+import com.jfoenix.controls.JFXComboBox;
 import java.sql.Statement;
 import java.net.URL;
 import java.sql.Connection;
@@ -22,6 +23,7 @@ import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
@@ -33,9 +35,13 @@ import javafx.util.Duration;
  *
  * @author hp
  */
+
+
 public class NewClass implements Initializable {
 
-    static String b = "";
+    
+    
+    
     @FXML
     private Label id;
     @FXML
@@ -63,7 +69,12 @@ public class NewClass implements Initializable {
     @FXML
     private Label site;
     
+    
+
     public static int index = 0;
+    
+   
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         

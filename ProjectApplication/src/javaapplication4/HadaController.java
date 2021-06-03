@@ -6,6 +6,7 @@
 package javaapplication4;
 
 import Utils.Crud;
+import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
@@ -18,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.input.MouseEvent;
@@ -43,6 +45,30 @@ public class HadaController implements Initializable {
     
     public static LinkedList<Node> nodes = new LinkedList<>();
     
+     @FXML
+    private JFXComboBox state;
+      @FXML
+    private Label ue;
+       @FXML
+    private Label entrepriseS;
+        @FXML
+    private Label siteS;
+         @FXML
+    private Label yearS;
+          @FXML
+    private Label dayS;
+           @FXML
+    private Label monthS;
+          @FXML
+    private Label duration;
+     @FXML
+    private Label visitor;
+      @FXML
+    private Label cnieS;
+       @FXML
+    private Button save;
+       
+       
     @FXML
 private VBox pnl_scroll ;
        @FXML
@@ -164,6 +190,8 @@ private VBox pnl_scroll ;
      @FXML
     private void slidemenu() { 
      
+        
+        
         TranslateTransition openNav=new TranslateTransition(new Duration(750), layer2);
         openNav.setToX(-500);
        openNav.play();
