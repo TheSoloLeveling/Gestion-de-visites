@@ -8,8 +8,13 @@ package Utils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.LinkedList;
 import javaapplication4.TableController;
+import java.sql.Time;
 
 /**
  *
@@ -201,28 +206,7 @@ public class Crud {
         
     }
     
-    public static int getDemandNumber(){
-        
-         Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        int count = 0;
-        
-       try{
-            String sql = "SELECT COUNT(*) as total FROM demande";
-            conn = SingletonConnection.getconn();
-            ps = conn.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()){
-                count = rs.getInt("total");
-            }
-                                            
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        
-        return count;
-    }
+    
     
     public static LinkedList<Demande> getDemands(){
         
@@ -241,10 +225,15 @@ public class Crud {
                 String b = rs.getString(2);
                 String c = rs.getString(3);
                 String d = rs.getString(4);
-                String e = rs.getString(5);
-                String f = rs.getString(6);
+                Date e = rs.getDate(5);
+               
+                //DateFormat format1 = new SimpleDateFormat("yyyy/MM/dd");
+                //DateFormat format2 = new SimpleDateFormat("HH:mm:ss");
                 
-                Demande dem = new Demande(a,b,c,d,e,f); 
+                int f =  rs.getInt(6);
+                String g = rs.getString(7);
+                
+                Demande dem = new Demande(a,b,c,d,e,f,g); 
                 t.add(dem);
             }
                                             

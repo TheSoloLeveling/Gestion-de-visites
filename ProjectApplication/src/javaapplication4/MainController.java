@@ -536,7 +536,7 @@ public class MainController implements Initializable {
                 
             Parent root = null ;
                 try {
-                root = FXMLLoader.load (getClass().getResource(dashInterface));
+                root = FXMLLoader.load (getClass().getResource(dashInterface));   //dashInterface
            
             } catch (IOException ex) {
                 Logger.getLogger(SplashScreenController.class.getName()).log(Level.SEVERE, null, ex);

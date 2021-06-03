@@ -14,36 +14,6 @@
 <AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.HadaController">
    <children>
       <Pagination id="p" fx:id="p" layoutY="36.0" pageCount="10" prefHeight="476.0" prefWidth="1011.0" stylesheets="@style.css" />
-      <Pane layoutX="240.0" layoutY="116.0" onMouseClicked="#slidemenu" prefHeight="200.0" prefWidth="342.0">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <children>
-            <Pane layoutX="33.0" layoutY="-17.0" prefHeight="200.0" prefWidth="342.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <children>
-                  <Pane layoutY="6.0" prefHeight="200.0" prefWidth="342.0">
-                     <children>
-                        <Pane layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="342.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <children>
-                              <Pane prefHeight="200.0" prefWidth="342.0">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Pane>
-                           </children>
-                        </Pane>
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
-         </children>
-      </Pane>
       <Pane id="layer2" fx:id="layer2" layoutX="1516.0" layoutY="-5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="676.0" prefWidth="274.0" style="-fx-background-color: linear-gradient(to RIGHT,#795AF3 ,#3929E0);">
          <children>
             <JFXComboBox focusColor="BLACK" layoutX="50.0" layoutY="382.0" prefHeight="25.0" prefWidth="190.0" promptText="Select the state " style="-fx-prompt-text-fill: white;" unFocusColor="WHITE" />
@@ -113,6 +83,27 @@
                </font>
             </Label>
          </children>
+      </Pane>
+      <Pane layoutX="605.0" layoutY="36.0" prefHeight="200.0" prefWidth="342.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Pane>
+      <Pane layoutX="24.0" layoutY="233.0" prefHeight="200.0" prefWidth="342.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Pane>
+      
+      <Pane layoutX="589.0" layoutY="233.0" prefHeight="200.0" prefWidth="342.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Pane>
+      <Pane layoutX="34.0" layoutY="34.0" onMouseClicked="#slidemenu" prefHeight="200.0" prefWidth="342.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Pane>
    </children>
 </AnchorPane>

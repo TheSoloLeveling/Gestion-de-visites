@@ -8,6 +8,7 @@ package javaapplication4;
 import Utils.Crud;
 import java.io.IOException;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
@@ -35,8 +36,13 @@ import javafx.util.Duration;
  *
  * @author hp
  */
+
+
 public class HadaController implements Initializable {
-    Node [] nodes = new Node[15] ;
+ 
+    
+    public static LinkedList<Node> nodes = new LinkedList<>();
+    
     @FXML
 private VBox pnl_scroll ;
        @FXML
@@ -55,7 +61,7 @@ private VBox pnl_scroll ;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
-       
+       //nodes.removeAll(nodes);
        refreshNodes(); 
        p.setPageFactory(new Callback<Integer, Node>() {
             @Override
@@ -69,16 +75,16 @@ private VBox pnl_scroll ;
                 grid.setVgap(20);
                 grid.setPadding(new Insets(20, 20, 20, 20));
 
-                int total = Crud.getDemandNumber() ; 
-                int rows = 1 ; 
-                int cols = 1 ; 
+                int total = Crud.getDemands().size() - 1 ; 
+                int rows = 2 ; 
+                int cols = 2 ; 
 
                 int offset = rows * cols * index;
                 
                 
                 for (int row = 0; row < rows; row++) {
                     for (int col = 0; col < cols; col++) {
-
+                        
                         offset++;
 
                         if (offset > total)
@@ -87,24 +93,29 @@ private VBox pnl_scroll ;
                         StackPane container = new StackPane();
                         container.setStyle("-fx-background-color:white");
 
-                        
-                        container.getChildren().add(nodes[offset]);
-
                         GridPane.setRowIndex(container, row);
                         GridPane.setColumnIndex(container, col);
+                        container.getChildren().add(nodes.get(offset));
                         GridPane.setHgrow(container, Priority.ALWAYS);
                         GridPane.setVgrow(container, Priority.ALWAYS);
 
                         grid.getChildren().add(container);
                     }
+                     
                 }
-
+                StackPane container = new StackPane();
+                
+                grid.getChildren().add(container);
                 page.getChildren().add(grid);
 
                 return page;
             }
         });
     }
+    /* @FXML
+    private void close() {
+        nodes.removeAll(nodes);
+    }*/
    private void refreshNodes()
     {
        // pnl_scroll.getChildren().clear();
@@ -112,24 +123,20 @@ private VBox pnl_scroll ;
         
         int j = 0;
         for(int i = 0; i<15; i++)
-        {
+        //{
             try {
-                
-                if(j == Crud.getDemands().size())
-                    break;
-                NewClass.b = "" + Crud.getDemands().get(j).getEntreprise();
-                nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
-                j++;
-  
-             
+                    
+                    nodes.add((Node)FXMLLoader.load(getClass().getResource("Item.fxml")));
+                    
+                    
            //     
             } catch (IOException ex) {
               
             }
            
-        }
+       // }
     }    
-     @FXML
+   /*  @FXML
     private void handleButtonActionlb1(MouseEvent event) { 
     
      
@@ -152,7 +159,7 @@ private VBox pnl_scroll ;
         lbl2.setStyle("-fx-font-weight: normal");
         lbl3.setStyle("-fx-font-weight: bold");
        refreshNodes();
-    }
+    }*/
     
      @FXML
     private void slidemenu() { 

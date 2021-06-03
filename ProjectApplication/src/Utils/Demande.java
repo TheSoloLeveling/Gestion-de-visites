@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package Utils;
-
+import java.util.Date;
+import java.time.LocalTime;
+import java.text.DateFormat;
+import java.sql.Time;
 /**
  *
  * @author yassine
@@ -14,11 +17,12 @@ public class Demande {
     private String nom;
     private String prenom;
     private String cnie;
-    private String date;
-    private String time;
+    private Date date;
+    private int time;
     private String entreprise;
 
-    public Demande(String nom, String prenom, String cnie, String date, String time, String entreprise) {
+    public Demande(String id, String nom, String prenom, String cnie, Date date, int time, String entreprise) {
+        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.cnie = cnie;
@@ -44,11 +48,11 @@ public class Demande {
         return cnie;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public String getTime() {
+    public int getTime() {
         return time;
     }
     
