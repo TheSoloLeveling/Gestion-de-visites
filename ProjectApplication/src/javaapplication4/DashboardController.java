@@ -57,7 +57,7 @@ public class DashboardController implements Initializable {
     dark() ;
     load() ; 
         //ObservableList<PieChart.Data> Data  = new ObservableList<>() ;
-        pie.setData(Data);
+       // pie.setData(Data);
     } 
     
     public void siteStats(){

@@ -19,6 +19,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,6 +29,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -35,7 +37,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -160,9 +164,15 @@ public class DashController implements Initializable {
     private ImageView im4;
         @FXML
     private ImageView im5;
+        
+    @FXML
+    private ImageView pDprofil;    
     
     @FXML
     private JFXButton disconnect;
+    
+    @FXML
+    private Pane pdp;
     
    private Image img1 = new Image("/icons/projects.png") ;    
    private Image img2 =new Image("/icons/reliabilty.png") ;   ;    
@@ -188,15 +198,22 @@ public class DashController implements Initializable {
           bt5.setDisable(true);
       
     
-        TranslateTransition openPane=new TranslateTransition(new Duration(1950), layer4);
-    TranslateTransition closeNav=new TranslateTransition(new Duration(1950), layer2);
-  openPane.setToY(120);
-     closeNav.setToX(-270);
+            TranslateTransition openPane=new TranslateTransition(new Duration(1950), layer4);
+            TranslateTransition closeNav=new TranslateTransition(new Duration(1950), layer2);
+            openPane.setToY(120);
+            closeNav.setToX(-270);
       
               closeNav.play() ; 
               openPane.play();
+              
+              // ColorAdjust colorAdjustGrayscale = new ColorAdjust();
+              // colorAdjustGrayscale.setSaturation(-1);
+              
+              // pDprofil.setEffect(colorAdjustGrayscale);
+              
+              pdp.setStyle("-fx-background-color: #042EFF;");
           
-    }    
+    }  
     
        @FXML
   private void Slidemenu() {

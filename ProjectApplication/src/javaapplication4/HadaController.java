@@ -67,7 +67,8 @@ public class HadaController implements Initializable {
     private Label cnieS;
        @FXML
     private Button save;
-       
+          @FXML
+    private Label jj ; 
        
     @FXML
 private VBox pnl_scroll ;
@@ -153,7 +154,7 @@ private VBox pnl_scroll ;
             try {
                     
                     nodes.add((Node)FXMLLoader.load(getClass().getResource("Item.fxml")));
-                    
+                    Node n = null;
                     
            //     
             } catch (IOException ex) {
@@ -168,7 +169,20 @@ private VBox pnl_scroll ;
      
        
         lbl1.setStyle("-fx-font-weight: bold");
-        lbl2.setStyle("-fx-font-weight: normal");
+        lbl2.setStyle("-fx-font-weight: noprivate void slidemenu() { 
+     
+        
+        
+        TranslateTransition openNav=new TranslateTransition(new Duration(750), layer2);
+        openNav.setToX(-500);
+       openNav.play();
+        TranslateTransition closeNav=new TranslateTransition(new Duration(750), layer2);
+       
+            if(layer2.getTranslateX()!=-500){
+              
+                openNav.play();
+       
+             rmal");
         lbl3.setStyle("-fx-font-weight: normal");
        refreshNodes();
     }
@@ -191,20 +205,21 @@ private VBox pnl_scroll ;
     private void slidemenu() { 
      
         
-        
-        TranslateTransition openNav=new TranslateTransition(new Duration(750), layer2);
+      
+
+         TranslateTransition openNav=new TranslateTransition(new Duration(750), layer2);
         openNav.setToX(-500);
        openNav.play();
         TranslateTransition closeNav=new TranslateTransition(new Duration(750), layer2);
        
             if(layer2.getTranslateX()!=-500){
-              
+             jj.setText(NewClass.g);
                 openNav.play();
        
              
             }else{
              
-           
+     
                 closeNav.setToX(270);
                 closeNav.play();
         

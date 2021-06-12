@@ -28,7 +28,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="322.0" layoutY="176.0" text="Time" textFill="#aeacac">
+            <Label layoutX="322.0" layoutY="176.0" text="Duration" textFill="#aeacac">
                <font>
                   <Font size="14.0" />
                </font>

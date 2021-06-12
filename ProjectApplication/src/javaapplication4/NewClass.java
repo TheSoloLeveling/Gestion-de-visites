@@ -40,7 +40,7 @@ import javafx.util.Duration;
 public class NewClass implements Initializable {
 
     
-    
+    static String g="" ; 
     
     @FXML
     private Label id;
@@ -98,7 +98,7 @@ public class NewClass implements Initializable {
         index++;
         
         //DateFormat format = Crud.getDemands().get(index).getDate();
-  
+  g=nom.getText() ; 
     }   
     
     public void getActualDate(){

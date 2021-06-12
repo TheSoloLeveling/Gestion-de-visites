@@ -22,7 +22,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Label layoutX="64.0" layoutY="14.0" text="Demand on Hold" textFill="WHITE">
+            <Label id="jj" fx:id="jj" layoutX="64.0" layoutY="14.0" text="Demand on Hold" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -114,7 +114,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="605.0" layoutY="36.0" prefHeight="200.0" prefWidth="342.0">
+      <Pane layoutX="697.0" layoutY="-225.0" prefHeight="200.0" prefWidth="342.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -130,7 +130,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Pane>
-      <Pane layoutX="34.0" layoutY="34.0" onMouseClicked="#slidemenu" prefHeight="200.0" prefWidth="342.0">
+      <Pane layoutX="34.0" layoutY="34.0" onMouseClicked="#slidemenu" prefHeight="200.0" prefWidth="396.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
