@@ -39,8 +39,7 @@ import javafx.util.Duration;
 
 public class NewClass implements Initializable {
 
-    
-    static String g="" ; 
+   
     
     @FXML
     private Label id;
@@ -70,9 +69,11 @@ public class NewClass implements Initializable {
     private Label site;
     
     
+    
 
     public static int index = 0;
-    
+     
+    static String g="" ; 
    
     
     @Override
@@ -98,7 +99,7 @@ public class NewClass implements Initializable {
         index++;
         
         //DateFormat format = Crud.getDemands().get(index).getDate();
-  g=nom.getText() ; 
+        g = entreprise.getText() ; 
     }   
     
     public void getActualDate(){

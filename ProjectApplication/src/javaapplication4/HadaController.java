@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -67,8 +68,7 @@ public class HadaController implements Initializable {
     private Label cnieS;
        @FXML
     private Button save;
-          @FXML
-    private Label jj ; 
+    
        
     @FXML
 private VBox pnl_scroll ;
@@ -85,10 +85,14 @@ private VBox pnl_scroll ;
     /**
      * Initializes the controller class.
      */
+    
+                    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
-       //nodes.removeAll(nodes);
+       //for(int i = 0; i < nodes.size(); i++)
+         //  nodes.get(i)
+       
        refreshNodes(); 
        p.setPageFactory(new Callback<Integer, Node>() {
             @Override
@@ -162,7 +166,9 @@ private VBox pnl_scroll ;
             }
            
        // }
-    }    
+    }   
+   
+    
    /*  @FXML
     private void handleButtonActionlb1(MouseEvent event) { 
     
@@ -204,16 +210,14 @@ private VBox pnl_scroll ;
      @FXML
     private void slidemenu() { 
      
-        
-      
-
+         System.out.println("dadadad");
          TranslateTransition openNav=new TranslateTransition(new Duration(750), layer2);
         openNav.setToX(-500);
        openNav.play();
         TranslateTransition closeNav=new TranslateTransition(new Duration(750), layer2);
        
             if(layer2.getTranslateX()!=-500){
-             jj.setText(NewClass.g);
+             entrepriseS.setText(NewClass.g);
                 openNav.play();
        
              
