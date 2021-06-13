@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Geocoding control</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+
+  <!-- Load Leaflet from CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+
+
+  <!-- Load Esri Leaflet from CDN -->
+  <script src="https://unpkg.com/esri-leaflet@3.0.2/dist/esri-leaflet.js"
+    integrity="sha512-myckXhaJsP7Q7MZva03Tfme/MSF5a6HC2xryjAM4FxPLHGqlh5VALCbywHnzs2uPoF/4G/QVXyYDDSkp5nPfig=="
+    crossorigin=""></script>
+
+  <!-- Load Esri Leaflet Geocoder from CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@3.0.0/dist/esri-leaflet-geocoder.css"
+    integrity="sha512-IM3Hs+feyi40yZhDH6kV8vQMg4Fh20s9OzInIIAc4nx7aMYMfo+IenRUekoYsHZqGkREUgx0VvlEsgm7nCDW9g=="
+    crossorigin="">
+  <script src="https://unpkg.com/esri-leaflet-geocoder@3.0.0/dist/esri-leaflet-geocoder.js"
+    integrity="sha512-vZbMwAf1/rpBExyV27ey3zAEwxelsO4Nf+mfT7s6VTJPUbYmD2KSuTRXTxOFhIYqhajaBU+X5PuFK1QJ1U9Myg=="
+    crossorigin=""></script>
+    <script src="https://requirejs.org/docs/release/2.3.6/r.js" ></script>
+  <style>
+    body { margin:0; padding:0; }
+    #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+  </style>
+</head>
+<body>
+
+<div id="map">
+
+  <select id="languages">
+    <option value="en">English</option>
+    <option value="fr">French</option>
+    <option value="it">Italian</option>
+    <option value="es">Spanish</option>
+    <option value="de">German</option>
+    <option value="nl">Dutch</option>
+    <option value="zh">Chinese</option>
+
+  </select>
+</div>
+
+<script>
+
+var t=0 ;
+  var map = L.map('map').setView([33.333, -7.63], 4);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  var searchControl = L.esri.Geocoding.geosearch({
+    position: 'topright',
+    placeholder: 'Enter an address or place ',
+    useMapBounds: false,
+    providers: [L.esri.Geocoding.arcgisOnlineProvider({
+      apikey: "AAPK8bfc7f46452e4f3b99b6988f725c2c59QopLxddbfek4IchttsGTjz_OQB06yvq8UpeaeZfMFZ33A7r4AbHPN7gmWLVdNd4C", // replace with your api key - https://developers.arcgis.com
+      nearby: {
+        lat: -33.8688,
+        lng: 151.2093
+      }
+    })]
+  }).addTo(map);
+  
+  const accessToken ="AAPK8bfc7f46452e4f3b99b6988f725c2c59QopLxddbfek4IchttsGTjz_OQB06yvq8UpeaeZfMFZ33A7r4AbHPN7gmWLVdNd4C" 
+  var geocodeService = L.esri.Geocoding.geocodeService({
+    apikey: "AAPK8bfc7f46452e4f3b99b6988f725c2c59QopLxddbfek4IchttsGTjz_OQB06yvq8UpeaeZfMFZ33A7r4AbHPN7gmWLVdNd4C"
+  });
+  var results = L.layerGroup().addTo(map);
+
+  searchControl.on('results', function (data) {
+   
+    results.clearLayers();
+    for (var i = data.results.length - 1; i >= 0; i--) {
+      console.log(data.results[i].latlng.lat +"," +data.results[i].latlng.lng) ;
+      results.addLayer(L.marker(data.results[i].latlng));
+
+
+    }
+  });
+  map.on('click', function (e) {
+    geocodeService.reverse().latlng(e.latlng).run(function (error, result) {
+     
+
+     L.marker(result.latlng).addTo(map).bindPopup(result.address.Match_addr).openPopup();
+
+      
+   });
+  });
+ 
+  
+</script>
+
+</body>
+</html>

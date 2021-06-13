@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>  
+  @import "bourbon";
+
+@include keyframes(spin) {
+  from { @include transform(rotate(180deg)); }
+  to   { @include transform(rotate(720deg)); }
+}
+@include keyframes(reverse-spin) {
+  from { @include transform(rotate(720deg)); }
+  to   { @include transform(rotate(180deg)); }
+}
+
+#btn-main.active + ul > li > a {
+  @include transform(scaleY(1) scaleX(1) translateY(60px));
+  opacity: 1;
+}
+
+.btn-primary:before {
+  display: inline-block;
+  content: attr(data-text);
+  @include transform(translateY(0.1em));
+}
+
+.btn-primary.reverse-animation:before {
+  @include animation-name(reverse-spin);
+  @include animation-duration(300ms);
+  @include animation-iteration-count(1);
+  @include animation-timing-function(linear);
+}
+
+.btn-primary.active:before {
+  display: inline-block;
+  @include animation-name(spin);
+  @include animation-duration(300ms);
+  @include animation-iteration-count(1);
+  @include animation-timing-function(linear);
+  content: attr(data-active-text);
+}
+
+.btn-secondary {
+  @include transform(scaleY(0.4) scaleX(0.4));
+  @include transition(all 0.4s cubic-bezier(.70,.12,.12,12));
+  opacity: 0;
+}
+
+.btn-floating {
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  color: white;
+  margin: 10px;
+}
+
+.btn-large {
+  margin: -40px 0;
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  font-size: 2.4em;
+}
+
+.fixed-action-btn {
+  position: relative;
+  top: 100px;
+  width: 50px;
+  margin: auto;
+}
+
+body {
+  text-align: center;
+}
+
+.red    { background-color: red; }
+.yellow { background-color: yellow; }
+.green  { background-color: green; }
+.blue   { background-color: blue; }
+.orange   { background-color: orange; }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+        </style>
+</head>
+<body>
+    
+    <div class="fixed-action-btn">
+      <a id="btn-main" class="btn-primary btn-floating btn-large red" data-active-text="+" data-text="+"></a>
+      <ul>
+        <li>
+          <a class="btn-secondary btn-floating red"  onclick="fc1()">♕</a>
+        </li>
+        <li>
+          <a class="btn-secondary btn-floating yellow"   onclick="fc2()">♜</a>
+        </li>
+        <li>
+          <a class="btn-secondary btn-floating green"   onclick="fc3()"><i>♞</i></a>
+        </li>
+        <li>
+          <a class="btn-secondary btn-floating blue"   onclick="fc4()">♚</a>
+        </li>
+        <li>
+          <a class="btn-secondary btn-floating orange"  onclick="fc5()">♚</a>
+        </li>
+      </ul>
+    </div>
+      
+</body>
+</html>
+
+<script>  
+
+$('#btn-main').on('touchstart click', function() {
+  if ($(this).hasClass('active')) {
+    $(this).removeClass('active');         $(this).addClass('reverse-animation');
+  } else {
+    $(this).removeClass('reverse-animation');
+    $(this).addClass('active');
+  }
+  
+  return false;
+});
+
+function fc1(){
+console.log("1") ;
+}function fc2(){
+  console.log("2") ;
+}function fc3(){
+  console.log("3") ;
+}function fc4(){
+  console.log("4") ;
+}function fc5(){
+  console.log("5") ;
+}
+
+</script>

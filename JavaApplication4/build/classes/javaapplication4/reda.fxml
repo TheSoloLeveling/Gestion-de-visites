@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="layer1" fx:id="layer1" prefHeight="535.0" prefWidth="1061.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.RedaController">
+   <children>
+      <Pane layoutX="10.0" layoutY="47.0" prefHeight="535.0" prefWidth="1047.0">
+         <children>
+            <HBox layoutX="463.0" layoutY="32.0" prefHeight="108.0" prefWidth="213.0" style="-fx-background-color: #ff8900; -fx-background-radius: 5;" />
+            <HBox layoutX="122.0" layoutY="32.0" prefHeight="108.0" prefWidth="213.0" style="-fx-background-color: green; -fx-background-radius: 5;" />
+            <Label layoutX="130.0" layoutY="40.0" text="🚐" textFill="WHITE">
+               <font>
+                  <Font size="43.0" />
+               </font>
+            </Label>
+            <Label id="nbrVisiteurs" fx:id="nbrVisiteurs" layoutX="295.0" layoutY="54.0" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="164.0" layoutY="115.0" prefHeight="21.0" prefWidth="148.0" text="nombre des visiteur" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="472.0" layoutY="40.0" text="🏢" textFill="WHITE">
+               <font>
+                  <Font size="43.0" />
+               </font>
+            </Label>
+            <Label id="nbrSites" fx:id="nbrSites" layoutX="627.0" layoutY="56.0" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="508.0" layoutY="114.0" prefHeight="21.0" prefWidth="148.0" text="nombre de Site" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="152.0" layoutY="214.0" onMouseClicked="#loaditem2" text="🚐" textFill="#3929e0">
+               <font>
+                  <Font size="65.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label layoutX="385.0" layoutY="213.0" onMouseClicked="#loaditem3" text="🏢" textFill="#3929e0">
+               <font>
+                  <Font size="65.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label layoutX="133.0" layoutY="296.0" text="Gestion des visites" textFill="#959ea6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="363.0" layoutY="296.0" text="Gestion des sites" textFill="#959ea6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="572.0" layoutY="303.0" text="Gestion des utilisateurs" textFill="#959ea6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="828.0" layoutY="214.0" onMouseClicked="#loaditem4" text="📈 " textFill="#3929e0">
+               <font>
+                  <Font size="65.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label layoutX="174.0" layoutY="337.0" text="ℹ" textFill="#3929e0">
+               <font>
+                  <Font size="65.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label layoutX="828.0" layoutY="303.0" text="Statistics" textFill="#959ea6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="164.0" layoutY="430.0" text="about" textFill="#959ea6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <HBox layoutX="757.0" layoutY="35.0" prefHeight="108.0" prefWidth="213.0" style="-fx-background-color: red; -fx-background-radius: 5;" />
+         </children>
+      </Pane>
+      <Label layoutX="778.0" layoutY="94.0" text="👤" textFill="WHITE">
+         <font>
+            <Font size="43.0" />
+         </font>
+      </Label>
+      <Label id="nbrUsers" fx:id="nbrUsers" layoutX="944.0" layoutY="101.0" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="803.0" layoutY="156.0" prefHeight="22.0" prefWidth="170.0" text="nombre des utilisateur" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="618.0" layoutY="267.0" onMouseClicked="#loaditem5" text="👤" textFill="#3929e0">
+         <font>
+            <Font size="65.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+   </children>
+</AnchorPane>

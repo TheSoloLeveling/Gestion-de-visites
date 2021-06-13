@@ -1,0 +1,30 @@
+{
+  "name": "leaflet-geocoder-locationiq",
+  "version": "1.9.4",
+  "homepage": "https://github.com/locationiq/leaflet-geocoder",
+  "authors": [
+    "Harish Krishna",
+    "Lou Huang <lou@mapzen.com>",
+    "gopi-ar"
+  ],
+  "description": "Add LocationIQ geocoding to your Leaflet map.",
+  "main": "dist/leaflet-geocoder-locaitoniq.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "leaflet",
+    "plugin",
+    "search",
+    "geocode",
+    "locationiq"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "spec"
+  ]
+}

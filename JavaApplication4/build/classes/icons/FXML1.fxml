@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="layer1" fx:id="layer1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="1344.0" style="-fx-background-color: #252645;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.FXML1Controller">
+   <children>
+      <Pane fx:id="layer2" layoutX="-3.0" layoutY="162.0" prefHeight="502.0" prefWidth="322.0" style="-fx-background-color: linear-gradient(to right,#795AF3 ,#3929E0);" />
+      <Pane id="layer3" fx:id="layer3" layoutX="415.0" prefHeight="454.0" prefWidth="390.0" style="-fx-background-color: #252645;">
+         <children>
+            <Pane id="layer4" fx:id="layer4" layoutX="-414.0" layoutY="-130.0" prefHeight="130.0" prefWidth="1344.0" style="-fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0);" styleClass="head-background" stylesheets="@../../../../../Desktop/Drapo-Dashboard-JavaFX-master/src/drapo/dashboard/style.css">
+               <children>
+                  <Label layoutX="224.0" layoutY="47.0" text="Admin" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="227.0" layoutY="100.0" text="Saint Denis site" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXButton layoutX="1093.0" layoutY="74.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="163.0" ripplerFill="WHITE" style="-fx-background-color: #473E98;" text="Disconnect" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <Pane layoutX="68.0" layoutY="36.0" prefHeight="131.0" prefWidth="142.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <ImageView fitHeight="120.0" fitWidth="139.0" layoutX="11.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../Desktop/Drapo-Dashboard-JavaFX-master/src/drapo/dashboard/images/logo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </Pane>
+               </children>
+            </Pane>
+            <HBox layoutX="57.0" layoutY="118.0" prefHeight="30.0" prefWidth="594.0">
+               <children>
+                  <Label id="lbl1" fx:id="lbl1" onMouseClicked="#handleButtonActionlb1" prefHeight="30.0" prefWidth="207.0" text="Current Demands(10)" textFill="#795af3">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </Label>
+                  <Label id="lbl2" fx:id="lbl2" onMouseClicked="#handleButtonActionlbl2" prefHeight="30.0" prefWidth="207.0" text="Pending Demands(12)" textFill="#795af3">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </Label>
+                  <Label id="lbl3" fx:id="lbl3" onMouseClicked="#handleButtonActionlbl3" prefHeight="30.0" prefWidth="207.0" text="Terminated Demands(2)" textFill="#795af3">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane id="Helper" fx:id="Helper" layoutX="292.0" layoutY="27.0" prefHeight="4.0" prefWidth="6.0" />
+      <JFXToggleButton id="dark" fx:id="dark" layoutX="895.0" layoutY="608.0" onMouseClicked="#dark" text=" " textFill="#fcfcfc" toggleColor="#252645" toggleLineColor="#252645" unToggleColor="WHITE" unToggleLineColor="#fcfbfb" />
+      <Label id="a2" fx:id="a2" layoutX="967.0" layoutY="604.0" text="☀" textFill="WHITE">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label id="a1" fx:id="a1" layoutX="842.0" layoutY="604.0" text="☾" textFill="#252645">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <JFXButton id="close" fx:id="close" layoutX="1311.0" layoutY="-1.0" minWidth="34.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#close" prefHeight="30.0" prefWidth="34.0" ripplerFill="WHITE" style="-fx-background-color: #473E98;" text="X" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <ScrollPane layoutX="346.0" layoutY="183.0" prefHeight="393.0" prefWidth="997.0" style="-fx-background-color: #fff;">
+         <content>
+            <VBox fx:id="pnl_scroll" prefHeight="385.0" prefWidth="992.0" spacing="20.0" style="-fx-background-color: #fff;" />
+         </content>
+      </ScrollPane>
+      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-17.0" layoutY="624.0" prefHeight="43.0" prefWidth="337.0" ripplerFill="#bfadf8" text="Quick accept" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/Drapo-Dashboard-JavaFX-master/src/drapo/dashboard/images/icons8_Share_64px.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </ImageView>
+         </graphic>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+      </JFXButton>
+      <Label layoutX="-6.0" layoutY="500.0" prefHeight="30.0" prefWidth="252.0" text="STATISTICS" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <padding>
+            <Insets left="40.0" />
+         </padding>
+      </Label>
+      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-12.0" layoutY="530.0" prefHeight="43.0" prefWidth="332.0" ripplerFill="#bfadf8" text="Charl List" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/Drapo-Dashboard-JavaFX-master/src/drapo/dashboard/images/agencies.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+      </JFXButton>
+      <Label layoutX="-1.0" layoutY="230.0" prefHeight="30.0" prefWidth="252.0" text="DEMAND" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <padding>
+            <Insets left="40.0" />
+         </padding>
+      </Label>
+      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-9.0" layoutY="260.0" prefHeight="43.0" prefWidth="332.0" ripplerFill="#bfadf8" text="Demand List" textFill="#fffefe">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/Drapo-Dashboard-JavaFX-master/src/drapo/dashboard/images/agencies.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-9.0" layoutY="303.0" prefHeight="43.0" prefWidth="332.0" ripplerFill="#bfadf8" text="Demand Management" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/Drapo-Dashboard-JavaFX-master/src/drapo/dashboard/images/agencies.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-8.0" layoutY="403.0" prefHeight="43.0" prefWidth="332.0" ripplerFill="#bfadf8" text="Site Management" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/Drapo-Dashboard-JavaFX-master/src/drapo/dashboard/images/agencies.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+      </JFXButton>
+      <Label layoutY="372.0" prefHeight="30.0" prefWidth="252.0" text="Site" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <padding>
+            <Insets left="40.0" />
+         </padding>
+      </Label>
+      <Label id="menu" fx:id="menu" layoutX="285.0" layoutY="163.0" onMouseClicked="#Slidemenu" onMouseEntered="#hoverM" onMouseExited="#rhoverM" style="-fx-translate-z: 10;" text="☰" textFill="#fcfcfc">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
