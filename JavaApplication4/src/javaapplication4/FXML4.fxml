@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane id="layer1" fx:id="layer1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1496.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.FXML4Controller">
+   <children>
+      <Pane id="layer3" fx:id="layer3" layoutX="415.0" prefHeight="17.0" prefWidth="370.0" style="-fx-background-color: #252645;">
+         <children>
+            <Pane id="layer4" fx:id="layer4" layoutX="-415.0" layoutY="-130.0" prefHeight="130.0" prefWidth="1496.0" style="-fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0);" styleClass="head-background" stylesheets="@../../../../../Desktop/Drapo-Dashboard-JavaFX-master/src/drapo/dashboard/style.css">
+               <children>
+                  <Label id="name" fx:id="name" layoutX="224.0" layoutY="47.0" text="Admin" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="227.0" layoutY="100.0" text="Saint Denis site" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXButton id="disconnect" fx:id="disconnect" layoutX="1161.0" layoutY="74.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="163.0" ripplerFill="WHITE" style="-fx-background-color: #473E98;" text="Disconnect" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <Pane fx:id="pdp" layoutX="68.0" layoutY="36.0" prefHeight="131.0" prefWidth="142.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <ImageView id="pDprofil" fx:id="pDprofil" fitHeight="120.0" fitWidth="139.0" layoutX="11.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../Desktop/Drapo-Dashboard-JavaFX-master/src/drapo/dashboard/images/logo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane id="Helper" fx:id="Helper" layoutX="292.0" layoutY="27.0" prefHeight="4.0" prefWidth="6.0" />
+      <JFXButton id="close" fx:id="close" layoutX="1462.0" layoutY="-1.0" minWidth="34.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#close" prefHeight="30.0" prefWidth="34.0" ripplerFill="WHITE" style="-fx-background-color: #473E98;" text="X" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="btn" fx:id="btn" layoutX="1308.0" layoutY="681.0" onMouseEntered="#slide" onMouseExited="#slide1" prefHeight="42.0" prefWidth="170.0" style="-fx-background-color: #541388; -fx-border-radius: 50px;" text="Add A New Demand" textFill="WHITE">
+         <font>
+            <Font name="Calibri" size="14.0" />
+         </font>
+      </JFXButton>
+      <HBox layoutX="298.0" layoutY="153.0" prefHeight="130.0" prefWidth="223.0" style="-fx-border-color: #e7ebef;">
+         <effect>
+            <Glow level="0.33" />
+         </effect>
+      </HBox>
+      <HBox layoutX="321.0" layoutY="177.0" prefHeight="76.0" prefWidth="79.0" style="-fx-background-color: #0086f8; -fx-background-radius: 5;" />
+      <Label layoutX="440.0" layoutY="182.0" text="30" textFill="#0086f8">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="434.0" layoutY="228.0" text="Demands" textFill="#959ea6" />
+      <Label layoutX="342.0" layoutY="189.0" text="📋" textFill="WHITE">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <HBox layoutX="549.0" layoutY="152.0" prefHeight="130.0" prefWidth="223.0" style="-fx-border-color: #e7ebef;">
+         <effect>
+            <Glow level="0.33" />
+         </effect>
+      </HBox>
+      <HBox layoutX="572.0" layoutY="176.0" prefHeight="76.0" prefWidth="79.0" style="-fx-background-color: #ff3246; -fx-background-radius: 5;" />
+      <Label layoutX="691.0" layoutY="181.0" text="30" textFill="#ff3246">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="685.0" layoutY="227.0" text="Refused" textFill="#959ea6" />
+      <Label layoutX="593.0" layoutY="188.0" text="📋" textFill="WHITE">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <HBox layoutX="799.0" layoutY="151.0" prefHeight="130.0" prefWidth="223.0" style="-fx-border-color: #e7ebef;">
+         <effect>
+            <Glow level="0.33" />
+         </effect>
+      </HBox>
+      <HBox layoutX="822.0" layoutY="175.0" prefHeight="76.0" prefWidth="79.0" style="-fx-background-color: #00bcae; -fx-background-radius: 5;" />
+      <Label layoutX="941.0" layoutY="180.0" text="30" textFill="#00bcae">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="935.0" layoutY="226.0" text="Accepted" textFill="#959ea6" />
+      <HBox layoutX="21.0" layoutY="294.0" prefHeight="422.0" prefWidth="414.0" style="-fx-border-color: #e7ebef;">
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </HBox>
+      <Label layoutX="163.0" layoutY="306.0" text="Visites Per Site" textFill="#959ea6">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <HBox layoutX="445.0" layoutY="293.0" prefHeight="422.0" prefWidth="338.0" style="-fx-border-color: #e7ebef;">
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </HBox>
+      <HBox layoutX="469.0" layoutY="314.0" prefHeight="76.0" prefWidth="134.0" style="-fx-background-color: #00c946; -fx-background-radius: 0;" />
+      <Label layoutX="659.0" layoutY="315.0" text="Total Users" textFill="#959ea6">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <HBox layoutX="469.0" layoutY="409.0" prefHeight="6.0" prefWidth="287.0" style="-fx-background-color: #00c946; -fx-background-radius: 0;" />
+      <Label layoutX="733.0" layoutY="357.0" text="10" textFill="#959ea6">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <HBox layoutX="471.0" layoutY="438.0" prefHeight="76.0" prefWidth="134.0" style="-fx-background-color: #00b6e8; -fx-background-radius: 0;" />
+      <Label layoutX="661.0" layoutY="439.0" text="Total Sites" textFill="#959ea6">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <HBox layoutX="471.0" layoutY="531.0" prefHeight="6.0" prefWidth="287.0" style="-fx-background-color: #00b6e8; -fx-background-radius: 0;" />
+      <Label layoutX="735.0" layoutY="481.0" text="10" textFill="#959ea6">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <HBox layoutX="476.0" layoutY="568.0" prefHeight="76.0" prefWidth="134.0" style="-fx-background-color: #ff0; -fx-background-radius: 0;" />
+      <Label layoutX="647.0" layoutY="565.0" text="Total Visitors" textFill="#959ea6">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <HBox layoutX="476.0" layoutY="661.0" prefHeight="6.0" prefWidth="287.0" style="-fx-background-color: #ff0; -fx-background-radius: 0;" />
+      <Label layoutX="740.0" layoutY="611.0" text="10" textFill="#959ea6">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="512.0" layoutY="444.0" text="🏢" textFill="WHITE">
+         <font>
+            <Font size="43.0" />
+         </font>
+      </Label>
+      <Label layoutX="510.0" layoutY="569.0" text="🚐" textFill="WHITE">
+         <font>
+            <Font size="43.0" />
+         </font>
+      </Label>
+      <Label layoutX="510.0" layoutY="319.0" text="👤" textFill="WHITE">
+         <font>
+            <Font size="43.0" />
+         </font>
+      </Label>
+      <Label layoutX="843.0" layoutY="187.0" text="📋" textFill="WHITE">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Label id="lb" fx:id="lb" layoutX="1480.0" layoutY="673.0" text="»" textFill="WHITE">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Label>
+      <JFXButton id="btn" fx:id="btn1" layoutX="1308.0" layoutY="603.0" prefHeight="42.0" prefWidth="170.0" style="-fx-background-color: #0086f8; -fx-border-radius: 50px;" text="Follow Your Demands" textFill="WHITE">
+         <font>
+            <Font name="Calibri" size="14.0" />
+         </font>
+      </JFXButton>
+      <WebView id="webView" fx:id="webView" layoutX="803.0" layoutY="292.0" prefHeight="368.0" prefWidth="464.0" />
+      <PieChart id="pie" fx:id="pie" layoutX="59.0" layoutY="334.0" prefHeight="358.0" prefWidth="353.0" />
+   </children>
+</AnchorPane>

@@ -18,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
@@ -111,6 +112,7 @@ public class NewClass implements Initializable {
                 g[HadaController.c].nom = nom.getText() ;
                   g[HadaController.c].prenom = prenom.getText() ;
                     g[HadaController.c].etat = Crud.getDemands().get(index).getEtat() ;
+       System.out.println(Arrays.toString(NewClass.g   ));
 
           // g[HadaController.c].setTime(Crud.getDemands().get(index).getTime());
                   HadaController.c+=1 ;

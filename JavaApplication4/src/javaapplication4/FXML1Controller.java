@@ -205,11 +205,11 @@ public class FXML1Controller implements Initializable {
                 openNav.play();
                 openHadi.play(); ;
                 openMenu.play();
-                 bt1.setText("Demand List");
+                 bt1.setText("Main Menu");
          bt2.setText("Demand Management");
           bt3.setText("  Site Management");
            bt4.setText("Charl List");
-          bt5.setText("   Quick accept");
+          bt5.setText("   About");
               bt1.setDisable(false);
          bt2.setDisable(false);
           bt3.setDisable(false);

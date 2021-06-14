@@ -92,10 +92,10 @@ private VBox pnl_scroll ;
         for(int i = 0; i<15; i++)
         {
             try {
+              
               //   NewClass jt =new NewClass() ;
        // jt.lol(i);
                 nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
-             
              //  pnl_scroll.getChildren().add(nodes[i]);
            //     
             } catch (IOException ex) {
@@ -134,7 +134,6 @@ private VBox pnl_scroll ;
                     Crud.updateUser(lol, id.getText() );
                   
                     go1() ; 
-                    refreshNodes() ;
                 }
     }
     
@@ -346,7 +345,8 @@ private VBox pnl_scroll ;
                 }
 
                 page.getChildren().add(grid);
-
+                                                       NewClass.index=0 ; 
+c=0; 
                 return page;
             }
         });
@@ -404,7 +404,8 @@ private VBox pnl_scroll ;
                 }
 
                 page.getChildren().add(grid);
-
+                                                      NewClass.index=0 ; 
+c=0; 
                 return page;
             }
         });
