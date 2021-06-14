@@ -86,7 +86,7 @@ private JFXTextArea min;
             LocalDate date = datePicker.getValue();
             Date d = Date.valueOf(date);
         }*/
-       
+        hr.setDisable(true);
         ToggleButton a = (ToggleButton)_12pm.getChildren().get(1);
         ToggleButton b = (ToggleButton)_11pm.getChildren().get(1);
         

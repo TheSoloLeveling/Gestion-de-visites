@@ -38,7 +38,10 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label id="hr" fx:id="hr" alignment="CENTER" layoutX="34.0" layoutY="57.0" prefHeight="27.0" prefWidth="116.0" />
+            <Label id="hr" fx:id="hr" alignment="CENTER" layoutX="22.0" layoutY="57.0" prefHeight="44.0" prefWidth="134.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
          </children>
       </Pane>
       <Pane layoutX="694.0" layoutY="218.0" prefHeight="122.0" prefWidth="186.0">

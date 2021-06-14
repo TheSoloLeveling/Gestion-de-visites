@@ -232,8 +232,9 @@ public class Crud {
                 
                 int f =  rs.getInt(6);
                 String g = rs.getString(7);
+                boolean h = rs.getBoolean(8);
                 
-                Demande dem = new Demande(a,b,c,d,e,f,g); 
+                Demande dem = new Demande(a,b,c,d,e,f,g,h); 
                 t.add(dem);
             }
                                             
