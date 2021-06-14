@@ -7,6 +7,9 @@ package javaapplication4;
  */
 
 
+import Utils.MailUtil;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -16,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.mail.MessagingException;
 
 /**
  *
@@ -45,8 +49,14 @@ public class Mainn extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        /*try {
+            MailUtil.sendMail("omar.jamil@uir.ac.ma");
+        } catch (MessagingException ex) {
+            Logger.getLogger(Mainn.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
         launch(args);
+        
     }
     
 }

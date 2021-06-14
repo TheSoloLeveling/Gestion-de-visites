@@ -8,8 +8,10 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ProjectApplication.jar" size="314355" download="eager" />
+    <jar href="ProjectApplication.jar" size="317910" download="eager" />
+    <jar href="lib\activation.jar" size="124332" download="eager" />
     <jar href="lib\jfoenix-9.0.10.jar" size="2432549" download="eager" />
+    <jar href="lib\mail.jar" size="521000" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.23.jar" size="2415211" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="javaapplication4.Mainn"  name="ProjectApplication" />

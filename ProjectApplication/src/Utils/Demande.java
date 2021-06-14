@@ -20,8 +20,9 @@ public class Demande {
     private Date date;
     private int time;
     private String entreprise;
+    private boolean etat;
 
-    public Demande(String id, String nom, String prenom, String cnie, Date date, int time, String entreprise) {
+    public Demande(String id, String nom, String prenom, String cnie, Date date, int time, String entreprise, boolean etat) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -29,6 +30,7 @@ public class Demande {
         this.date = date;
         this.time = time;
         this.entreprise = entreprise;
+        this.etat = etat;
     }
 
     public String getId() {

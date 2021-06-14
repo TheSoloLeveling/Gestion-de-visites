@@ -405,7 +405,7 @@ public class MainController implements Initializable {
                 dashInterface = "user2.fxml";
                 break;
             case "userentreprise":
-                dashInterface = "user2.fxml";
+                dashInterface = "utilisateur.fxml";
                 break;
             case "admin":
                 dashInterface = "user2.fxml";
@@ -414,7 +414,7 @@ public class MainController implements Initializable {
                 dashInterface = "Dash.fxml";
                 break;
             case "guerite":
-                dashInterface = "user2.fxml";
+                dashInterface = "utilisateur.fxml";
                 break;
             }
              new Dash().start();

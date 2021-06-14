@@ -112,7 +112,7 @@ private VBox pnl_scroll ;
 
                 int offset = rows * cols * index;
                 
-                
+                //grid.getc
                 for (int row = 0; row < rows; row++) {
                     for (int col = 0; col < cols; col++) {
                         
@@ -138,7 +138,7 @@ private VBox pnl_scroll ;
                 
                 grid.getChildren().add(container);
                 page.getChildren().add(grid);
-
+                
                 return page;
             }
         });

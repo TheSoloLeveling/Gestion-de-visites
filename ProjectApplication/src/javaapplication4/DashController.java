@@ -5,6 +5,7 @@
  */
 package javaapplication4;
 
+import Utils.MailUtil;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXToggleButton;
 import java.io.IOException;
@@ -43,6 +44,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import javax.mail.MessagingException;
 
 /**
  * FXML Controller class
@@ -182,6 +184,7 @@ public class DashController implements Initializable {
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         disconnect.setOnAction(disconnectHandler);
         name.setText(MainController.actualAccount.getNom());
          load("reda") ;
