@@ -1,6 +1,6 @@
 
 
-package javaapplication4;
+
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -15,7 +15,7 @@ public class SingletonConnection {
     
     static{
         try{
-        connection =  DriverManager.getConnection("jdbc:mysql://localhost:3306/big", "root", "");
+        connection =  DriverManager.getConnection("jdbc:mysql://localhost:3306/site", "root", "");
  
         }
         catch(java.sql.SQLException e ){
