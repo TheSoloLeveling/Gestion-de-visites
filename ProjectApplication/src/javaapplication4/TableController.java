@@ -64,8 +64,19 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import java.sql.Statement;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.web.WebView;
+import netscape.javascript.JSObject;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.layout.Pane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import java.sql.*;
 
 public class TableController implements Initializable {
+    String textto ="" ; 
     @FXML
     private TableView tableView1;
     @FXML
@@ -80,6 +91,18 @@ public class TableController implements Initializable {
     private AnchorPane layer1;
     @FXML
     private Button btnNew;
+    private final JavaBridge bridge = new JavaBridge();
+
+       final URL urlGoogleMaps = getClass().getResource("re.html");
+       
+           private final JavaBridge1 bridge1 = new JavaBridge1();
+
+       final URL urlGoogleMaps1 = getClass().getResource("fs.html");
+       
+@FXML
+WebView webView ;
+@FXML
+WebView webview1 ;
     @FXML
     private ToggleGroup accounts;
     @FXML
@@ -388,6 +411,29 @@ public class TableController implements Initializable {
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+          WebEngine webEngine = webView.getEngine();
+     webEngine.load(urlGoogleMaps.toExternalForm());
+       webEngine.getLoadWorker().stateProperty().addListener((observable, oldValue, newValue) ->
+{
+    JSObject window = (JSObject) webEngine.executeScript("window");
+    window.setMember("java", bridge);
+    webEngine.executeScript("console.log = function(message)\n" +
+        "{\n" +
+        "    java.log(message);\n" +
+        "};");
+});
+                 WebEngine webEngine1 = webview1.getEngine();
+     webEngine1.load(urlGoogleMaps1.toExternalForm());
+       webEngine1.getLoadWorker().stateProperty().addListener((observable, oldValue, newValue) ->
+{
+    JSObject window1 = (JSObject) webEngine1.executeScript("window");
+    window1.setMember("java", bridge1);
+    webEngine1.executeScript("console.log = function(message)\n" +
+        "{\n" +
+        "    java.log(message);\n" +
+        "};");
+});
+                
             tableView1.setEditable(true);
             
             UE.setToggleGroup(accounts);
@@ -723,6 +769,205 @@ public class TableController implements Initializable {
         //}
         
     }
+   public class JavaBridge
+{
+  
+    public  void log(String text)
+    {
+        
+       if(text.equals("1")){
+           textto="1" ;
+             tableView1.setVisible(true);
+                        tableView2.setVisible(false);
+                        tableView3.setVisible(false);
+                        tableView4.setVisible(false);
+                        tableView5.setVisible(false);
+       }
+        if(text.equals("2")){
+        textto="2" ;
+        tableView1.setVisible(false);
+                        tableView2.setVisible(true);
+                        tableView3.setVisible(false);
+                        tableView4.setVisible(false);
+                        tableView5.setVisible(false);
+        }
+         if(text.equals("3")){
+              textto="3" ;
+           tableView1.setVisible(false);
+                        tableView2.setVisible(false);
+                        tableView3.setVisible(true);
+                        tableView4.setVisible(false);
+                        tableView5.setVisible(false);
+  
+        }
+          if(text.equals("4")){
+               textto="4" ;
+           tableView1.setVisible(false);
+                        tableView2.setVisible(false);
+                        tableView3.setVisible(false);
+                        tableView4.setVisible(true);
+                        tableView5.setVisible(false);
+          }
+              if(text.equals("5")){
+                   textto="5" ;
+                   tableView1.setVisible(false);
+                        tableView2.setVisible(false);
+                        tableView3.setVisible(false);
+                        tableView4.setVisible(false);
+                        tableView5.setVisible(true);
+              }
+        
+    }
+} 
+   
+   
+    public class JavaBridge1
+{
+  FXMLLoader loader = null;
+    public  void log(String text)
+    { 
     
+        
+    if(textto.equals("1") && text.equals("add")){
+        
+    }
+     if(textto.equals("1") && text.equals("update")){
+         isAdd = false;
+         loader = new FXMLLoader(getClass().getResource("addrec1.fxml"));
+                Record record = (Record) tableView1.getSelectionModel().getSelectedItem();
+                if (record != null){
+                    try {
+                        root = loader.load();
+                    } catch (IOException ex) {
+                        Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    AddrecController1 addrecController1 = loader.getController();
+                    String v1 = record.value_0;
+                    String v2 = record.value_1;
+                    String v3 = record.value_2;
+                    String v4 = record.value_3;
+                    String v5 = record.value_4;
+                    String v6 = record.value_5;    
+                    addrecController1.getTable(v1, text, v2, v3, v4, v5, v6);
+                }    
+        stage = new Stage();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+    }if(textto.equals("1") && text.equals("delete")){
+        
+    }
+     
+       if(textto.equals("2") && text.equals("add")){
+        
+    }
+     if(textto.equals("2") && text.equals("update")){
+        
+    }if(textto.equals("2") && text.equals("delete")){
+        
+    }
+    
+    
+    
+       if(textto.equals("3") && text.equals("add")){
+          isAdd = true;
+        System.out.println("inside of textt");
+        loader = new FXMLLoader(getClass().getResource("addrec3.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                AddrecController3 addrecController3 = loader.getController();
+                addrecController3.getTable("", "superadmin", "", "", "", "", "");
+                
+                stage = new Stage();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+    }
+       if(textto.equals("3") && text.equals("update")){
+           System.out.print("ijhij");
+           isAdd = false;
+             loader = new FXMLLoader(getClass().getResource("addrec3.fxml"));
+                Record record = (Record) tableView1.getSelectionModel().getSelectedItem();
+                if (record != null){
+                    try {
+                        root = loader.load();
+                    } catch (IOException ex) {
+                        Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                     
+                    AddrecController3 addrecController3 = loader.getController();
+                    String v1 = record.value_0;
+                    String v2 = record.value_1;
+                    String v3 = record.value_2;
+                    String v4 = record.value_3;
+                    String v5 = record.value_4;
+                    String v6 = record.value_5;    
+                    addrecController3.getTable(v1, text, v2, v3, v4, v5, v6);
+                    stage = new Stage();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+                }
+    }if(textto.equals("3") && text.equals("delete")){
+        Record record3 = (Record) tableView3.getSelectionModel().getSelectedItem();
+                    if (record3 != null){  
+                        data3.remove(record3);
+                        Crud.removeUser("superadmin", record3.getValue_3());
+                    }   
+    }
+    
+    
+    
+       if(textto.equals("4") && text.equals("add")){
+        
+    }
+     if(textto.equals("4") && text.equals("update")){
+        
+    }if(textto.equals("4") && text.equals("delete")){
+        
+    }
+    
+    
+       if(textto.equals("5") && text.equals("add")){
+        
+    }
+     if(textto.equals("5") && text.equals("update")){
+        
+    }if(textto.equals("5") && text.equals("delete")){
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }
 }
 
+}
