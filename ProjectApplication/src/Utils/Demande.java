@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Utils;
-import java.util.Date;
+import java.sql.Date;
 import java.time.LocalTime;
 import java.text.DateFormat;
 import java.sql.Time;
@@ -17,18 +17,21 @@ public class Demande {
     private String nom;
     private String prenom;
     private String cnie;
-    private Date date;
-    private int time;
+    private Date dateB;
+    private Date dateE;
+    private String time;
+    private String ue;
     private String entreprise;
     private boolean etat;
 
-    public Demande(String id, String nom, String prenom, String cnie, Date date, int time, String entreprise, boolean etat) {
-        this.id = id;
+    public Demande(String nom, String prenom, String cnie, Date dateB, Date dateE, String time, String ue, String entreprise, boolean etat) {
         this.nom = nom;
         this.prenom = prenom;
         this.cnie = cnie;
-        this.date = date;
+        this.dateB = dateB;
+        this.dateE = dateE;
         this.time = time;
+        this.ue = ue;
         this.entreprise = entreprise;
         this.etat = etat;
     }
@@ -50,17 +53,30 @@ public class Demande {
         return cnie;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDateB() {
+        return dateB;
+    }
+    
+    public Date getDateE() {
+        return dateE;
     }
 
-    public int getTime() {
+    public String getTime() {
         return time;
     }
     
     public String getEntreprise() {
         return entreprise;
     }
+
+    public String getUe() {
+        return ue;
+    }
+
+    public boolean isEtat() {
+        return etat;
+    }
+
     
 }
 

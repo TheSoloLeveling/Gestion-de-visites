@@ -1,53 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="layer1" fx:id="layer1" prefHeight="754.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.UtilisateurController">
    <children>
       <Pane prefHeight="754.0" prefWidth="367.0" style="-fx-background-color: #1B6CD7;" />
-      <Label layoutX="576.0" layoutY="39.0" text="Create a new demande">
+      <Label layoutX="539.0" layoutY="29.0" text="Create a new demande">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <DatePicker id="datepicker" fx:id="datepicker" layoutX="535.0" layoutY="132.0" prefHeight="35.0" prefWidth="318.0" stylesheets="@style_2.css" />
-      <Label layoutX="541.0" layoutY="102.0" text="Select the date">
+      <DatePicker id="datepicker" fx:id="datePickerD" layoutX="429.0" layoutY="132.0" prefHeight="35.0" prefWidth="220.0" stylesheets="@style_2.css" />
+      <Label layoutX="438.0" layoutY="101.0" text="Select the start date of visit">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="541.0" layoutY="187.0" text="Select the time">
+      <Label layoutX="389.0" layoutY="208.0" text="Select the start time">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Pane layoutX="511.0" layoutY="218.0" prefHeight="122.0" prefWidth="186.0">
+      <Pane layoutX="482.0" layoutY="218.0" prefHeight="122.0" prefWidth="186.0">
          <children>
-            <JFXTextArea layoutX="35.0" layoutY="53.0" prefHeight="28.0" prefWidth="116.0" />
-            <Label layoutX="79.0" layoutY="16.0" text="HR" textFill="#969393">
+            <Rectangle id="rec" fx:id="rec" fill="WHITE" height="69.0" layoutX="8.0" layoutY="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="164.0" />
+            <Label layoutX="77.0" layoutY="14.0" text="HR" textFill="#969393">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label id="hr" fx:id="hr" alignment="CENTER" layoutX="22.0" layoutY="57.0" prefHeight="44.0" prefWidth="134.0">
+            <Label id="hr" fx:id="hr" alignment="CENTER" layoutX="25.0" layoutY="58.0" prefHeight="44.0" prefWidth="134.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Label>
          </children>
       </Pane>
-      <Pane layoutX="694.0" layoutY="218.0" prefHeight="122.0" prefWidth="186.0">
+      <Pane layoutX="703.0" layoutY="218.0" prefHeight="122.0" prefWidth="186.0">
          <children>
-            <JFXTextArea id="min" fx:id="min" layoutX="44.0" layoutY="51.0" prefHeight="28.0" prefWidth="116.0" />
-            <Label layoutX="81.0" layoutY="15.0" text="MIN" textFill="#918f8f">
+            <Label layoutX="74.0" layoutY="7.0" text="MIN" textFill="#918f8f">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Rectangle id="rec1" fx:id="rec1" fill="WHITE" height="69.0" layoutX="22.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="164.0" />
+            <Label id="min" fx:id="min" alignment="CENTER" layoutX="37.0" layoutY="56.0" prefHeight="44.0" prefWidth="134.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -55,7 +61,7 @@
          </children>
       </Pane>
       <Separator layoutX="367.0" layoutY="629.0" prefHeight="0.0" prefWidth="623.0" />
-      <JFXButton buttonType="RAISED" layoutX="758.0" layoutY="662.0" onMouseClicked="#load" prefHeight="44.0" prefWidth="150.0" style="-fx-background-color: #1B6CD7; -fx-background-radius: 5em;" text="Next" textFill="WHITE">
+      <JFXButton fx:id="next" buttonType="RAISED" layoutX="758.0" layoutY="662.0" onMouseClicked="#load" prefHeight="44.0" prefWidth="150.0" style="-fx-background-color: #1B6CD7; -fx-background-radius: 5em;" text="Next" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></JFXButton>
@@ -63,9 +69,9 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></JFXButton>
-      <Pane id="_11pm" fx:id="_11pm" layoutX="679.0" layoutY="422.0" prefHeight="55.0" prefWidth="78.0" style="-fx-border-color: #1B6CD7;">
+      <Pane id="_11pm" fx:id="_1pm" layoutX="478.0" layoutY="468.0" prefHeight="55.0" prefWidth="78.0" style="-fx-border-color: #1B6CD7;">
          <children>
-            <Label layoutX="13.0" layoutY="14.0" text="11PM" textFill="#0fff4f">
+            <Label layoutX="16.0" layoutY="14.0" prefHeight="27.0" prefWidth="60.0" text="1PM" textFill="#0fff4f">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -80,22 +86,149 @@
             </ToggleButton>
          </children>
       </Pane>
-      <Pane id="_12pm" fx:id="_12pm" layoutX="525.0" layoutY="422.0" prefHeight="55.0" prefWidth="78.0" style="-fx-border-color: #1B6CD7;">
+      <Pane id="_12pm" fx:id="_12pm" layoutX="798.0" layoutY="393.0" prefHeight="55.0" prefWidth="78.0" style="-fx-border-color: #1B6CD7;">
          <children>
             <Label layoutX="13.0" layoutY="14.0" text="12PM" textFill="#0fff4f">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <ToggleButton blendMode="SOFT_LIGHT" mnemonicParsing="false" prefHeight="55.0" prefWidth="78.0" text="-">
+            <ToggleButton id="_12pm" blendMode="SOFT_LIGHT" mnemonicParsing="false" prefHeight="55.0" prefWidth="78.0" text="-" toggleGroup="$date">
                <font>
                   <Font size="1.0" />
                </font>
-               <toggleGroup>
-                  <ToggleGroup fx:id="date1" />
-               </toggleGroup>
             </ToggleButton>
          </children>
       </Pane>
+      <Spinner id="spinner" fx:id="spinner" editable="true" layoutX="908.0" layoutY="279.0" prefHeight="26.0" prefWidth="19.0" />
+      <Label layoutX="384.0" layoutY="357.0" text="Available hours : ( end of visit max 7pm)">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Pane id="_10am" fx:id="_10am" layoutX="478.0" layoutY="393.0" prefHeight="55.0" prefWidth="78.0" style="-fx-border-color: #1B6CD7;">
+         <children>
+            <Label layoutX="13.0" layoutY="14.0" text="10AM" textFill="#0fff4f">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <ToggleButton blendMode="SOFT_LIGHT" mnemonicParsing="false" prefHeight="55.0" prefWidth="78.0" text="-" toggleGroup="$date">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </ToggleButton>
+         </children>
+      </Pane>
+      <Pane id="_11pm" fx:id="_11am" layoutX="639.0" layoutY="393.0" prefHeight="55.0" prefWidth="78.0" style="-fx-border-color: #1B6CD7;">
+         <children>
+            <Label layoutX="13.0" layoutY="14.0" text="11AM" textFill="#0fff4f">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <ToggleButton blendMode="SOFT_LIGHT" mnemonicParsing="false" prefHeight="55.0" prefWidth="78.0" text="-" toggleGroup="$date">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </ToggleButton>
+         </children>
+      </Pane>
+      <Pane fx:id="_3pm" layoutX="798.0" layoutY="468.0" prefHeight="55.0" prefWidth="78.0" style="-fx-border-color: #1B6CD7;">
+         <children>
+            <Label layoutX="22.0" layoutY="14.0" prefHeight="27.0" prefWidth="51.0" text="3PM" textFill="#0fff4f">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <ToggleButton blendMode="SOFT_LIGHT" mnemonicParsing="false" prefHeight="55.0" prefWidth="78.0" text="-" toggleGroup="$date">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </ToggleButton>
+         </children>
+      </Pane>
+      <Pane id="_11pm" fx:id="_2pm" layoutX="639.0" layoutY="468.0" prefHeight="55.0" prefWidth="78.0" style="-fx-border-color: #1B6CD7;">
+         <children>
+            <Label layoutX="15.0" layoutY="14.0" prefHeight="27.0" prefWidth="49.0" text="2PM" textFill="#0fff4f">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <ToggleButton id="_2pm" blendMode="SOFT_LIGHT" mnemonicParsing="false" prefHeight="55.0" prefWidth="78.0" text="-" toggleGroup="$date">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </ToggleButton>
+         </children>
+      </Pane>
+      <Pane fx:id="_4pm" layoutX="478.0" layoutY="550.0" prefHeight="55.0" prefWidth="78.0" style="-fx-border-color: #1B6CD7;">
+         <children>
+            <Label layoutX="15.0" layoutY="14.0" prefHeight="27.0" prefWidth="49.0" text="4PM" textFill="#0fff4f">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <ToggleButton blendMode="SOFT_LIGHT" mnemonicParsing="false" prefHeight="55.0" prefWidth="78.0" text="-" toggleGroup="$date">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </ToggleButton>
+         </children>
+      </Pane>
+      <Pane id="_11pm" fx:id="_5pm" layoutX="639.0" layoutY="550.0" prefHeight="55.0" prefWidth="78.0" style="-fx-border-color: #1B6CD7;">
+         <children>
+            <Label layoutX="22.0" layoutY="14.0" prefHeight="27.0" prefWidth="51.0" text="5PM" textFill="#0fff4f">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <ToggleButton blendMode="SOFT_LIGHT" mnemonicParsing="false" prefHeight="55.0" prefWidth="78.0" text="-" toggleGroup="$date">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </ToggleButton>
+         </children>
+      </Pane>
+      <Pane id="_11pm" fx:id="_6pm" layoutX="798.0" layoutY="550.0" prefHeight="55.0" prefWidth="78.0" style="-fx-border-color: #1B6CD7;">
+         <children>
+            <Label layoutX="13.0" layoutY="14.0" text="6PM" textFill="#0fff4f">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <ToggleButton blendMode="SOFT_LIGHT" mnemonicParsing="false" prefHeight="55.0" prefWidth="78.0" text="-" toggleGroup="$date">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </ToggleButton>
+         </children>
+      </Pane>
+      <Label layoutX="726.0" layoutY="101.0" text="Select the last date of visit ">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <DatePicker id="datepicker" fx:id="datePickerE" layoutX="717.0" layoutY="132.0" prefHeight="35.0" prefWidth="220.0" stylesheets="@style_2.css" />
+      <Label fx:id="dateEError" layoutX="716.0" layoutY="178.0" prefHeight="19.0" prefWidth="150.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="dateBError" layoutX="429.0" layoutY="178.0" prefHeight="19.0" prefWidth="220.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="hrError" layoutX="490.0" layoutY="336.0" prefHeight="19.0" prefWidth="142.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="minError" layoutX="725.0" layoutY="336.0" prefHeight="19.0" prefWidth="164.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

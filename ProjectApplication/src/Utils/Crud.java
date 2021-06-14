@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
-import java.util.Date;
+import java.sql.Date;
 import java.util.LinkedList;
 import javaapplication4.TableController;
 import java.sql.Time;
@@ -206,7 +206,90 @@ public class Crud {
         
     }
     
-    
+    public static LinkedList<Compte> getUsers(String table){
+        LinkedList<Compte> c = new LinkedList<Compte>();
+        
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+       if(table == "guerite"){
+           try{
+            String sql = "SELECT * FROM guerite";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                String id = rs.getString(1);
+                String nom = rs.getString(2);
+                String prenom = rs.getString(3);
+                String email = rs.getString(4);
+                String login =  rs.getString(5);
+                String password = rs.getString(6);
+                String date = rs.getString(7);
+                int a = rs.getInt(8);
+                Guerite gu = new Guerite(nom, prenom, email, login, password, date, a);
+                c.add(gu);     
+            }
+                                            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+       }
+       
+       if(table == "responsableSite"){
+           try{
+            String sql = "SELECT * FROM responsableSite";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                String id = rs.getString(1);
+                String nom = rs.getString(2);
+                String prenom = rs.getString(3);
+                String email = rs.getString(4);
+                String login =  rs.getString(5);
+                String password = rs.getString(6);
+                String telephone = rs.getString(7);
+                int a = rs.getInt(8);
+                ResponsableSite gu = new ResponsableSite(nom, prenom, email, login, password, telephone, a);
+                c.add(gu);     
+            }
+                                            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+       }
+       
+       if(table == "userentreprise"){
+           try{
+            String sql = "SELECT * FROM userentreprise";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                String id = rs.getString(1);
+                String nom = rs.getString(2);
+                String prenom = rs.getString(3);
+                String email = rs.getString(4);
+                String login =  rs.getString(5);
+                String password = rs.getString(6);
+                String telephone = rs.getString(7);
+                boolean etat = rs.getBoolean(8);
+                UserEntreprise gu = new UserEntreprise(nom, prenom, email, login, password, telephone, etat);
+                c.add(gu);     
+            }
+                                            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+       }
+       
+        return c;
+    }
     
     public static LinkedList<Demande> getDemands(){
         
@@ -226,15 +309,14 @@ public class Crud {
                 String c = rs.getString(3);
                 String d = rs.getString(4);
                 Date e = rs.getDate(5);
-               
-                //DateFormat format1 = new SimpleDateFormat("yyyy/MM/dd");
-                //DateFormat format2 = new SimpleDateFormat("HH:mm:ss");
+                Date f = rs.getDate(6);
                 
-                int f =  rs.getInt(6);
-                String g = rs.getString(7);
-                boolean h = rs.getBoolean(8);
+                String g =  rs.getString(7);
+                String h = rs.getString(8);
+                String i = rs.getString(9);
+                boolean j = rs.getBoolean(10);
                 
-                Demande dem = new Demande(a,b,c,d,e,f,g,h); 
+                Demande dem = new Demande(b,c,d,e,f,g,h,i,j); 
                 t.add(dem);
             }
                                             
@@ -243,6 +325,63 @@ public class Crud {
         }
         
         return t;
+    }
+    
+     public static LinkedList<Site> getSites(){
+         Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        LinkedList<Site> t = new LinkedList<>();
+        
+       try{
+            String sql = "SELECT * FROM site";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                String a = rs.getString(1);
+                String b = rs.getString(2);
+                String c = rs.getString(3);
+                int d = rs.getInt(4);
+                
+                Site s = new Site(b,c,d);
+                t.add(s);
+            }
+                                            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return t;
+     }
+    
+    public static void addDemand(Demande d){
+        
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        try{
+        
+        String sql = "INSERT INTO demande" +
+                                " VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?); ";
+        conn = SingletonConnection.getconn();
+        ps = conn.prepareStatement(sql);
+        ps.setString(1, d.getNom());
+        ps.setString(2, d.getPrenom());
+        ps.setString(3, d.getCnie());
+        ps.setDate(4, d.getDateB());
+        ps.setDate(5, d.getDateE());
+        ps.setString(6, d.getTime());
+        ps.setString(7, d.getUe());
+        ps.setString(8, d.getEntreprise());
+        ps.setBoolean(9, d.isEtat());
+        ps.executeUpdate();
+                                        
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+              
     }
         
 }

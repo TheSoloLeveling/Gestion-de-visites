@@ -86,7 +86,7 @@ public class NewClass implements Initializable {
         DateFormat format2 = new SimpleDateFormat("HH:mm:ss");
         
         
-        String date[] = format1.format(Crud.getDemands().get(index).getDate()).split("/");
+        String date[] = format1.format(Crud.getDemands().get(index).getDateB()).split("/");
         String time1 = String.valueOf(Crud.getDemands().get(index).getTime());
         time.setText(time1);
         year.setText(date[0]);

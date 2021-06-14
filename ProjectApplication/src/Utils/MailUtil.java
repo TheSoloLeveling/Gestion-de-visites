@@ -17,7 +17,9 @@ import javax.mail.internet.MimeMessage;
  */
 public class MailUtil {
     
-     public static void sendMail(String recepient) throws Exception {
+    public static String customMessage = null;
+    
+    public static void sendMail(String recepient) throws Exception {
         System.out.println("Preparing to send email");
         Properties properties = new Properties();
 
@@ -44,20 +46,20 @@ public class MailUtil {
         });
 
         //Prepare email message
-        Message message = prepareMessage(session, myAccountEmail, recepient);
+        Message message = prepareMessage(session, myAccountEmail, recepient, customMessage);
 
         //Send mail
         Transport.send(message);
         System.out.println("Message sent successfully");
     }
 
-    private static Message prepareMessage(Session session, String myAccountEmail, String recepient) {
+    private static Message prepareMessage(Session session, String myAccountEmail, String recepient, String m) {
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            message.setSubject("My First Email from Java App");
-            String htmlCode = "<h1> WE LOVE JAVA </h1> <br/> <h2><b>Next Line </b></h2>";
+            message.setSubject("Nouvelle demande");
+            String htmlCode = m;
             message.setContent(htmlCode, "text/html");
             return message;
         } catch (Exception ex) {
@@ -66,4 +68,21 @@ public class MailUtil {
         return null;
     }
     
+    public static String ueMessage(Demande d){
+        
+        return "Une nouvelle Demande a été ajouté, consulter l'application pour la traiter\n"
+                + "Informations demande : " 
+                + "-Demande{" + "id=" + d.getId() +
+                ", nom=" + d.getNom() +
+                ", prenom=" + d.getPrenom() +
+                ", cnie=" + d.getCnie() +
+                ", dateB=" + d.getDateB() +
+                ", dateE=" + d.getDateE() +
+                ", time=" + d.getTime() + 
+                ", ue=" + d.getUe() + 
+                ", entreprise=" 
+                + d.getEntreprise() + 
+                ", etat=" + 
+                d.isEtat() + '}';
+    }
 }
