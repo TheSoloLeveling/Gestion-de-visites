@@ -7,8 +7,10 @@ package javaapplication4;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXToggleButton;
+import java.awt.Color;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,6 +38,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -164,6 +167,11 @@ public class FXML1Controller implements Initializable {
     private ImageView im4;
         @FXML
     private ImageView im5;
+        
+        @FXML
+    private Text letter;
+        @FXML
+    private Pane pdprofil;
     
    private Image img1 = new Image("/icons/projects.png") ;    
    private Image img2 =new Image("/icons/reliabilty.png") ;   ;    
@@ -196,7 +204,20 @@ public class FXML1Controller implements Initializable {
             item1.setVisible(false);
         }
        
+        Random rand = new Random();
         
+        float r = (float)(rand.nextFloat() / 2f + 0.5);
+        float g = (float)(rand.nextFloat() / 2f + 0.5);
+        float b = (float) (rand.nextFloat() / 2f + 0.5);
+        // random brighter color.
+        
+        Color your_color = new Color(r,g,b);
+
+        String hex = "#"+Integer.toHexString(your_color.getRGB()).substring(2);
+       
+        pdprofil.setStyle("-fx-background-color:"+ hex +";");
+        
+        letter.setText(Character.toString(MainController.actualAccount.getNom().charAt(0)));
         
          load("reda") ;
         dark() ; 

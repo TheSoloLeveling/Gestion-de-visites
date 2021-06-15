@@ -383,7 +383,7 @@ public class Crud {
                 String i = rs.getString(9);
                 int j = rs.getInt(10);
                 
-                Demande dem = new Demande(b,c,d,e,f,g,h,i,j); 
+                Demande dem = new Demande(a,b,c,d,e,f,g,h,i,j); 
                 t.add(dem);
             }
                                             
@@ -456,7 +456,7 @@ public class Crud {
             a = 1;
         else if (etat.equals("Demand Rejected"))
             a = 0;
-        
+          
              String sql = "update demande set etat=? where id = ?" ; 
        Connection       conn = SingletonConnection.getconn();
        try{

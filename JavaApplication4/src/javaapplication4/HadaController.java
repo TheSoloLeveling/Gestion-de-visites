@@ -133,6 +133,7 @@ private VBox pnl_scroll ;
                 try{
                  lol =  state.getSelectionModel().getSelectedItem().toString() ;
                  System.out.println("state eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee: "+lol);
+                 System.out.println("id eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee: "+id.getText());
                 }catch(Exception e){ e.printStackTrace();}
                 if(!lol.equals("")){
                     Crud.updateUser(lol, id.getText());

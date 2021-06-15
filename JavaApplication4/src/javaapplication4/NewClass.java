@@ -83,7 +83,7 @@ public class NewClass implements Initializable {
         
          
         
-        id.setText(Crud.getDemands().get(index).getId());
+       
         entreprise.setText(Crud.getDemands().get(index).getEntreprise());
         
         DateFormat format1 = new SimpleDateFormat("yyyy/MM/dd");
@@ -97,6 +97,8 @@ public class NewClass implements Initializable {
         month.setText(date[1]);
         day.setText(date[2]);
         
+        id.setText(Crud.getDemands().get(index).getId());
+        System.out.println(id.getText());
         if(Crud.getDemands().get(index).isEtat() == 1)
             jj.setText("Demand Accepted");
         else if (Crud.getDemands().get(index).isEtat() == -1)

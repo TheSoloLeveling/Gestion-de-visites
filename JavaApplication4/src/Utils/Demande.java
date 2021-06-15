@@ -35,6 +35,18 @@ public class Demande {
         this.entreprise = entreprise;
         this.etat = etat;
     }
+    public Demande(String id, String nom, String prenom, String cnie, Date dateB, Date dateE, String time, String ue, String entreprise, int etat) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.cnie = cnie;
+        this.dateB = dateB;
+        this.dateE = dateE;
+        this.time = time;
+        this.ue = ue;
+        this.entreprise = entreprise;
+        this.etat = etat;
+    }
     
     public Demande() {
         
