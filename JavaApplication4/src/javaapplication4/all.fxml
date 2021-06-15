@@ -18,7 +18,7 @@
       <BorderPane id="Hadi" fx:id="Hadi" layoutX="243.0" layoutY="123.0" prefHeight="538.0" prefWidth="1138.0" />
       <Pane fx:id="layer2" layoutY="185.0" prefHeight="561.0" prefWidth="322.0" style="-fx-background-color: linear-gradient(to right,#795AF3 ,#3929E0);">
          <children>
-            <JFXButton id="bt4" fx:id="bt41" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-6.0" layoutY="298.0" onMouseClicked="#loaditem4" prefHeight="43.0" prefWidth="332.0" ripplerFill="#bfadf8" text="User Management" textFill="WHITE">
+            <JFXButton id="bt5" fx:id="bt5" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-6.0" layoutY="298.0" onMouseClicked="#loaditem5" prefHeight="43.0" prefWidth="332.0" ripplerFill="#bfadf8" text="User Management" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -26,7 +26,7 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton id="bt5" fx:id="bt5" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-16.0" layoutY="517.0" prefHeight="43.0" prefWidth="337.0" ripplerFill="#bfadf8" text="About" textFill="WHITE">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-16.0" layoutY="517.0" prefHeight="43.0" prefWidth="337.0" ripplerFill="#bfadf8" text="About" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>

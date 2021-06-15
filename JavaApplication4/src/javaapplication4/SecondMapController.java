@@ -74,18 +74,59 @@ public class JavaBridge
 }
      @FXML
    private void  close(){
-      
+      String a = FXML3Controller.nn ; 
+      String b = FXML3Controller.op ;
+       String c = FXML3Controller.no;
       webView.getScene().getWindow().hide();
-        String sql="insert into site.site values(?,?)" ;
+      if(b.equals("add")){
+        String sql="insert into site.site values(?,?,?)" ;
     Connection cnn =SingletonConnection.getconn() ;
     try{
     PreparedStatement ps =cnn.prepareStatement(sql) ; 
     ps.setDouble(1, SecondMapController.lt);
     ps.setDouble(2, SecondMapController.ln);
+     ps.setString(3, a);
+     FXML3Controller.nn="" ; 
+     FXML3Controller.op="" ; 
     ps.executeUpdate() ;
     } catch(Exception ex){
       ex.printStackTrace();
     }
+      }
+       if(b.equals("update") &&  c.isEmpty()){
+           System.out.print(SecondMapController.ln +" "+SecondMapController.ln);
+        String sql="update  site  set lat = '"+SecondMapController.ln+"'"+ ", lang='"+SecondMapController.lt+"'"+ " where name ='"+a+"'" ;
+    Connection cnn =SingletonConnection.getconn() ;
+    try{
+    PreparedStatement ps =cnn.prepareStatement(sql) ; 
+   
+     
+     FXML3Controller.nn="" ; 
+     FXML3Controller.op="" ;
+    ps.executeUpdate() ;
+    System.out.print(sql);
+    } catch(Exception ex){
+      ex.printStackTrace();
+    }
+      }
+        if(b.equals("update") &&  !c.isEmpty()){
+        String sql="update  site.site  set lang = ? , lat=? , name=? where name =?" ;
+    Connection cnn =SingletonConnection.getconn() ;
+    try{
+    PreparedStatement ps =cnn.prepareStatement(sql) ; 
+    ps.setDouble(1, SecondMapController.lt);
+    ps.setDouble(2, SecondMapController.ln);
+     ps.setString(3, c);
+     ps.setString(4, a);
+     FXML3Controller.nn="" ; 
+     FXML3Controller.no="" ; 
+     FXML3Controller.op="" ;
+    ps.executeUpdate() ;
+    } catch(Exception ex){
+      ex.printStackTrace();
+    }
+      }
+    
      webEngine.load("http://localhost/server/ez.php");  
   }
 }

@@ -411,7 +411,7 @@ public class MainController implements Initializable {
                 dashInterface = "user2.fxml";
                 break;
             case "superadmin":
-                dashInterface = "Dash.fxml";
+                dashInterface = "all.fxml";
                 break;
             case "guerite":
                 dashInterface = "user2.fxml";

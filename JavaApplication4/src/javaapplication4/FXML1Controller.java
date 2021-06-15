@@ -44,6 +44,8 @@ import javafx.util.Duration;
  * @author hp
  */
 public class FXML1Controller implements Initializable {
+    
+    static String profile="ad" ; 
 
     @FXML
     private JFXButton bt1;
@@ -165,6 +167,14 @@ public class FXML1Controller implements Initializable {
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        System.out.print("haaddi"+profile);
+        if(profile.equals("gr")){
+            System.out.print("lol");
+            item1.setVisible(false);
+        }
+       
+        
+        
          load("reda") ;
         dark() ; 
         bt1.setText("");
@@ -207,14 +217,19 @@ public class FXML1Controller implements Initializable {
                 openMenu.play();
                  bt1.setText("Main Menu");
          bt2.setText("Demand Management");
+        
           bt3.setText("  Site Management");
            bt4.setText("Charl List");
-          bt5.setText("   About");
+          bt5.setText("User Management");
               bt1.setDisable(false);
          bt2.setDisable(false);
           bt3.setDisable(false);
            bt4.setDisable(false);
           bt5.setDisable(false);
+          
+            if(profile.equals("gr")){
+             bt5.setVisible(false);
+         }
             }else{
                  layer2.setStyle("-fx-background-color: linear-gradient(to right,#795AF3 ,#3929E0)");
                 closeMenu.setToX(0);

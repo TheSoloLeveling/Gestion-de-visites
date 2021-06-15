@@ -74,8 +74,15 @@ import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import java.sql.*;
+import javafx.scene.control.Pagination;
+import javafx.scene.layout.BorderPane;
 
 public class TableController implements Initializable {
+    
+    String a =FXML1Controller.profile ; 
+     
+    
+    
     String textto ="" ; 
     @FXML
     private TableView tableView1;
@@ -93,7 +100,8 @@ public class TableController implements Initializable {
     private Button btnNew;
     private final JavaBridge bridge = new JavaBridge();
 
-       final URL urlGoogleMaps = getClass().getResource("re.html");
+                         
+       final URL urlGoogleMaps = getClass().getResource(a+".html");
        
            private final JavaBridge1 bridge1 = new JavaBridge1();
 
@@ -125,7 +133,16 @@ WebView webview1 ;
     //private Button = 
     static Random random = new Random();
     public static boolean isAdd; 
-    
+    private Pagination pagination;
+public int itemsPerPage() {
+return 1;
+}
+public int rowsPerPage() {
+return 5;
+}
+
+
+
     
     public String getToggleButtonName(){
         if (accounts.getSelectedToggle() == UE)
@@ -254,7 +271,6 @@ WebView webview1 ;
     
     public void createTable(String[] headers, TableView table, ObservableList<Record> data){
        
-        //Editable columns
         for(int i=0; i<headers.length; i++){
             TableColumn col = new TableColumn(headers[i]);
             col.setCellValueFactory(
@@ -262,7 +278,10 @@ WebView webview1 ;
                             "value_" + String.valueOf(i)));
             table.getColumns().add(col);
         }
-            
+         if(data!=null){
+            System.out.print(data);
+         }
+ 
         table.setItems(data);
     }
 
@@ -322,6 +341,7 @@ WebView webview1 ;
             String etat = rs.getString(8);
             Record newRec = new Record(nom, prenom, email, login, pass, telephone, etat);
             data1.add(newRec);
+            
 
         }
             rs.close();
@@ -411,10 +431,11 @@ WebView webview1 ;
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        
           WebEngine webEngine = webView.getEngine();
      webEngine.load(urlGoogleMaps.toExternalForm());
        webEngine.getLoadWorker().stateProperty().addListener((observable, oldValue, newValue) ->
-{
+{  
     JSObject window = (JSObject) webEngine.executeScript("window");
     window.setMember("java", bridge);
     webEngine.executeScript("console.log = function(message)\n" +
@@ -453,6 +474,7 @@ WebView webview1 ;
             
             tableView1.setVisible(false);
             String[] header1 = {"nom", "prenom", "email", "login", "motDePasse", "telephone", "etat"};
+            
             createTable(header1, tableView1, data1);
             tableView2.setVisible(false);
             String[] header2 = {"nom", "prenom", "email", "login", "motDePasse", "telephone", "Site"};
@@ -968,6 +990,14 @@ WebView webview1 ;
     
     
     }
+}
+private Node createPage(int pageIndex) {
+
+    int fromIndex = pageIndex * 4;
+    int toIndex = Math.min(fromIndex + 4, data1.size());
+     tableView1.setItems(FXCollections.observableArrayList(data1.subList(fromIndex, toIndex)));
+
+    return new BorderPane(tableView1);
 }
 
 }

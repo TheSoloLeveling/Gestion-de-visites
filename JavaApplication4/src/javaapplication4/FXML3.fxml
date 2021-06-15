@@ -22,13 +22,15 @@
       <HBox layoutX="74.0" layoutY="31.0" prefHeight="87.0" prefWidth="190.0" style="-fx-background-color: #ff8900; -fx-background-radius: 5;" />
       <Pane id="layer2" fx:id="layer2" layoutX="1312.0" layoutY="-7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="676.0" prefWidth="322.0" style="-fx-background-color: linear-gradient(to right,#795AF3 ,#3929E0);">
          <children>
-            <JFXComboBox focusColor="BLACK" layoutX="53.0" layoutY="339.0" prefHeight="25.0" prefWidth="190.0" promptText="Select the state " style="-fx-prompt-text-fill: white;" unFocusColor="WHITE" />
             <Button id="btnsignin" fx:id="btnsignin" layoutX="64.0" layoutY="451.0" mnemonicParsing="false" onMouseClicked="#btn" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: white; -fx-background-radius: 200; -fx-text-fill: blue;" stylesheets="@style.css" text="Save">
                <effect>
                   <Glow />
                </effect>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
-            <TextField id="u1" fx:id="u1" layoutX="47.0" layoutY="227.0" prefHeight="31.0" prefWidth="190.0" promptText="Site Name" style="-fx-background-color: transparent; -fx-prompt-text-fill: white; -fx-border-color: #ffff; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: #7173B2;" />
+            <TextField id="u1" fx:id="u1" layoutX="47.0" layoutY="289.0" prefHeight="31.0" prefWidth="190.0" promptText="Site Name" style="-fx-background-color: transparent; -fx-prompt-text-fill: white; -fx-border-color: #ffff; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: #7173B2;" />
          </children>
       </Pane>
       <Label layoutX="76.0" layoutY="30.0" text="🏢" textFill="WHITE">
@@ -76,7 +78,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Circle fill="#ec2020" layoutX="32.0" layoutY="335.0" onMouseClicked="#Slidemenu" radius="44.0" stroke="#ff2b2b" strokeType="INSIDE">
+      <Circle id="a" fx:id="a" fill="#30eb21" layoutX="32.0" layoutY="289.0" onMouseClicked="#Slidemenu" radius="44.0" stroke="#30ff2b" strokeType="INSIDE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -84,12 +86,12 @@
             <DropShadow />
          </effect>
       </Circle>
-      <Label layoutX="15.0" layoutY="294.0" onMouseClicked="#Slidemenu" text="+" textFill="WHITE">
+      <Label id="lb1" fx:id="lb1" layoutX="15.0" layoutY="248.0" onMouseClicked="#Slidemenu" text="+" textFill="WHITE">
          <font>
             <Font size="49.0" />
          </font>
       </Label>
-      <Circle fill="#0eec2f" layoutX="29.0" layoutY="194.0" radius="44.0" stroke="#2bfc3c" strokeType="INSIDE">
+      <Circle fill="#0e78eb" layoutX="29.0" layoutY="177.0" radius="44.0" stroke="#2d61fa" strokeType="INSIDE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -97,10 +99,63 @@
             <DropShadow />
          </effect>
       </Circle>
-      <Label layoutX="12.0" layoutY="168.0" onMouseClicked="#refresh" text="🔄" textFill="WHITE">
+      <Label layoutX="12.0" layoutY="151.0" onMouseClicked="#refresh" text="🔄" textFill="WHITE">
          <font>
             <Font size="34.0" />
          </font>
       </Label>
+      <Circle id="b" fx:id="b" fill="#fa6b0c" layoutX="38.0" layoutY="401.0" onMouseClicked="#Slidemenu2" radius="44.0" stroke="#ff2b2b" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Circle>
+      <Label layoutX="26.0" layoutY="383.0" text="🔧" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Circle id="c" fx:id="c" fill="#fa0c0c" layoutX="31.0" layoutY="520.0" onMouseClicked="#Slidemenu1" radius="44.0" stroke="#ff2b2b" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Circle>
+      <Label layoutX="15.0" layoutY="496.0" text="✄" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Pane id="layerdelete" fx:id="layerdelete" layoutX="1651.0" layoutY="-6.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="676.0" prefWidth="322.0" style="-fx-background-color: linear-gradient(to right,#795AF3 ,#3929E0);">
+         <children>
+            <Button id="btndelete" fx:id="btndelete" layoutX="64.0" layoutY="451.0" mnemonicParsing="false" onMouseClicked="#btn1" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: white; -fx-background-radius: 200; -fx-text-fill: blue;" stylesheets="@style.css" text="Delete">
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <JFXComboBox id="jc" fx:id="jc" focusColor="WHITE" layoutX="50.0" layoutY="295.0" prefHeight="25.0" prefWidth="184.0" promptText="Site Name" style="-fx-prompt-text-fill: white;" unFocusColor="WHITE" />
+         </children>
+      </Pane>
+      <Pane id="layer21" fx:id="layer21" layoutX="1992.0" layoutY="-9.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="676.0" prefWidth="322.0" style="-fx-background-color: linear-gradient(to right,#795AF3 ,#3929E0);">
+         <children>
+            <Button id="btnsignin" fx:id="btnsignin1" layoutX="64.0" layoutY="451.0" mnemonicParsing="false" onMouseClicked="#btn2" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: white; -fx-background-radius: 200; -fx-text-fill: blue;" stylesheets="@style.css" text="Update">
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <TextField id="u1" fx:id="u11" layoutX="47.0" layoutY="289.0" prefHeight="31.0" prefWidth="190.0" promptText="Site Name" style="-fx-background-color: transparent; -fx-prompt-text-fill: white; -fx-border-color: #ffff; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: #7173B2;" />
+            <TextField id="u1" fx:id="u111" layoutX="44.0" layoutY="360.0" prefHeight="31.0" prefWidth="190.0" promptText="New Name (Optional)" style="-fx-background-color: transparent; -fx-prompt-text-fill: white; -fx-border-color: #ffff; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: #7173B2;" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

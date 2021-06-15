@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
-import javafx.fxml.FXML;
+import javafx.fxml.FXML;             
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;

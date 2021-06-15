@@ -32,7 +32,7 @@ public class Mainn extends Application {
     public void start(Stage stage) throws Exception {
     
         
-        Parent root = FXMLLoader.load (getClass().getResource("FXML4.fxml"));
+        Parent root = FXMLLoader.load (getClass().getResource("SplashScreen.fxml"));
         Scene scene = new Scene(root);
         stage.initStyle(StageStyle.TRANSPARENT);
         
