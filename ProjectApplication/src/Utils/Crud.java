@@ -124,8 +124,8 @@ public class Crud {
             ps.setString(3, u.getEmail());
             ps.setString(4, u.getLogin());
             ps.setString(5, u.getMotDePasse());
-            ps.setString(6, u.getDate());
-            ps.setInt(7, u.getCin());
+            ps.setDate(6, u.getDate());
+            ps.setString(7, u.getCin());
             ps.executeUpdate();
                                         
         }catch(Exception e){
@@ -186,6 +186,29 @@ public class Crud {
             Admin u = (Admin) c;
             String sql = "update " + table +
                     " set nom = ?, prenom = ?, email = ?,"
+                    + "login = ?, motDePasse = ?, telephone = ?, idSite = ? where login = ?";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, u.getNom());
+            ps.setString(2, u.getPrenom());
+            ps.setString(3, u.getEmail());
+            ps.setString(4, u.getLogin());
+            ps.setString(5, u.getMotDePasse());
+            ps.setString(6, u.getTelephone());
+            ps.setInt(7, u.getIdSite());
+            ps.setString(8, login);
+            ps.executeUpdate();
+                                        
+        }catch(Exception e){
+            e.printStackTrace();
+        }           
+        }
+        
+        if (table.equals("superadmin")){
+            try{
+            SuperAdmin u = (SuperAdmin) c;
+            String sql = "update " + table +
+                    " set nom = ?, prenom = ?, email = ?,"
                     + "login = ?, motDePasse = ?, telephone = ? where login = ?";
             conn = SingletonConnection.getconn();
             ps = conn.prepareStatement(sql);
@@ -203,7 +226,50 @@ public class Crud {
         }
         }
         
+        if (table.equals("guerite")){
+            try{
+            Guerite u = (Guerite) c;
+            String sql = "update " + table +
+                    " set nom = ?, prenom = ?, email = ?,"
+                    + "login = ?, motDePasse = ?, CIN = ? where login = ?";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, u.getNom());
+            ps.setString(2, u.getPrenom());
+            ps.setString(3, u.getEmail());
+            ps.setString(4, u.getLogin());
+            ps.setString(5, u.getMotDePasse());
+            ps.setString(6, u.getCin());
+            ps.setString(7, login);
+            ps.executeUpdate();
+                                        
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        }
         
+        if (table.equals("responsablesite")){
+            try{
+            ResponsableSite u = (ResponsableSite) c;
+            String sql = "update " + table +
+                    " set nom = ?, prenom = ?, email = ?,"
+                    + "login = ?, motDePasse = ?, telephone = ?, idSite = ? where login = ?";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, u.getNom());
+            ps.setString(2, u.getPrenom());
+            ps.setString(3, u.getEmail());
+            ps.setString(4, u.getLogin());
+            ps.setString(5, u.getMotDePasse());
+            ps.setString(6, u.getTelephone());
+            ps.setInt(7, u.getIdSite());
+            ps.setString(8, login);
+            ps.executeUpdate();
+                                        
+        }catch(Exception e){
+            e.printStackTrace();
+        }           
+        }
     }
     
     public static LinkedList<Compte> getUsers(String table){
@@ -226,8 +292,8 @@ public class Crud {
                 String email = rs.getString(4);
                 String login =  rs.getString(5);
                 String password = rs.getString(6);
-                String date = rs.getString(7);
-                int a = rs.getInt(8);
+                Date date = rs.getDate(7);
+                String a = rs.getString(8);
                 Guerite gu = new Guerite(nom, prenom, email, login, password, date, a);
                 c.add(gu);     
             }

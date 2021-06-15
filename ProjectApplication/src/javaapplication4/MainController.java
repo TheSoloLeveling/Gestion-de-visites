@@ -235,8 +235,8 @@ public class MainController implements Initializable {
                     actualAccount = new SuperAdmin(firstName, lastName, email, login, pwd, telephone);
                 }
                 else if(table.equals("guerite")){
-                    String date = rs.getString(7);
-                    int cin = rs.getInt(8);
+                    Date date = rs.getDate(7);
+                    String cin = rs.getString(8);
                     actualAccount = new Guerite(firstName, lastName, email, login, pwd, date, cin);
                 }
                          

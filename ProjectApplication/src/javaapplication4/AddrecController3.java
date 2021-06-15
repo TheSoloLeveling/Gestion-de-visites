@@ -72,13 +72,14 @@ public class AddrecController3 implements Initializable {
     
 
     public void getTable(String text, String nom, String prenom, String email, String login, String password, String telephone){
-        table = nom;
-        temp1 = text;
-        temp2 = prenom;
-        temp3 = email;
+        table = text;
         temp4 = login;
-        temp5 = password;
-        temp6 = telephone;
+        firstName.setText(nom);
+            lastName.setText(prenom);
+            this.email.setText(email);
+            this.login.setText(login);
+            this.password.setText(password);
+            phoneNumber.setText(telephone);
         
     }
 
@@ -110,6 +111,7 @@ public class AddrecController3 implements Initializable {
                String f = phoneNumber.getText();
               Compte compte = new SuperAdmin(a,b,c,d,e,f);
               Crud.updateUser(table, temp4, compte);
+              System.out.println("User Updated");
               close();
          }
              };
@@ -129,13 +131,7 @@ public class AddrecController3 implements Initializable {
             update.setDisable(false);
             add.setVisible(false);
             add.setDisable(true);
-            
-            firstName.setText(temp1);
-            lastName.setText(temp2);
-            email.setText(temp3);
-            login.setText(temp4);
-            password.setText(temp5);
-            phoneNumber.setText(temp6);
+
             
         }
         else {
@@ -147,8 +143,6 @@ public class AddrecController3 implements Initializable {
             
         
     }   
-    
-  
     
     
     @FXML
