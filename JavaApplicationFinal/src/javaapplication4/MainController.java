@@ -11,7 +11,9 @@ package javaapplication4;
 
 import Utils.Admin;
 import Utils.Compte;
+import Utils.Crud;
 import Utils.Guerite;
+import Utils.MailUtil;
 import Utils.ResponsableSite;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -112,6 +114,8 @@ public class MainController implements Initializable {
     @FXML
     private Button signin;
     @FXML
+    private Label requestError;
+    @FXML
     private Label l1;
     @FXML
     private Label l2;
@@ -161,6 +165,10 @@ public class MainController implements Initializable {
     private TextField u2;
     @FXML
     private TextField u3;
+    @FXML
+    private TextField u;
+    @FXML
+    private TextField u111;
          @FXML
     private PasswordField p1;
   
@@ -220,6 +228,11 @@ public class MainController implements Initializable {
                     actualAccount = new ResponsableSite(firstName, lastName, email, login, pwd, telephone, idSite);
                 }
                 else if(table.equals("userentreprise")){
+                    if(!rs.getBoolean("Etat")){
+                        lbError.setTextFill(Color.TOMATO);
+                        lbError.setText("Account disabled");
+                        return "null";
+                    }
                     String telephone = rs.getString(7);
                     boolean etat = rs.getBoolean(8);
                     actualAccount = new UserEntreprise(firstName, lastName, email, login, pwd, telephone, etat);
@@ -461,18 +474,22 @@ public class MainController implements Initializable {
     }
   @FXML
      private void btnrequest(){
+         requestError.setVisible(false);
          if(cnt%2==0){
              u1.setText("") ;
-         u1.setPromptText("ID");
-         n5.setText("Give us  your ID");
+         u1.setPromptText("First Name");
+         p1.setPromptText("Last Name");
+         n5.setText("Give us  your Informations");
+         u111.setVisible(true);
+         u.setVisible(true);
          n2.setVisible(false);
          n1.setVisible(false);
          n3.setVisible(false);
          n4.setVisible(false);
          btnsignin.setVisible(false);
-         p1.setVisible(false);
+         lbError.setVisible(false);
          
-          request.setLayoutY(250);
+          request.setLayoutY(390);
          TranslateTransition layer2T=new TranslateTransition(new Duration(350), layer2);
          TranslateTransition layer3T=new TranslateTransition(new Duration(350), layer3);
          layer2T.setToX(483);
@@ -483,16 +500,28 @@ public class MainController implements Initializable {
          cnt++ ; 
      }
          else{
+             lbError.setVisible(true);
+             lbError.setText("");
+             String firstName = u1.getText();
+             String lastName = p1.getText();
+             String email = u111.getText();
+             String tel = u.getText();
+            
+             
                close.setLayoutX(450);
             u1.setText("") ;
                   u1.setPromptText("UserName");
          n5.setText("Welcome Back");
+         u111.setVisible(false);
+         u.setVisible(false);
          n2.setVisible(true);
          n1.setVisible(true);
          n3.setVisible(true);
          n4.setVisible(true);
          btnsignin.setVisible(true);
          p1.setVisible(true);
+         u1.setText("");
+         p1.setText("");
           close.setVisible(true);
           request.setLayoutY(370);
          TranslateTransition layer2T=new TranslateTransition(new Duration(350), layer2);
@@ -501,6 +530,33 @@ public class MainController implements Initializable {
          layer3T.setToX(0);
          layer2T.play();
          layer3T.play();
+         
+         if (!firstName.trim().isEmpty() && !lastName.trim().isEmpty() && !email.trim().isEmpty() && !tel.trim().isEmpty()){
+                 requestError.setTextFill(Color.GREEN);
+                 requestError.setVisible(true);
+                 
+                 MailUtil.customMessage = "Nouvelle demande de compte -->\n FirstName : "
+                         + "" + firstName + "\nLastName : " + lastName + "\nEmail : " + email + "\n"
+                         + "Telephone : " + tel + "\nVerifier la validite des donnes avant"
+                         + " de creer le compte utilisateur entreprise";
+                 
+                 try {
+                    
+                    /*for(int i = 0; i < Crud.getUsers("superadmin").size(); i++){
+                        MailUtil.sendMail(Crud.getUsers("superadmin").get(i).getEmail());
+                    }*/
+                   /* for(int i = 0; i < Crud.getUsers("responsablesite").size(); i++){
+                        MailUtil.sendMail(Crud.getUsers("responsablesite").get(i).getEmail());
+                    }*/
+                    for(int i = 0; i < Crud.getUsers("admin").size(); i++){
+                        MailUtil.sendMail(Crud.getUsers("admin").get(i).getEmail());
+                    }
+                    
+                } catch (Exception ex) {
+                    Logger.getLogger(User2Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             }
+             
    
          cnt++ ;
              }
