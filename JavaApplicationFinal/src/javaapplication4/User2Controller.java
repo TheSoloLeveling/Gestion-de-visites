@@ -224,12 +224,12 @@ public class User2Controller implements Initializable {
                 Crud.addDemand(d);
                 System.out.println("DEMAND CREATED");
                 try {
-                    /*for(int i = 0; i < Crud.getUsers("guerite").size(); i++){
+                    for(int i = 0; i < Crud.getUsers("guerite").size(); i++){
                         MailUtil.customMessage = MailUtil.ueMessage(d);
                         MailUtil.sendMail(Crud.getUsers("guerite").get(i).getEmail());
-                        MailUtil.sendMail(Crud.getUsers("responsableSite").get(i).getEmail());
+                        //MailUtil.sendMail(Crud.getUsers("responsableSite").get(i).getEmail());
                     }
-                    */
+                    
                 } catch (Exception ex) {
                     Logger.getLogger(User2Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }

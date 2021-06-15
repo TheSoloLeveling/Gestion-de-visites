@@ -152,6 +152,5 @@
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="1076.0" layoutY="161.0" mnemonicParsing="false" onAction="#go" text="Button" />
    </children>
 </AnchorPane>

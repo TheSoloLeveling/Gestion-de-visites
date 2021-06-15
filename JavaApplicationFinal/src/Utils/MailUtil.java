@@ -70,9 +70,10 @@ public class MailUtil {
     
     public static String ueMessage(Demande d){
         
-        return "Une nouvelle Demande a été ajouté, consulter l'application pour la traiter\n"
+        return "Une nouvelle Demande a ete ajouté, consulter l'application pour la traiter\n"
                 + "Informations demande : " 
-                + "-Demande{" + "id=" + d.getId() +
+               
+                +
                 ", nom=" + d.getNom() +
                 ", prenom=" + d.getPrenom() +
                 ", cnie=" + d.getCnie() +

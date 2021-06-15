@@ -59,8 +59,8 @@
             <Glow />
          </effect>
       </Button>
-      <WebView id="webView" fx:id="webView" layoutX="10.0" layoutY="18.0" prefHeight="584.0" prefWidth="136.0" />
-      <WebView id="webview1" fx:id="webview1" layoutX="956.0" layoutY="79.0" prefHeight="472.0" prefWidth="200.0" />
+      <WebView id="webView" fx:id="webView" layoutX="-70.0" layoutY="18.0" prefHeight="584.0" prefWidth="216.0" />
+      <WebView id="webview1" fx:id="webview1" layoutX="956.0" layoutY="79.0" prefHeight="472.0" prefWidth="216.0" />
       <Button id="btnDel" fx:id="refresh" layoutX="464.0" layoutY="29.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0); -fx-background-radius: 200; -fx-text-fill: white;" stylesheets="@style.css" text="Refresh tables">
          <effect>
             <Glow />

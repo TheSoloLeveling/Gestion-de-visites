@@ -405,7 +405,7 @@ public class MainController implements Initializable {
                 dashInterface = "all.fxml";
                 break;
             case "userentreprise":
-                dashInterface = "FXML4.fxml";
+                dashInterface = "utilisateur.fxml";
                 break;
             case "admin":
                 dashInterface = "all.fxml";

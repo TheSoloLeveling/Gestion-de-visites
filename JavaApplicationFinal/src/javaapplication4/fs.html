@@ -87,38 +87,124 @@ body {
 .red    { background-color: red; }
 .yellow { background-color: yellow; }
 .green  { background-color: green; }
-.blue   { background-color: blue; }
-.orange   { background-color: orange; }
+
 
 ul {
   list-style-type: none;
   padding: 0;
 }
+
+.tooltiptext1 {
+
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+
+  right: 50%;
+  top: 130px;
+  
+}
+
+.tooltiptext2 {
+
+width: 120px;
+background-color: black;
+color: #fff;
+text-align: center;
+padding: 5px 0;
+border-radius: 6px;
+
+/* Position the tooltip text - see examples below! */
+position: absolute;
+
+right: 50%;
+top: 190px;
+
+}
+
+.tooltiptext3 {
+
+width: 120px;
+background-color: black;
+color: #fff;
+text-align: center;
+padding: 5px 0;
+border-radius: 6px;
+
+/* Position the tooltip text - see examples below! */
+position: absolute;
+
+right: 50%;
+top: 250px;
+
+}
+
         </style>
 </head>
 <body>
     
     <div class="fixed-action-btn">
-
-     <a id="btn-main" class="btn-primary btn-floating btn-large red" data-active-text="+" data-text="+"></a>
-  
+      <a id="btn-main" class="btn-primary btn-floating btn-large red" data-active-text="≡" data-text="≡"></a>
       <ul>
-        <br>
-    
-     
+      
+      <br>
         <li>
-          <a class="btn-secondary btn-floating blue"   onclick="fc4()">♚</a>
+          <a class="btn-secondary btn-floating red"  id="a" onclick="fc1()">+</a>
+          
         </li>
         <li>
-          <a class="btn-secondary btn-floating orange"  onclick="fc5()">♚</a>
+          <a class="btn-secondary btn-floating yellow"  id="b" onclick="fc2()">🔧</a>
         </li>
+        <li>
+          <a class="btn-secondary btn-floating green" id="c"  onclick="fc3()">✄</a>
+        </li>
+        
       </ul>
     </div>
+    <br>
+    <br>
+    <br>
+
+      <div id="popup1" style="display: none"   class="tooltiptext1" >Add</div>
+      <div id="popup2" style="display: none"   class="tooltiptext2" >Update</div>
+      <div id="popup3" style="display: none"   class="tooltiptext3" >Delete</div>
       
 </body>
 </html>
 
 <script>  
+var e = document.getElementById('a');
+e.onmouseover = function() {
+  document.getElementById('popup1').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup1').style.display = 'none';
+}
+var e = document.getElementById('b');
+e.onmouseover = function() {
+  document.getElementById('popup2').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup2').style.display = 'none';
+}
+var e = document.getElementById('c');
+e.onmouseover = function() {
+  document.getElementById('popup3').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup3').style.display = 'none';
+}
+
+
+
+
+
 
 $('#btn-main').on('touchstart click', function() {
   if ($(this).hasClass('active')) {
@@ -131,10 +217,12 @@ $('#btn-main').on('touchstart click', function() {
   return false;
 });
 
-function fc4(){
-  console.log("4") ;
-}function fc5(){
-  console.log("5") ;
+function fc1(){
+console.log("add") ;
+}function fc2(){
+  console.log("update") ;
+}function fc3(){
+  console.log("delete") ;
 }
 
 </script>

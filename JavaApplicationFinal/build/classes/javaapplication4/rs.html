@@ -94,6 +94,39 @@ ul {
   list-style-type: none;
   padding: 0;
 }
+.tooltiptext1 {
+
+width: 120px;
+background-color: black;
+color: #fff;
+text-align: center;
+padding: 5px 0;
+border-radius: 6px;
+
+/* Position the tooltip text - see examples below! */
+position: absolute;
+
+right: 50%;
+top: 130px;
+
+}
+
+.tooltiptext2 {
+
+width: 120px;
+background-color: black;
+color: #fff;
+text-align: center;
+padding: 5px 0;
+border-radius: 6px;
+
+/* Position the tooltip text - see examples below! */
+position: absolute;
+
+right: 50%;
+top: 190px;
+
+}
         </style>
 </head>
 <body>
@@ -104,24 +137,36 @@ ul {
   
       <ul>
         <br>
-       
+    
      
         <li>
-          <a class="btn-secondary btn-floating green"   onclick="fc3()"><i>♞</i></a>
+          <a class="btn-secondary btn-floating blue"  id="d"  onclick="fc4()">♚</a>
         </li>
         <li>
-          <a class="btn-secondary btn-floating blue"   onclick="fc4()">♚</a>
-        </li>
-        <li>
-          <a class="btn-secondary btn-floating orange"  onclick="fc5()">♚</a>
+          <a class="btn-secondary btn-floating orange"  id ="e" onclick="fc1()">♚</a>
         </li>
       </ul>
     </div>
-      
+    <div id="popup1" style="display: none"   class="tooltiptext1" >Gurrite</div>
+    <div id="popup2" style="display: none"   class="tooltiptext2" >userentrEprise</div>
 </body>
 </html>
 
 <script>  
+      var e = document.getElementById('d');
+e.onmouseover = function() {
+  document.getElementById('popup1').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup1').style.display = 'none';
+}
+var e = document.getElementById('e');
+e.onmouseover = function() {
+  document.getElementById('popup2').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup2').style.display = 'none';
+}
 
 $('#btn-main').on('touchstart click', function() {
   if ($(this).hasClass('active')) {
@@ -134,12 +179,10 @@ $('#btn-main').on('touchstart click', function() {
   return false;
 });
 
-function fc3(){
-  console.log("3") ;
-}function fc4(){
+function fc4(){
   console.log("4") ;
-}function fc5(){
-  console.log("5") ;
+}function fc1(){
+  console.log("1") ;
 }
 
 </script>
