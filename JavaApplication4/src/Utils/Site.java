@@ -9,11 +9,33 @@ package Utils;
  *
  * @author yassine
  */
-public class Site extends Compte {
+public class Site {
      
-     
-    public Site(String nom, String prenom, String email, String login, String motDePasse) {
-        super(nom, prenom, email, login, motDePasse);
+     private int id;
+     private String nom;
+     private String enreptrise;
+     private int capacite;
+
+    public Site(String nom, String enreptrise, int capacite) {
+        this.nom = nom;
+        this.enreptrise = enreptrise;
+        this.capacite = capacite;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getEnreptrise() {
+        return enreptrise;
+    }
+
+    public int getCapacite() {
+        return capacite;
     }
     
     

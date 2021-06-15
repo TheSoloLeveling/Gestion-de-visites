@@ -12,6 +12,7 @@ import static java.lang.Math.pow;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+import static javaapplication4.NewClass.index;
 import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;             
@@ -80,6 +81,8 @@ private VBox pnl_scroll ;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        state.getItems().add("Demand Accepted") ; 
+        state.getItems().add("Demand Rejected") ;
         go() ; 
     }
    private void refreshNodes()
@@ -123,15 +126,16 @@ private VBox pnl_scroll ;
         
        
       String lol ="" ; 
-      
+       System.out.println("state eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee: "+lol);
        TranslateTransition closeNav=new TranslateTransition(new Duration(750), layer2);
          closeNav.setToX(270);
                 closeNav.play();
                 try{
                  lol =  state.getSelectionModel().getSelectedItem().toString() ;
-                }catch(Exception e){}
+                 System.out.println("state eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee: "+lol);
+                }catch(Exception e){ e.printStackTrace();}
                 if(!lol.equals("")){
-                    Crud.updateUser(lol, id.getText() );
+                    Crud.updateUser(lol, id.getText());
                   
                     go1() ; 
                 }
@@ -154,12 +158,18 @@ private VBox pnl_scroll ;
                     
                  }else{
                
-                id.setText(NewClass.g[r].id);
-                jj.setText(NewClass.g[r].etat);
-                ue.setText(NewClass.g[r].nom);
-                entrepriseS.setText(NewClass.g[r].entreprise);
-                visitor.setText(NewClass.g[r].prenom);
-                cnieS.setText(NewClass.g[r].cnie);
+                id.setText(NewClass.g[r].getId());
+                if(NewClass.g[r].isEtat() == 1)
+                    jj.setText("Demand Accepted");
+                else if (NewClass.g[r].isEtat() == -1)
+                    jj.setText("Demand On Hold");
+                else
+                    jj.setText("Demand Rejected");
+                
+                ue.setText(NewClass.g[r].getNom());
+                entrepriseS.setText(NewClass.g[r].getEntreprise());
+                visitor.setText(NewClass.g[r].getPrenom());
+                cnieS.setText(NewClass.g[r].getCnie());
                 
                  if(NewClass.g[r]==null){
                      
@@ -194,12 +204,18 @@ private VBox pnl_scroll ;
                      
                  }else if(NewClass.g[r]!=null){
                
-                jj.setText(NewClass.g[r].etat);
-                ue.setText(NewClass.g[r].nom);
-                entrepriseS.setText(NewClass.g[r].entreprise);
-                visitor.setText(NewClass.g[r].prenom);
-                cnieS.setText(NewClass.g[r].cnie);
-         System.out.print(NewClass.g[r].etat);
+                if(NewClass.g[r].isEtat() == 1)
+                    jj.setText("Demand Accepted");
+                else if (NewClass.g[r].isEtat() == -1)
+                    jj.setText("Demand On Hold");
+                else
+                    jj.setText("Demand Rejected");
+                
+                ue.setText(NewClass.g[r].getNom());
+                entrepriseS.setText(NewClass.g[r].getEntreprise());
+                visitor.setText(NewClass.g[r].getPrenom());
+                cnieS.setText(NewClass.g[r].getCnie());
+         //System.out.print(NewClass.g[r].etat);
            if(NewClass.g[r]==null){
                      
                  }
@@ -235,11 +251,17 @@ private VBox pnl_scroll ;
                      
                  }else{
                      System.out.print( r+" " +  NewClass.g[r]) ;
-                jj.setText(NewClass.g[r].etat);
-                ue.setText(NewClass.g[r].nom);
-                entrepriseS.setText(NewClass.g[r].entreprise);
-                visitor.setText(NewClass.g[r].prenom);
-                cnieS.setText(NewClass.g[r].cnie);
+                if(NewClass.g[r].isEtat() == 1)
+                    jj.setText("Demand Accepted");
+                else if (NewClass.g[r].isEtat() == -1)
+                    jj.setText("Demand On Hold");
+                else
+                    jj.setText("Demand Rejected");
+                
+                ue.setText(NewClass.g[r].getNom());
+                entrepriseS.setText(NewClass.g[r].getEntreprise());
+                visitor.setText(NewClass.g[r].getPrenom());
+                cnieS.setText(NewClass.g[r].getCnie());
          
                 
                  
@@ -271,11 +293,17 @@ private VBox pnl_scroll ;
                  if(NewClass.g[r]==null){
                      
                  }else{
-                jj.setText(NewClass.g[r].etat);
-                ue.setText(NewClass.g[r].nom);
-                entrepriseS.setText(NewClass.g[r].entreprise);
-                visitor.setText(NewClass.g[r].prenom);
-                cnieS.setText(NewClass.g[r].cnie);
+                if(NewClass.g[r].isEtat() == 1)
+                    jj.setText("Demand Accepted");
+                else if (NewClass.g[r].isEtat() == -1)
+                    jj.setText("Demand On Hold");
+                else
+                    jj.setText("Demand Rejected");
+                
+                ue.setText(NewClass.g[r].getNom());
+                entrepriseS.setText(NewClass.g[r].getEntreprise());
+                visitor.setText(NewClass.g[r].getPrenom());
+                cnieS.setText(NewClass.g[r].getCnie());
          
                  
                  
@@ -295,8 +323,7 @@ private VBox pnl_scroll ;
     
     @FXML 
     private void go(){
-         state.getItems().add("Demand Accepted") ; 
-        state.getItems().add("Demand Rejected") ; 
+          
       refreshNodes() ; 
        p.setPageFactory(new Callback<Integer, Node>() {
             @Override

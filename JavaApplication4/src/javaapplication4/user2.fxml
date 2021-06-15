@@ -11,59 +11,115 @@
 
 <AnchorPane id="layer1" fx:id="layer1" prefHeight="754.0" prefWidth="990.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.User2Controller">
    <children>
-      <Pane prefHeight="754.0" prefWidth="367.0" style="-fx-background-color: #1B6CD7;" />
-      <Label layoutX="450.0" layoutY="97.0" text="Driver's First Name ">
+      <Label layoutX="664.0" layoutY="504.0" text="Number of person (Max 4 person)">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="450.0" layoutY="236.0" text="Driver's CNIE">
+      <Pane layoutX="-2.0" layoutY="-6.0" prefHeight="762.0" prefWidth="358.0" style="-fx-background-color: #1B6CD7;" />
+      <Label layoutX="408.0" layoutY="14.0" text="Driver's First Name ">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Pane layoutX="476.0" layoutY="490.0" prefHeight="55.0" prefWidth="78.0" />
-      <Pane layoutX="660.0" layoutY="490.0" prefHeight="55.0" prefWidth="78.0" />
+      <Label layoutX="408.0" layoutY="198.0" text="Driver's CNIE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
       <Separator layoutX="371.0" layoutY="617.0" prefHeight="4.0" prefWidth="624.0" />
-      <JFXButton buttonType="RAISED" layoutX="758.0" layoutY="667.0" onMouseClicked="#load" prefHeight="44.0" prefWidth="150.0" style="-fx-background-color: #1B6CD7; -fx-background-radius: 5em;" text="Finish" textFill="WHITE">
+      <JFXButton fx:id="finish" buttonType="RAISED" layoutX="758.0" layoutY="667.0" onMouseClicked="#finish" prefHeight="44.0" prefWidth="150.0" style="-fx-background-color: #1B6CD7; -fx-background-radius: 5em;" text="Finish" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="425.0" layoutY="667.0" onMouseClicked="#load" prefHeight="44.0" prefWidth="150.0" style="-fx-background-color: #ffff; -fx-background-radius: 5em;" text="Back" textFill="#1b6cd7">
+      <JFXButton fx:id="back" buttonType="RAISED" layoutX="425.0" layoutY="667.0" prefHeight="44.0" prefWidth="150.0" style="-fx-background-color: #ffff; -fx-background-radius: 5em;" text="Back" textFill="#1b6cd7">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <Label layoutX="450.0" layoutY="165.0" text="Driver's Second Name">
+      <Label layoutX="407.0" layoutY="104.0" text="Driver's Second Name">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Spinner layoutX="450.0" layoutY="515.0" />
-      <Label layoutX="450.0" layoutY="316.0" text="Your Email">
+      <Spinner fx:id="numberP" layoutX="700.0" layoutY="553.0" />
+      <Label layoutX="408.0" layoutY="292.0" text="Your Email">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="450.0" layoutY="395.0" text="The Person to See">
+      <Label layoutX="404.0" layoutY="397.0" text="The receiver ( First name + second Name)">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <JFXTextArea layoutX="450.0" layoutY="110.0" prefHeight="35.0" prefWidth="406.0" />
-      <JFXTextArea layoutX="450.0" layoutY="177.0" prefHeight="37.0" prefWidth="406.0" />
-      <JFXTextArea layoutX="450.0" layoutY="249.0" prefHeight="37.0" prefWidth="406.0" />
-      <JFXTextArea layoutX="450.0" layoutY="332.0" prefHeight="37.0" prefWidth="406.0" />
-      <JFXTextArea layoutX="450.0" layoutY="417.0" prefHeight="37.0" prefWidth="406.0" />
-      <Label layoutX="450.0" layoutY="478.0" text="Number of person">
+      <Label fx:id="dB" layoutX="212.0" layoutY="284.0" text="Label" visible="false" />
+      <Label fx:id="dE" layoutX="154.0" layoutY="407.0" text="Label" visible="false" />
+      <Label fx:id="t" layoutX="240.0" layoutY="354.0" text="Label" visible="false" />
+      <Label fx:id="cnieError" layoutX="405.0" layoutY="274.0" prefHeight="19.0" prefWidth="150.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="fNameError" layoutX="405.0" layoutY="85.0" prefHeight="19.0" prefWidth="150.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="sNameError" layoutX="404.0" layoutY="179.0" prefHeight="19.0" prefWidth="150.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="ueError" layoutX="405.0" layoutY="485.0" prefHeight="19.0" prefWidth="150.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="emailError" layoutX="404.0" layoutY="368.0" prefHeight="19.0" prefWidth="358.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <JFXTextArea fx:id="driverName" layoutX="407.0" layoutY="38.0" prefHeight="35.0" prefWidth="443.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextArea>
+      <JFXTextArea fx:id="driverSecond" layoutX="407.0" layoutY="124.0" prefHeight="35.0" prefWidth="443.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextArea>
+      <JFXTextArea fx:id="cnie" layoutX="407.0" layoutY="224.0" prefHeight="35.0" prefWidth="443.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextArea>
+      <JFXTextArea fx:id="email" layoutX="407.0" layoutY="321.0" prefHeight="35.0" prefWidth="443.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXTextArea>
+      <JFXTextArea fx:id="ue" layoutX="407.0" layoutY="434.0" prefHeight="35.0" prefWidth="443.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXTextArea>
+      <Label layoutX="404.0" layoutY="504.0" text="Your Company">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="481.0" layoutY="27.0" text="Create a new demande">
+      <JFXTextArea fx:id="company" layoutX="400.0" layoutY="539.0" prefHeight="39.0" prefWidth="190.0">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font size="13.0" />
+         </font>
+      </JFXTextArea>
+      <Label fx:id="companyError" layoutX="403.0" layoutY="587.0" prefHeight="19.0" prefWidth="162.0">
+         <font>
+            <Font size="13.0" />
          </font>
       </Label>
    </children>

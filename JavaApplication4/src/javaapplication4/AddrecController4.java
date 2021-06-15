@@ -9,12 +9,14 @@ import Utils.Compte;
 import Utils.Crud;
 import Utils.Guerite;
 import Utils.SingletonConnection;
+import Utils.SuperAdmin;
 import Utils.UserEntreprise;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,6 +46,8 @@ public class AddrecController4 implements Initializable {
     @FXML
     private Button add;
     @FXML
+    private Button update;
+    @FXML
     private TextField firstName;
     @FXML
     private TextField lastName;
@@ -54,14 +58,20 @@ public class AddrecController4 implements Initializable {
     @FXML
     private TextField password;
     @FXML
-    private TextField creationDate;
-    @FXML
     private TextField cin;
     
     public String table;
+    public String temp4;
     
-    public void getTable(String text){
+    public void getTable(String text, String nom, String prenom, String email, String login, String password, Date date, String cin){
         table = text;
+        temp4 = login;
+        firstName.setText(nom);
+            lastName.setText(prenom);
+            this.email.setText(email);
+            this.login.setText(login);
+            this.password.setText(password);
+            this.cin.setText(cin);
         
     }
 
@@ -74,15 +84,29 @@ public class AddrecController4 implements Initializable {
                String c = email.getText();
                String d = login.getText();
                String e = password.getText();
-               String f = creationDate.getText();
+               Date date = new Date(System.currentTimeMillis());
                String g = cin.getText();
-               int bb = Integer.parseInt(g);
-               Compte compte = new Guerite(a, b, c, d,e,f,bb);
+               Compte compte = new Guerite(a, b, c, d,e,date,g);
                Crud.addUser(table, compte);
                close();
          }
     };
-   
+    EventHandler<ActionEvent> updateHandler = new EventHandler<ActionEvent>(){
+         @Override
+         public void handle(ActionEvent t) {
+               String a = firstName.getText();
+               String b = lastName.getText();
+               String c = email.getText();
+               String d = login.getText();
+               String e = password.getText();
+               Date date = new Date(System.currentTimeMillis());
+               String g = cin.getText();
+               Compte compte = new Guerite(a, b, c, d,e,date,g);
+               Crud.updateUser(table, temp4, compte);
+               close();
+         }
+    };
+ 
 
     /**
      * Initializes the controller class.
@@ -91,11 +115,23 @@ public class AddrecController4 implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         add.setOnAction(addHandler);
+        update.setOnAction(updateHandler);
         
-        
-    }   
-    
-  
+        if (!(TableController.isAdd)){
+            update.setVisible(true);
+            update.setDisable(false);
+            add.setVisible(false);
+            add.setDisable(true);
+
+            
+        }
+        else {
+            update.setVisible(false);
+            update.setDisable(true);
+            add.setVisible(true);
+            add.setDisable(false);
+        }
+    }
     
     
     @FXML

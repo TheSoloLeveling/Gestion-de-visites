@@ -14,6 +14,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -45,7 +47,9 @@ import javafx.util.Duration;
  */
 public class FXML1Controller implements Initializable {
     
-    static String profile="ad" ; 
+    
+    
+    static String profile="" ; 
 
     @FXML
     private JFXButton bt1;
@@ -137,6 +141,8 @@ public class FXML1Controller implements Initializable {
     @FXML
     private Button btnsignin;
     @FXML
+    private Button disconnect;
+    @FXML
     private TextField u1;
     @FXML
     private TextField u2;
@@ -167,6 +173,23 @@ public class FXML1Controller implements Initializable {
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        disconnect.setOnAction(disconnectHandler);
+        String compte = MainController.actualAccount.getClass().getName();
+        switch(compte){
+            case "Utils.Guerite":
+                profile = "gr";
+                break;
+            case "Utils.Admin":
+                profile = "ad";
+                break;
+            case "Utils.ResponsableSite":
+                profile = "rs";
+                break;
+            case "Utils.SuperAdmin":
+                profile = "supad";
+                break;
+        }
         System.out.print("haaddi"+profile);
         if(profile.equals("gr")){
             System.out.print("lol");
@@ -455,4 +478,28 @@ System.out.print(Hadi.getChildren().get(0) )  ;
             
          
   } 
+  
+  EventHandler<ActionEvent> disconnectHandler = 
+            new EventHandler<ActionEvent>(){
+
+        @Override
+        public void handle(ActionEvent t) {
+            Parent root = null ;
+        try {
+             root = FXMLLoader.load (getClass().getResource("FXML.fxml"));
+           
+            
+        } catch (IOException ex) {
+            Logger.getLogger(SplashScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         Scene secene = new Scene(root) ;
+         MainController.actualAccount = null;
+         
+            Stage stage = new Stage() ; 
+            stage.setScene(secene);
+            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.show() ; 
+            disconnect.getScene().getWindow().hide();
+        }
+            };
 }

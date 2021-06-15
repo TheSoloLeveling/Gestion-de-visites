@@ -74,15 +74,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import java.sql.*;
-import javafx.scene.control.Pagination;
-import javafx.scene.layout.BorderPane;
 
 public class TableController implements Initializable {
-    
-    String a =FXML1Controller.profile ; 
-     
-    
-    
     String textto ="" ; 
     @FXML
     private TableView tableView1;
@@ -100,8 +93,7 @@ public class TableController implements Initializable {
     private Button btnNew;
     private final JavaBridge bridge = new JavaBridge();
 
-                         
-       final URL urlGoogleMaps = getClass().getResource(a+".html");
+       final URL urlGoogleMaps = getClass().getResource("rs.html");
        
            private final JavaBridge1 bridge1 = new JavaBridge1();
 
@@ -133,16 +125,7 @@ WebView webview1 ;
     //private Button = 
     static Random random = new Random();
     public static boolean isAdd; 
-    private Pagination pagination;
-public int itemsPerPage() {
-return 1;
-}
-public int rowsPerPage() {
-return 5;
-}
-
-
-
+    
     
     public String getToggleButtonName(){
         if (accounts.getSelectedToggle() == UE)
@@ -271,6 +254,7 @@ return 5;
     
     public void createTable(String[] headers, TableView table, ObservableList<Record> data){
        
+        //Editable columns
         for(int i=0; i<headers.length; i++){
             TableColumn col = new TableColumn(headers[i]);
             col.setCellValueFactory(
@@ -278,10 +262,7 @@ return 5;
                             "value_" + String.valueOf(i)));
             table.getColumns().add(col);
         }
-         if(data!=null){
-            System.out.print(data);
-         }
- 
+            
         table.setItems(data);
     }
 
@@ -341,7 +322,6 @@ return 5;
             String etat = rs.getString(8);
             Record newRec = new Record(nom, prenom, email, login, pass, telephone, etat);
             data1.add(newRec);
-            
 
         }
             rs.close();
@@ -431,11 +411,10 @@ return 5;
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        
           WebEngine webEngine = webView.getEngine();
      webEngine.load(urlGoogleMaps.toExternalForm());
        webEngine.getLoadWorker().stateProperty().addListener((observable, oldValue, newValue) ->
-{  
+{
     JSObject window = (JSObject) webEngine.executeScript("window");
     window.setMember("java", bridge);
     webEngine.executeScript("console.log = function(message)\n" +
@@ -456,7 +435,7 @@ return 5;
 });
                 
             tableView1.setEditable(true);
-            
+            refreshUser();
             UE.setToggleGroup(accounts);
             RS.setToggleGroup(accounts);
             guerite.setToggleGroup(accounts);
@@ -468,13 +447,12 @@ return 5;
             btnUpd.setOnAction(updateHandler);
             
             btnNew.setDisable(true);
-            refresh.setDisable(true);
+            
             btnDel.setDisable(true);
             btnUpd.setDisable(true);
             
             tableView1.setVisible(false);
             String[] header1 = {"nom", "prenom", "email", "login", "motDePasse", "telephone", "etat"};
-            
             createTable(header1, tableView1, data1);
             tableView2.setVisible(false);
             String[] header2 = {"nom", "prenom", "email", "login", "motDePasse", "telephone", "Site"};
@@ -534,29 +512,13 @@ return 5;
                         tableView4.setVisible(false);
                         tableView5.setVisible(false);
                         btnNew.setDisable(true);
-                        refresh.setDisable(true);
+                        
                         btnDel.setDisable(true);
                         btnUpd.setDisable(true);
                     }
                 }
             );
             
-            refreshUser();
-            
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-              @Override
-              public void run() {
-                if(accounts.getSelectedToggle() != null){
-                    btnNew.setDisable(false);
-                    refresh.setDisable(false);
-                    btnDel.setDisable(false);
-                    btnUpd.setDisable(false);
-                }
-
-                    
-              }
-            }, 0, 1);
     }
     
     
@@ -769,7 +731,7 @@ return 5;
                  Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
              }
              AddrecController4 addrecController4 = loader.getController();
-             addrecController4.getTable(text);
+             //addrecController4.getTable(text);
         } 
         else if (text.equals("responsablesite")){
             loader = new FXMLLoader(getClass().getResource("addrec5.fxml"));
@@ -779,7 +741,7 @@ return 5;
                 Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
             }
             AddrecControlle5r addrecController5 = loader.getController();
-            addrecController5.getTable(text);
+            //addrecController5.getTable(text);
         }
           
         
@@ -848,10 +810,22 @@ return 5;
   FXMLLoader loader = null;
     public  void log(String text)
     { 
-    
-        
+   
     if(textto.equals("1") && text.equals("add")){
-        
+        isAdd = true;
+        loader = new FXMLLoader(getClass().getResource("addrec1.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                AddrecController1 addrecController1 = loader.getController();
+                addrecController1.getTable("userentreprise", "", "", "", "", "", "");
+                
+                stage = new Stage();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
     }
      if(textto.equals("1") && text.equals("update")){
          isAdd = false;
@@ -870,7 +844,7 @@ return 5;
                     String v4 = record.value_3;
                     String v5 = record.value_4;
                     String v6 = record.value_5;    
-                    addrecController1.getTable(v1, text, v2, v3, v4, v5, v6);
+                    addrecController1.getTable("userentreprise",v1 , v2, v3, v4, v5, v6);
                 }    
         stage = new Stage();
             scene = new Scene(root);
@@ -878,22 +852,66 @@ return 5;
             stage.show();
     }if(textto.equals("1") && text.equals("delete")){
         
+                    Record record = (Record) tableView1.getSelectionModel().getSelectedItem();
+                    if (record != null){  
+                        data1.remove(record);
+                        Crud.removeUser("userentreprise", record.getValue_3());
+                    }   
+                
     }
      
        if(textto.equals("2") && text.equals("add")){
-        
+           isAdd = true;
+        loader = new FXMLLoader(getClass().getResource("addrec2.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                AddrecController2 addrecController2 = loader.getController();
+                addrecController2.getTable("admin", "", "", "", "", "", "", "");
+                  stage = new Stage();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
     }
      if(textto.equals("2") && text.equals("update")){
-        
+         isAdd = false;
+         loader = new FXMLLoader(getClass().getResource("addrec2.fxml"));
+                Record record = (Record) tableView2.getSelectionModel().getSelectedItem();
+                if (record != null){
+                    try {
+                        root = loader.load();
+                    } catch (IOException ex) {
+                        Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    AddrecController2 addrecController2 = loader.getController();
+                    String v1 = record.value_0;
+                    String v2 = record.value_1;
+                    String v3 = record.value_2;
+                    String v4 = record.value_3;
+                    String v5 = record.value_4;
+                    String v6 = record.value_5;
+                    String v7 = record.value_6; 
+                    addrecController2.getTable("admin", v1, v2, v3, v4, v5, v6, v7);
+                      stage = new Stage();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+                }    
     }if(textto.equals("2") && text.equals("delete")){
-        
+        Record record2 = (Record) tableView2.getSelectionModel().getSelectedItem();
+                    if (record2 != null){  
+                        data2.remove(record2);
+                        Crud.removeUser("admin", record2.getValue_3());
+                    } 
     }
     
     
     
        if(textto.equals("3") && text.equals("add")){
           isAdd = true;
-        System.out.println("inside of textt");
+        
         loader = new FXMLLoader(getClass().getResource("addrec3.fxml"));
                 try {
                     root = loader.load();
@@ -901,7 +919,7 @@ return 5;
                     Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 AddrecController3 addrecController3 = loader.getController();
-                addrecController3.getTable("", "superadmin", "", "", "", "", "");
+                addrecController3.getTable("superadmin", "", "", "", "", "", "");
                 
                 stage = new Stage();
             scene = new Scene(root);
@@ -909,10 +927,10 @@ return 5;
             stage.show();
     }
        if(textto.equals("3") && text.equals("update")){
-           System.out.print("ijhij");
+           
            isAdd = false;
              loader = new FXMLLoader(getClass().getResource("addrec3.fxml"));
-                Record record = (Record) tableView1.getSelectionModel().getSelectedItem();
+                Record record = (Record) tableView3.getSelectionModel().getSelectedItem();
                 if (record != null){
                     try {
                         root = loader.load();
@@ -927,7 +945,7 @@ return 5;
                     String v4 = record.value_3;
                     String v5 = record.value_4;
                     String v6 = record.value_5;    
-                    addrecController3.getTable(v1, text, v2, v3, v4, v5, v6);
+                    addrecController3.getTable("superadmin", v1, v2, v3, v4, v5, v6);
                     stage = new Stage();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -941,63 +959,106 @@ return 5;
                     }   
     }
     
-    
-    
+
        if(textto.equals("4") && text.equals("add")){
-        
+           isAdd = true;
+        loader = new FXMLLoader(getClass().getResource("addrec4.fxml"));
+            try {
+                 root = loader.load();
+             } catch (IOException ex) {
+                 Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+             AddrecController4 addrecController4 = loader.getController();
+             addrecController4.getTable("guerite", "", "", "", "", "", null, "");
+             stage = new Stage();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
     }
      if(textto.equals("4") && text.equals("update")){
+         isAdd = false;
+             loader = new FXMLLoader(getClass().getResource("addrec4.fxml"));
+                Record record = (Record) tableView4.getSelectionModel().getSelectedItem();
+                if (record != null){
+                    try {
+                        root = loader.load();
+                    } catch (IOException ex) {
+                        Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                     
+                    AddrecController4 addrecController4= loader.getController();
+                    String v1 = record.value_0;
+                    String v2 = record.value_1;
+                    String v3 = record.value_2;
+                    String v4 = record.value_3;
+                    String v5 = record.value_4;
+                    String v6 = record.value_5;
+                    Date d = Date.valueOf(v6);
+                    String v7 = record.value_6; 
+                    addrecController4.getTable("guerite", v1, v2, v3, v4, v5, d, v7);
+                    stage = new Stage();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         
-    }if(textto.equals("4") && text.equals("delete")){
-        
-    }
+        }
+     }
+        if(textto.equals("4") && text.equals("delete")){
+            Record record4 = (Record) tableView4.getSelectionModel().getSelectedItem();
+                    if (record4 != null){  
+                        data4.remove(record4);
+                        Crud.removeUser("guerite", record4.getValue_3());
+                    } 
+        }
     
     
        if(textto.equals("5") && text.equals("add")){
-        
+        isAdd = true;
+        loader = new FXMLLoader(getClass().getResource("addrec5.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                AddrecControlle5r addrecController5 = loader.getController();
+                addrecController5.getTable("responsablesite", "", "", "", "", "", "", "");
+                  stage = new Stage();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
     }
      if(textto.equals("5") && text.equals("update")){
-        
-    }if(textto.equals("5") && text.equals("delete")){
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        isAdd = false;
+         loader = new FXMLLoader(getClass().getResource("addrec5.fxml"));
+                Record record = (Record) tableView5.getSelectionModel().getSelectedItem();
+                if (record != null){
+                    try {
+                        root = loader.load();
+                    } catch (IOException ex) {
+                        Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    AddrecControlle5r addrecController5 = loader.getController();
+                    String v1 = record.value_0;
+                    String v2 = record.value_1;
+                    String v3 = record.value_2;
+                    String v4 = record.value_3;
+                    String v5 = record.value_4;
+                    String v6 = record.value_5;
+                    String v7 = record.value_6; 
+                    addrecController5.getTable("responsablesite", v1, v2, v3, v4, v5, v6, v7);
+                      stage = new Stage();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            }
+     }
+     if(textto.equals("5") && text.equals("delete")){
+        Record record5 = (Record) tableView5.getSelectionModel().getSelectedItem();
+                    if (record5 != null){  
+                        data5.remove(record5);
+                        Crud.removeUser("responsablesite", record5.getValue_3());
+                    } 
+    }  
     }
 }
-private Node createPage(int pageIndex) {
-
-    int fromIndex = pageIndex * 4;
-    int toIndex = Math.min(fromIndex + 4, data1.size());
-     tableView1.setItems(FXCollections.observableArrayList(data1.subList(fromIndex, toIndex)));
-
-    return new BorderPane(tableView1);
-}
-
 }

@@ -5,27 +5,29 @@
  */
 package Utils;
 
+import java.sql.Date;
+
 /**
  *
  * @author yassine
  */
 public class Guerite extends Compte {
     
-    private String date;
-    private int cin;
+    private Date date;
+    private String cin;
     
-    public Guerite(String nom, String prenom, String email, String login, String motDePasse, String date, int cin) {
+    public Guerite(String nom, String prenom, String email, String login, String motDePasse, Date date, String cin) {
         super(nom, prenom, email, login, motDePasse);
         this.date = date;
         this.cin = cin;
         
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public int getCin() {
+    public String getCin() {
         return cin;
     }
 

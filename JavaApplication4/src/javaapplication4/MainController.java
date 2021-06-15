@@ -235,8 +235,8 @@ public class MainController implements Initializable {
                     actualAccount = new SuperAdmin(firstName, lastName, email, login, pwd, telephone);
                 }
                 else if(table.equals("guerite")){
-                    String date = rs.getString(7);
-                    int cin = rs.getInt(8);
+                    Date date = rs.getDate(7);
+                    String cin = rs.getString(8);
                     actualAccount = new Guerite(firstName, lastName, email, login, pwd, date, cin);
                 }
                          
@@ -402,19 +402,19 @@ public class MainController implements Initializable {
         if(!login().equals("null")){
             switch(login()){
             case "responsablesite":
-                dashInterface = "user2.fxml";
+                dashInterface = "all.fxml";
                 break;
             case "userentreprise":
-                dashInterface = "user2.fxml";
+                dashInterface = "FXML4.fxml";
                 break;
             case "admin":
-                dashInterface = "user2.fxml";
+                dashInterface = "all.fxml";
                 break;
             case "superadmin":
                 dashInterface = "all.fxml";
                 break;
             case "guerite":
-                dashInterface = "user2.fxml";
+                dashInterface = "all.fxml";
                 break;
             }
              new Dash().start();

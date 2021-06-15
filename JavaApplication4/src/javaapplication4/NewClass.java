@@ -8,7 +8,7 @@ package javaapplication4;
 
 import Utils.Crud;
 import Utils.Demande;
-import Utils.DemandeRef;
+
 import Utils.SingletonConnection;
 import com.jfoenix.controls.JFXComboBox;
 import java.sql.Statement;
@@ -41,7 +41,7 @@ import javafx.util.Duration;
 public class NewClass implements Initializable {
 
     
-    static DemandeRef[] g= new DemandeRef[1000] ; 
+    static Demande[] g= new Demande[1000] ; 
     
     @FXML
     private Label id;
@@ -90,13 +90,20 @@ public class NewClass implements Initializable {
         DateFormat format2 = new SimpleDateFormat("HH:mm:ss");
         
         
-        String date[] = format1.format(Crud.getDemands().get(index).getDate()).split("/");
+        String date[] = format1.format(Crud.getDemands().get(index).getDateB()).split("/");
         String time1 = String.valueOf(Crud.getDemands().get(index).getTime());
         time.setText(time1);
         year.setText(date[0]);
         month.setText(date[1]);
         day.setText(date[2]);
-        jj.setText(Crud.getDemands().get(index).getEtat() );
+        
+        if(Crud.getDemands().get(index).isEtat() == 1)
+            jj.setText("Demand Accepted");
+        else if (Crud.getDemands().get(index).isEtat() == -1)
+            jj.setText("Demand On Hold");
+        else if (Crud.getDemands().get(index).isEtat() == 0)
+            jj.setText("Demand Rejected");
+        
         nom.setText(Crud.getDemands().get(index).getNom());
         prenom.setText(Crud.getDemands().get(index).getPrenom());
         site.setText(searchSite(Crud.getDemands().get(index).getEntreprise()));
@@ -105,13 +112,14 @@ public class NewClass implements Initializable {
         //g[HadaController.c].setDate(Crud.getDemands().get(index).getDate());
         //g[HadaController.c].setEntreprise(Crud.getDemands().get(index).getEntreprise());
         // g[HadaController.c].setId(Crud.getDemands().get(index).getId());
-         g[HadaController.c] = new DemandeRef() ; 
-         g[HadaController.c].cnie = Crud.getDemands().get(index).getCnie() ;
-            g[HadaController.c].entreprise = entreprise.getText() ;
-             g[HadaController.c].id = id.getText() ;
-                g[HadaController.c].nom = nom.getText() ;
-                  g[HadaController.c].prenom = prenom.getText() ;
-                    g[HadaController.c].etat = Crud.getDemands().get(index).getEtat() ;
+         g[HadaController.c] = new Demande(); 
+         g[HadaController.c].setCnie(Crud.getDemands().get(index).getCnie());
+            g[HadaController.c].setEntreprise(entreprise.getText());
+             g[HadaController.c].setId(id.getText());
+                g[HadaController.c].setNom(nom.getText());
+                  g[HadaController.c].setPrenom(prenom.getText());
+                    g[HadaController.c].setEtat(Crud.getDemands().get(index).isEtat());
+                    
        System.out.println(Arrays.toString(NewClass.g   ));
 
           // g[HadaController.c].setTime(Crud.getDemands().get(index).getTime());
