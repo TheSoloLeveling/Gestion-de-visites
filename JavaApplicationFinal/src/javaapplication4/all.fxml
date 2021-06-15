@@ -64,7 +64,7 @@
                         </ImageView>
                         <Text id="letter" fx:id="letter" layoutX="39.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A" textAlignment="CENTER">
                            <font>
-                              <Font name="Arial Black" size="83.0" />
+                              <Font name="Arial" size="96.0" />
                            </font>
                         </Text>
                      </children>

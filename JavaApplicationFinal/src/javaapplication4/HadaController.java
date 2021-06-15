@@ -84,6 +84,17 @@ private VBox pnl_scroll ;
         state.getItems().add("Demand Accepted") ; 
         state.getItems().add("Demand Rejected") ;
         go() ; 
+        int count = 0;
+        for(int i = 0; i < nodes.length; i++){
+            if (nodes[i] != null)
+                count ++ ;
+        }
+        
+        int pageCount = count%4;
+        if (pageCount == 0)
+            pageCount = 1;
+        p.setMaxPageIndicatorCount(pageCount);
+        p.setPageCount(pageCount);
     }
    private void refreshNodes()
     {
