@@ -158,7 +158,7 @@ private VBox pnl_scroll ;
         try {
            
       
-    AddingParagraph.creteaPDF(NewClass.g[r].getNom(), NewClass.g[r].getPrenom(), ""+NewClass.g[r].getDateB(), ""+NewClass.g[r].getUe(),""+NewClass.g[r].getEntreprise());
+    //AddingParagraph.creteaPDF(NewClass.g[r].getNom(), NewClass.g[r].getPrenom(), ""+NewClass.g[r].getDateB(), ""+NewClass.g[r].getUe(),""+NewClass.g[r].getEntreprise());
         } catch (Exception ex) {
             ex.printStackTrace();
         }

@@ -18,33 +18,35 @@
    <children>
       <Pane fx:id="layer2" prefHeight="454.0" prefWidth="322.0" style="-fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0);">
          <children>
-            <Label id="l1" fx:id="l1" layoutX="41.0" layoutY="239.0" prefHeight="39.0" prefWidth="182.0" text="           GESTION DE VISIT" textFill="#faf7f7">
+            <Label id="l1" fx:id="l1" layoutX="70.0" layoutY="198.0" prefHeight="39.0" prefWidth="182.0" text="PARKS MANAGEMENTS" textFill="#faf7f7">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </Label>
-            <Label id="l2" fx:id="l2" layoutX="47.0" layoutY="309.0" prefHeight="17.0" prefWidth="207.0" text="If you have a question feel free to ask " textFill="#efeeee" />
-            <Label id="l3" fx:id="l3" layoutX="47.0" layoutY="327.0" prefHeight="17.0" prefWidth="207.0" text="reda belhaj he is always available for " textFill="#efeeee" />
+            <Label id="l2" fx:id="l2" layoutX="49.0" layoutY="253.0" prefHeight="17.0" prefWidth="225.0" text="Application for users of client companies " textFill="#efeeee" />
+            <Label id="l3" fx:id="l3" layoutX="49.0" layoutY="271.0" prefHeight="17.0" prefWidth="225.0" text="to make access requests for their visitors" textFill="#efeeee" />
             <Label id="menu" fx:id="menu" layoutX="295.0" layoutY="8.0" onMouseClicked="#Slidemenu" onMouseEntered="#hoverM" onMouseExited="#rhoverM" style="-fx-translate-z: 10;" text="☰" textFill="#fcfcfc">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label id="l4" fx:id="l4" layoutX="47.0" layoutY="343.0" prefHeight="17.0" prefWidth="207.0" text="your confort " textFill="#efeeee" />
+            <Label id="l4" fx:id="l4" layoutX="49.0" layoutY="287.0" prefHeight="17.0" prefWidth="207.0" text="who do not have badges." textFill="#efeeee" />
+            <ImageView fitHeight="92.0" fitWidth="142.0" layoutX="97.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/flash-thunder-pngrepo-com.png" />
+               </image>
+            </ImageView>
+            <Label id="l4" fx:id="l41" layoutX="49.0" layoutY="332.0" prefHeight="17.0" prefWidth="225.0" text="Automated user and request management" textFill="#efeeee" />
+            <Label id="l4" fx:id="l42" layoutX="49.0" layoutY="349.0" prefHeight="17.0" prefWidth="207.0" text="system as well as site management" textFill="#efeeee" />
+            <ImageView fx:id="loadingImg1" fitHeight="92.0" fitWidth="123.0" layoutX="220.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../icons/loading.gif" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane id="layer3" fx:id="layer3" layoutX="322.0" prefHeight="454.0" prefWidth="483.0" style="-fx-background-color: #ffff;">
          <children>
-            <ImageView id="img1" fitHeight="19.0" fitWidth="16.0" layoutX="75.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../Desktop/user_24px.png" />
-               </image>
-            </ImageView>
-            <ImageView id="img2" fitHeight="19.0" fitWidth="16.0" layoutX="75.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../Desktop/password_26px.png" />
-               </image>
-            </ImageView>
             <Label id="a2" fx:id="a2" layoutX="394.0" layoutY="16.0" onMouseClicked="#dark" text="☀" textFill="WHITE">
                <font>
                   <Font size="27.0" />
@@ -96,6 +98,16 @@
             <TextField id="u1" fx:id="u111" layoutX="98.0" layoutY="263.0" prefHeight="31.0" prefWidth="279.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #795af3; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: #7173B2;" visible="false" />
             <TextField id="u1" fx:id="u" layoutX="103.0" layoutY="323.0" prefHeight="31.0" prefWidth="279.0" promptText="Phone number" style="-fx-background-color: transparent; -fx-border-color: #795af3; -fx-border-width: 0px 0px 1px 0px; -fx-text-inner-color: #7173B2;" visible="false" />
             <Label fx:id="requestError" alignment="CENTER" layoutX="192.0" layoutY="412.0" prefHeight="17.0" prefWidth="90.0" text="Request Send" visible="false" />
+            <ImageView fx:id="logoP1" fitHeight="39.0" fitWidth="22.0" layoutX="59.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/pngaaa.com-4205924.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="logoU1" fitHeight="31.0" fitWidth="29.0" layoutX="54.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/pngjoy.com_login-icon-login-account-icon-png-download_2791948.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

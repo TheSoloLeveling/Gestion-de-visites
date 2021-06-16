@@ -9,6 +9,7 @@ import Utils.Crud;
 import Utils.Demande;
 import Utils.EmailValidation;
 import Utils.MailUtil;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import java.io.IOException;
 import java.net.URL;
@@ -31,7 +32,10 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.layout.AnchorPane;
 import java.sql.Date;
+import static javaapplication4.MainController.dashInterface;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 /**
  * FXML Controller class
  *
@@ -64,7 +68,9 @@ public class User2Controller implements Initializable {
      private Spinner numberP;
     
     @FXML
-     private Button finish;
+     private JFXButton finish;
+    @FXML
+     private JFXButton back;
     @FXML
      private Label fNameError;
     @FXML
@@ -222,42 +228,48 @@ public class User2Controller implements Initializable {
                 
                 Demande d = new Demande(nom, prenom, cn, dateB, dateE, t.getText(), userE, en, -1);
                 Crud.addDemand(d);
+                MailUtil.customMessage = MailUtil.ueMessage(d);
                 System.out.println("DEMAND CREATED");
                 try {
-                    for(int i = 0; i < Crud.getUsers("guerite").size(); i++){
+                    /*for(int i = 0; i < Crud.getUsers("guerite").size(); i++){
                         MailUtil.customMessage = MailUtil.ueMessage(d);
                         MailUtil.sendMail(Crud.getUsers("guerite").get(i).getEmail());
-                    }
-                    for(int i = 0; i < Crud.getUsers("responsablesite").size(); i++){
-                        MailUtil.customMessage = MailUtil.ueMessage(d);
-                        MailUtil.sendMail(Crud.getUsers("responsableSite").get(i).getEmail());
-                    }
+                    }*/
+                    System.out.println(Crud.getUsers("responsablesite").size());
+                    //for(int i = 0; i < Crud.getUsers("responsablesite").size(); i++){
+                        
+                        //MailUtil.sendMail(Crud.getUsers("responsableSite").get(i).getEmail());
+                        MailUtil.sendMail("yassin.bouziane@uir.ac.ma");
+                    //}
                     
                 } catch (Exception ex) {
                     Logger.getLogger(User2Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                           
-            
-                Parent root=null;
-                    try {
-                        root = FXMLLoader.load(getClass().getResource("utilisateur.fxml"));
-
-                    } catch (IOException ex) {
-                       ex.printStackTrace();
-                    }
-
-                    layer1.getChildren().clear();
-                    layer1.getChildren().add(root);
-            }
+                finish.getScene().getWindow().hide();
         }
                 
-            
+            }   
         };
     
    
      @FXML
     private void finish() {
         
+        
+    }
+    
+    @FXML
+    private void back() {
+        Parent root = null ;
+                try {
+                root = FXMLLoader.load (getClass().getResource("utilisateur.fxml"));   //dashInterface
+           
+            } catch (IOException ex) {
+                Logger.getLogger(SplashScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    layer1.getChildren().clear();
+                    layer1.getChildren().add(root);
+                
     
     }
 }

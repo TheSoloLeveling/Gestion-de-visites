@@ -6,18 +6,26 @@
 package javaapplication4;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import netscape.javascript.JSObject;
 
@@ -33,7 +41,9 @@ public class FXML4Controller implements Initializable {
 @FXML
 private Label lb ; 
 @FXML
-private JFXButton btn ; 
+private JFXButton add ;
+@FXML
+private JFXButton follow ; 
 @FXML 
         private Pane layer4 ;
 
@@ -50,6 +60,9 @@ WebView webView ;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        follow.setOnAction(followHandler);
+        add.setOnAction(addHandler);
+        
           ObservableList<PieChart.Data> Data  = FXCollections.observableArrayList( new PieChart.Data("site", 13) ,new PieChart.Data("site", 25),
                 new PieChart.Data("site", 25) , 
                 new PieChart.Data("site", 10) ,new PieChart.Data("site", 22)
@@ -88,4 +101,46 @@ private void slide1(){
     private void close() {
        System.exit(0);
     }
+    
+    EventHandler<ActionEvent> followHandler = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            Parent root=null;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("table1.fxml"));
+
+            try {
+                root = loader.load();
+
+            } catch (IOException ex) {
+               ex.printStackTrace();
+            }
+
+              Scene secene = new Scene(root) ; 
+                    Stage stage = new Stage() ; 
+                    stage.setScene(secene);
+                    stage.initStyle(StageStyle.TRANSPARENT);
+                    stage.show() ; 
+            }
+    };
+    
+    EventHandler<ActionEvent> addHandler = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            Parent root=null;
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("utilisateur.fxml"));
+
+        try {
+            root = loader.load();
+            
+        } catch (IOException ex) {
+           ex.printStackTrace();
+        }
+        
+          Scene secene = new Scene(root) ; 
+                Stage stage = new Stage() ; 
+                stage.setScene(secene);
+                stage.initStyle(StageStyle.TRANSPARENT);
+                stage.show() ;   
+        }
+    };
 }

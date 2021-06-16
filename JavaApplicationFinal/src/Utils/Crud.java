@@ -275,7 +275,7 @@ public class Crud {
     
     public static LinkedList<Compte> getUsers(String table){
         LinkedList<Compte> c = new LinkedList<Compte>();
-        
+        System.out.println(table);
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -305,13 +305,15 @@ public class Crud {
         
        }
        
-       if(table == "responsableSite"){
+       if(table.equals("responsablesite")){
+           System.out.println("traite base donne");
            try{
-            String sql = "SELECT * FROM responsableSite";
+            String sql = "SELECT * FROM responsablesite";
             conn = SingletonConnection.getconn();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()){
+                System.out.println("trouveeeeeeeeeeeeeeeeeee");
                 String id = rs.getString(1);
                 String nom = rs.getString(2);
                 String prenom = rs.getString(3);
@@ -346,6 +348,56 @@ public class Crud {
                 String telephone = rs.getString(7);
                 boolean etat = rs.getBoolean(8);
                 UserEntreprise gu = new UserEntreprise(nom, prenom, email, login, password, telephone, etat);
+                c.add(gu);     
+            }
+                                            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+       }
+       
+       if(table == "superadmin"){
+           try{
+            String sql = "SELECT * FROM superadmin";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                String id = rs.getString(1);
+                String nom = rs.getString(2);
+                String prenom = rs.getString(3);
+                String email = rs.getString(4);
+                String login =  rs.getString(5);
+                String password = rs.getString(6);
+                String telephone = rs.getString(7);
+                
+                SuperAdmin gu = new SuperAdmin(nom, prenom, email, login, password, telephone);
+                c.add(gu);     
+            }
+                                            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+       }
+       
+       if(table == "admin"){
+           try{
+            String sql = "SELECT * FROM admin";
+            conn = SingletonConnection.getconn();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                String id = rs.getString(1);
+                String nom = rs.getString(2);
+                String prenom = rs.getString(3);
+                String email = rs.getString(4);
+                String login =  rs.getString(5);
+                String password = rs.getString(6);
+                String telephone = rs.getString(7);
+                int site = rs.getInt(8);
+                Admin gu = new Admin(nom, prenom, email, login, password, telephone, site);
                 c.add(gu);     
             }
                                             

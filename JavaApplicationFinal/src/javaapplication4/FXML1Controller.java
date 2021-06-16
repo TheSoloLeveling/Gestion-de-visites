@@ -206,8 +206,8 @@ public class FXML1Controller implements Initializable {
         System.out.print("haaddi"+profile);
         if(profile.equals("gr")){
             System.out.print("lol");
-            dis.setVisible(false);
-            dis1.setVisible(false);
+            //dis.setVisible(false);
+            //dis1.setVisible(false);
             item1.setVisible(false);
         }
        

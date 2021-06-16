@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="layer1" fx:id="layer1" prefHeight="581.0" prefWidth="1031.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.TableController1">
+   <children>
+      <TableView id="tableView1" fx:id="tableView" editable="true" layoutX="105.0" layoutY="43.0" prefHeight="495.0" prefWidth="755.0" stylesheets="@style_1.css" tableMenuButtonVisible="true">
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>

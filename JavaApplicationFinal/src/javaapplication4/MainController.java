@@ -174,6 +174,12 @@ public class MainController implements Initializable {
   
     @FXML
     private ImageView loadingImg;
+    @FXML
+    private ImageView loadingImg1;
+    @FXML
+    private ImageView logoU1;
+    @FXML
+    private ImageView logoP1;
    
        @FXML
     private ImageView img1;
@@ -256,7 +262,8 @@ public class MainController implements Initializable {
                 lbError.setTextFill(Color.GREEN);
                 lbError.setText("Authentification .......");
                 loadingImg.setVisible(true);
-                btnsignin.setDisable(true);                    
+                btnsignin.setDisable(true);
+                request.setDisable(true);
             }
             
         }catch(Exception e){
@@ -418,7 +425,7 @@ public class MainController implements Initializable {
                 dashInterface = "all.fxml";
                 break;
             case "userentreprise":
-                dashInterface = "utilisateur.fxml";
+                dashInterface = "FXML4.fxml";
                 break;
             case "admin":
                 dashInterface = "all.fxml";
@@ -475,11 +482,14 @@ public class MainController implements Initializable {
   @FXML
      private void btnrequest(){
          requestError.setVisible(false);
+         loadingImg1.setVisible(true);
          if(cnt%2==0){
              u1.setText("") ;
          u1.setPromptText("First Name");
          p1.setPromptText("Last Name");
          n5.setText("Give us  your Informations");
+         logoU1.setVisible(false);
+         logoP1.setVisible(false);
          u111.setVisible(true);
          u.setVisible(true);
          n2.setVisible(false);
@@ -490,6 +500,7 @@ public class MainController implements Initializable {
          lbError.setVisible(false);
          
           request.setLayoutY(390);
+          ;
          TranslateTransition layer2T=new TranslateTransition(new Duration(350), layer2);
          TranslateTransition layer3T=new TranslateTransition(new Duration(350), layer3);
          layer2T.setToX(483);
@@ -512,6 +523,8 @@ public class MainController implements Initializable {
             u1.setText("") ;
                   u1.setPromptText("UserName");
          n5.setText("Welcome Back");
+         logoU1.setVisible(true);
+         logoP1.setVisible(true);
          u111.setVisible(false);
          u.setVisible(false);
          n2.setVisible(true);
@@ -532,13 +545,21 @@ public class MainController implements Initializable {
          layer3T.play();
          
          if (!firstName.trim().isEmpty() && !lastName.trim().isEmpty() && !email.trim().isEmpty() && !tel.trim().isEmpty()){
+                
                  requestError.setTextFill(Color.GREEN);
                  requestError.setVisible(true);
+                 MailUtil.customMessage = "Only For Test";
+                 try {
+                     
+                     Thread.sleep(6000);
+                 } catch (InterruptedException ex) {
+                     Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+                 }
                  
-                 MailUtil.customMessage = "Nouvelle demande de compte -->\n FirstName : "
+                /* MailUtil.customMessage = "Nouvelle demande de compte -->\n FirstName : "
                          + "" + firstName + "\nLastName : " + lastName + "\nEmail : " + email + "\n"
                          + "Telephone : " + tel + "\nVerifier la validite des donnes avant"
-                         + " de creer le compte utilisateur entreprise";
+                         + " de creer le compte utilisateur entreprise";*/
                  
                  try {
                     
@@ -548,22 +569,21 @@ public class MainController implements Initializable {
                    /* for(int i = 0; i < Crud.getUsers("responsablesite").size(); i++){
                         MailUtil.sendMail(Crud.getUsers("responsablesite").get(i).getEmail());
                     }*/
-                    for(int i = 0; i < Crud.getUsers("admin").size(); i++){
-                        MailUtil.sendMail(Crud.getUsers("admin").get(i).getEmail());
-                    }
+                    //for(int i = 0; i < Crud.getUsers("admin").size(); i++){
+                        MailUtil.sendMail(Crud.getUsers("admin").get(0).getEmail());
+                    //}
                     
                 } catch (Exception ex) {
                     Logger.getLogger(User2Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
              }
-             
-   
+              
+              loadingImg1.setVisible(false);
          cnt++ ;
              }
              
          }
      
-         
          class Dash extends Thread {
             @Override  
             public void run(){
