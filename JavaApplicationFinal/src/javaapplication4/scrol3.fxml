@@ -15,7 +15,7 @@
                   <Label fx:id="helper" layoutX="260.0" layoutY="29.0" />
                </children>
             </Pane>
-            <Label layoutX="713.0" layoutY="14.0" text="Demand on Hold" textFill="WHITE">
+            <Label fx:id="a" layoutX="713.0" layoutY="14.0" text="Demand on Hold" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -25,17 +25,17 @@
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="761.0" layoutY="225.0" text="Mohamed Reda Falhi" textFill="WHITE">
+            <Label fx:id="b" layoutX="761.0" layoutY="225.0" text="Mohamed Reda Falhi" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="757.0" layoutY="337.0" text="Himd EL Khoufi" textFill="WHITE">
+            <Label fx:id="d" layoutX="757.0" layoutY="337.0" text="Himd EL Khoufi" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="761.0" layoutY="285.0" text="Rabat" textFill="WHITE">
+            <Label fx:id="c" layoutX="761.0" layoutY="285.0" text="Rabat" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
@@ -65,7 +65,7 @@
             </Label>
             <Label layoutX="870.0" layoutY="108.0" text="AUG" textFill="WHITE" />
             <Label layoutX="870.0" layoutY="126.0" text="2020" textFill="WHITE" />
-            <Label layoutX="758.0" layoutY="259.0" text="Location" textFill="WHITE">
+            <Label layoutX="758.0" layoutY="259.0" text="Id Number" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>

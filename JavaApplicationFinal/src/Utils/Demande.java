@@ -133,6 +133,11 @@ public class Demande {
         this.etat = etat;
     }
 
+    @Override
+    public String toString() {
+        return "Demande{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", cnie=" + cnie + ", dateB=" + dateB + ", dateE=" + dateE + ", time=" + time + ", ue=" + ue + ", entreprise=" + entreprise + ", etat=" + etat + '}';
+    }
+
     
     
 }

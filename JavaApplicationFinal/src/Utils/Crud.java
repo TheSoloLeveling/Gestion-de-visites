@@ -7,7 +7,7 @@ package Utils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
@@ -456,13 +456,13 @@ public class Crud {
             a = 1;
         else if (etat.equals("Demand Rejected"))
             a = 0;
-          
-             String sql = "update demande set etat=? where id = ?" ; 
+             System.out.println("jbjbjbjhbjhbjhbjh    "+id) ;
+             String sql = "update demande set etat=? where id = "+id ; 
        Connection       conn = SingletonConnection.getconn();
        try{
            PreparedStatement ps = conn.prepareStatement(sql) ; 
            ps.setInt(1, a);
-           ps.setString(2, id);
+           //ps.setString(2, 14);
            ps.executeUpdate() ; 
        } catch(Exception ex){
            ex.printStackTrace();
@@ -472,5 +472,156 @@ public class Crud {
              
              
          }
+    
+    public static int countG(){
+        int a =0 ; 
+        String sql="select count(*) from guerite" ; 
+        Connection cnn = SingletonConnection.getconn() ; 
+        try{
+            PreparedStatement ps = cnn.prepareStatement(sql) ; 
+            ResultSet rs = ps.executeQuery() ; 
+            rs.next() ;
+            a=rs.getInt(1) ; 
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        
+        return a ; 
+    }
+     public static int countsup(){
+        int a =0 ; 
+        String sql="select count(*) from superadmin" ; 
+        Connection cnn = SingletonConnection.getconn() ; 
+        try{
+            PreparedStatement ps = cnn.prepareStatement(sql) ; 
+            ResultSet rs = ps.executeQuery() ; 
+            rs.next() ;
+            a=rs.getInt(1) ; 
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        
+        return a ; 
+    }
+      public static int countad(){
+        int a =0 ; 
+        String sql="select count(*) from admin" ; 
+        Connection cnn = SingletonConnection.getconn() ; 
+        try{
+            PreparedStatement ps = cnn.prepareStatement(sql) ; 
+            ResultSet rs = ps.executeQuery() ; 
+            rs.next() ;
+            a=rs.getInt(1) ; 
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        
+        return a ; 
+    }
+       public static int countrs(){
+        int a =0 ; 
+        String sql="select count(*) from responsablesite" ; 
+        Connection cnn = SingletonConnection.getconn() ; 
+        try{
+            PreparedStatement ps = cnn.prepareStatement(sql) ; 
+            ResultSet rs = ps.executeQuery() ; 
+            rs.next() ;
+            a=rs.getInt(1) ; 
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        
+        return a ; 
+    }
+        public static int countus(){
+        int a =0 ; 
+        String sql="select count(*) from userentreprise" ; 
+        Connection cnn = SingletonConnection.getconn() ; 
+        try{
+            PreparedStatement ps = cnn.prepareStatement(sql) ; 
+            ResultSet rs = ps.executeQuery() ; 
+            rs.next() ;
+            a=rs.getInt(1) ; 
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        
+        return a ; 
+    }
+        
+          public static int countdem(){
+        int a =0 ; 
+        String sql="select count(*) from demande" ; 
+        Connection cnn = SingletonConnection.getconn() ; 
+        try{
+            PreparedStatement ps = cnn.prepareStatement(sql) ; 
+            ResultSet rs = ps.executeQuery() ; 
+            rs.next() ;
+            a=rs.getInt(1) ; 
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        
+        return a ; 
+    }
+          
+           public static int countdemA(){
+        int a =0 ; 
+        String sql="select count(*) from demande where etat=1" ; 
+        Connection cnn = SingletonConnection.getconn() ; 
+        try{
+            PreparedStatement ps = cnn.prepareStatement(sql) ; 
+            ResultSet rs = ps.executeQuery() ; 
+            rs.next() ;
+            a=rs.getInt(1) ; 
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        
+        return a ; 
+    }
+             public static int countdemR(){
+        int a =0 ; 
+        String sql="select count(*) from demande where etat=0" ; 
+        Connection cnn = SingletonConnection.getconn() ; 
+        try{
+            PreparedStatement ps = cnn.prepareStatement(sql) ; 
+            ResultSet rs = ps.executeQuery() ; 
+            rs.next() ;
+            a=rs.getInt(1) ; 
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        
+        return a ; 
+    }
+                  public static int countdemS(){
+        int a =0 ; 
+        String sql="select count(*) from site.site" ; 
+        Connection cnn = SingletonConnection.getconn() ; 
+        try{
+            PreparedStatement ps = cnn.prepareStatement(sql) ; 
+            ResultSet rs = ps.executeQuery() ; 
+            rs.next() ;
+            a=rs.getInt(1) ; 
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        
+        return a ; 
+    }
+    
+    
+    
         
 }

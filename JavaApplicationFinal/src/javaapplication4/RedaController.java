@@ -5,6 +5,7 @@
  */
 package javaapplication4;
 
+import Utils.Crud;
 import Utils.SingletonConnection;
 import java.io.IOException;
 import java.net.URL;
@@ -47,18 +48,19 @@ public class RedaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        String[] accounts1 = {"responsablesite", "userentreprise"};
-        nbrUsers.setText(updateRowNumber(accounts1));
-        String[] accounts2 = {"site"};
-        nbrSites.setText(updateRowNumber(accounts2));
-        String[] accounts3 = {"userentreprise"};
-        nbrVisiteurs.setText(updateRowNumber(accounts3));
+         int a = Crud.countG()+Crud.countad()+Crud.countus()+Crud.countrs()+Crud.countsup() ;
+    nbrUsers.setText(""+a);
+    int b =Crud.countdemA() ; 
+    nbrVisiteurs.setText(""+b);
+    int c = Crud.countdemS() ; 
+    nbrSites.setText(""+c);
         
     }    
     
          @FXML
   private void loaditem1() {
       
+  
     load("reda") ;
         
   } 

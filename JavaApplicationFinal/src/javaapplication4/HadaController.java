@@ -5,13 +5,18 @@
  */
 package javaapplication4;
 
+
 import Utils.Crud;
 import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
 import static java.lang.Math.pow;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static javaapplication4.NewClass.index;
 import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
@@ -40,6 +45,10 @@ import javafx.util.Duration;
  * @author hp
  */
 public class HadaController implements Initializable {
+      DateFormat format1 = new SimpleDateFormat("yyyy/MM/dd");
+        DateFormat format2 = new SimpleDateFormat("HH:mm:ss");
+        
+    int r =-1  ; 
     StackPane page ;
   static  int c =0 ; 
   GridPane grid  ;
@@ -76,6 +85,19 @@ private VBox pnl_scroll ;
                      private Label cnieS ;
                     @FXML
                      private JFXComboBox state ;
+                                 @FXML
+                             private Label dayS;
+                                  @FXML
+                             private Label monthS ;
+                                   @FXML
+                             private Label yearS;
+                                     @FXML
+                             private Label dayB;
+                                  @FXML
+                             private Label mountB ;
+                                   @FXML
+                             private Label yearB;
+                                
     /**
      * Initializes the controller class.
      */
@@ -127,17 +149,27 @@ private VBox pnl_scroll ;
     }
       @FXML
     private void handleButtonActionlbl2(MouseEvent event) { 
-        lbl1.setStyle("-fx-font-weight: normal");
-        lbl2.setStyle("-fx-font-weight: bold");
-         lbl3.setStyle("-fx-font-weight: normal");
-       refreshNodes();
-    }
+          
+   
+       TranslateTransition closeNav=new TranslateTransition(new Duration(750), layer2);
+         closeNav.setToX(270);
+                closeNav.play();
+               
+        try {
+           
+      
+    AddingParagraph.creteaPDF(NewClass.g[r].getNom(), NewClass.g[r].getPrenom(), ""+NewClass.g[r].getDateB(), ""+NewClass.g[r].getUe(),""+NewClass.g[r].getEntreprise());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+                
+               }
       @FXML
     private void handleButtonActionlbl3() { 
         
        
       String lol ="" ; 
-       System.out.println("state eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee: "+lol);
+      
        TranslateTransition closeNav=new TranslateTransition(new Duration(750), layer2);
          closeNav.setToX(270);
                 closeNav.play();
@@ -157,13 +189,13 @@ private VBox pnl_scroll ;
     private void slidemenu1() { 
     
         TranslateTransition openNav=new TranslateTransition(new Duration(750), layer2);
-        openNav.setToX(-500);
+        openNav.setToX(-530);
        
         TranslateTransition closeNav=new TranslateTransition(new Duration(750), layer2);
        
-            if(layer2.getTranslateX()!=-500){
+            if(layer2.getTranslateX()!=-530){
                 int a =p.getCurrentPageIndex()   ;
-                int r = (int) (1+Math.pow(4,a)) ; 
+                 r = (int) (1+Math.pow(4,a)) ; 
                
                 if(r==2){
                 r-- ; } if(NewClass.g[r]==null){
@@ -182,6 +214,16 @@ private VBox pnl_scroll ;
                 entrepriseS.setText(NewClass.g[r].getEntreprise());
                 visitor.setText(NewClass.g[r].getPrenom());
                 cnieS.setText(NewClass.g[r].getCnie());
+                   String date[] = format1.format(NewClass.g[r].getDateB()).split("/");
+                   String date1[] = format1.format(NewClass.g[r].getDateE()).split("/");
+                 
+                 yearB.setText(""+date[0]);
+               mountB.setText(date[1]);
+                dayB.setText(date[2]);
+                
+                yearS.setText(date1[0]);
+               monthS.setText(date1[1]);
+               dayS.setText(date1[2]);
                 
                  if(NewClass.g[r]==null){
                      
@@ -203,19 +245,20 @@ private VBox pnl_scroll ;
     private void slidemenu2() { 
     
         TranslateTransition openNav=new TranslateTransition(new Duration(750), layer2);
-        openNav.setToX(-500);
+        openNav.setToX(-530);
        
         TranslateTransition closeNav=new TranslateTransition(new Duration(750), layer2);
        
-            if(layer2.getTranslateX()!=-500){
+            if(layer2.getTranslateX()!=-530){
                 int a =p.getCurrentPageIndex()   ;
-                int r = (int) (2+Math.pow(4,a)) ; 
+                 r = (int) (2+Math.pow(4,a)) ; 
                 if(r==3){
                 r-- ; }
                  if(NewClass.g[r]==null){
                      
                  }else if(NewClass.g[r]!=null){
-               
+                     id.setText(NewClass.g[r].getId());
+               System.out.print(Arrays.toString(NewClass.g))   ;
                 if(NewClass.g[r].isEtat() == 1)
                     jj.setText("Demand Accepted");
                 else if (NewClass.g[r].isEtat() == -1)
@@ -227,7 +270,16 @@ private VBox pnl_scroll ;
                 entrepriseS.setText(NewClass.g[r].getEntreprise());
                 visitor.setText(NewClass.g[r].getPrenom());
                 cnieS.setText(NewClass.g[r].getCnie());
-         //System.out.print(NewClass.g[r].etat);
+                  String date[] = format1.format(NewClass.g[r].getDateB()).split("/");
+                   String date1[] = format1.format(NewClass.g[r].getDateE()).split("/");
+                 
+                 yearB.setText(""+date[0]);
+               mountB.setText(date[1]);
+                dayB.setText(date[2]);
+                
+                yearS.setText(date1[0]);
+               monthS.setText(date1[1]);
+               dayS.setText(date1[2]);
            if(NewClass.g[r]==null){
                      
                  }
@@ -250,18 +302,19 @@ private VBox pnl_scroll ;
     private void slidemenu3() { 
     
         TranslateTransition openNav=new TranslateTransition(new Duration(750), layer2);
-        openNav.setToX(-500);
+        openNav.setToX(-530);
       
         TranslateTransition closeNav=new TranslateTransition(new Duration(750), layer2);
        
-            if(layer2.getTranslateX()!=-500){
+            if(layer2.getTranslateX()!=-530){
                 int a =p.getCurrentPageIndex()   ;
-                int r = (int) (3+Math.pow(4,a)) ; 
+                 r = (int) (3+Math.pow(4,a)) ; 
                 if(r==4){
                 r-- ; }
                  if(NewClass.g[r]==null){
                      
                  }else{
+                     id.setText(NewClass.g[r].getId());
                      System.out.print( r+" " +  NewClass.g[r]) ;
                 if(NewClass.g[r].isEtat() == 1)
                     jj.setText("Demand Accepted");
@@ -274,7 +327,16 @@ private VBox pnl_scroll ;
                 entrepriseS.setText(NewClass.g[r].getEntreprise());
                 visitor.setText(NewClass.g[r].getPrenom());
                 cnieS.setText(NewClass.g[r].getCnie());
-         
+              String date[] = format1.format(NewClass.g[r].getDateB()).split("/");
+                   String date1[] = format1.format(NewClass.g[r].getDateE()).split("/");
+                 
+                 yearB.setText(""+date[0]);
+               mountB.setText(date[1]);
+                dayB.setText(date[2]);
+                
+                yearS.setText(date1[0]);
+               monthS.setText(date1[1]);
+               dayS.setText(date1[2]);
                 
                  
                 openNav.play();
@@ -293,18 +355,19 @@ private VBox pnl_scroll ;
     private void slidemenu4() { 
     
         TranslateTransition openNav=new TranslateTransition(new Duration(750), layer2);
-        openNav.setToX(-500);
+        openNav.setToX(-530);
       
         TranslateTransition closeNav=new TranslateTransition(new Duration(750), layer2);
        
-            if(layer2.getTranslateX()!=-500){
+            if(layer2.getTranslateX()!=-530){
                int a =p.getCurrentPageIndex()  ;
-                int r = (int) (4+Math.pow(4,a)) ; 
+                 r = (int) (4+Math.pow(4,a)) ; 
                 if(r==5){
                 r-- ; }
                  if(NewClass.g[r]==null){
                      
                  }else{
+                     id.setText(NewClass.g[r].getId());
                 if(NewClass.g[r].isEtat() == 1)
                     jj.setText("Demand Accepted");
                 else if (NewClass.g[r].isEtat() == -1)
@@ -316,7 +379,16 @@ private VBox pnl_scroll ;
                 entrepriseS.setText(NewClass.g[r].getEntreprise());
                 visitor.setText(NewClass.g[r].getPrenom());
                 cnieS.setText(NewClass.g[r].getCnie());
-         
+          String date[] = format1.format(NewClass.g[r].getDateB()).split("/");
+                   String date1[] = format1.format(NewClass.g[r].getDateE()).split("/");
+                 
+                 yearB.setText(""+date[0]);
+               mountB.setText(date[1]);
+                dayB.setText(date[2]);
+                
+                yearS.setText(date1[0]);
+               monthS.setText(date1[1]);
+               dayS.setText(date1[2]);
                  
                  
                 openNav.play();
@@ -331,6 +403,26 @@ private VBox pnl_scroll ;
         
             }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     @FXML 
@@ -389,7 +481,7 @@ c=0;
                 return page;
             }
         });
-       System.out.print(Arrays.toString(NewClass.g   ));
+    
     }
 @FXML 
     private void go1() {

@@ -172,6 +172,11 @@ public class FXML1Controller implements Initializable {
     private Text letter;
         @FXML
     private Pane pdprofil;
+        
+        @FXML
+    private Label dis;
+        @FXML
+    private Label dis1;
     
    private Image img1 = new Image("/icons/projects.png") ;    
    private Image img2 =new Image("/icons/reliabilty.png") ;   ;    
@@ -201,6 +206,8 @@ public class FXML1Controller implements Initializable {
         System.out.print("haaddi"+profile);
         if(profile.equals("gr")){
             System.out.print("lol");
+            dis.setVisible(false);
+            dis1.setVisible(false);
             item1.setVisible(false);
         }
        

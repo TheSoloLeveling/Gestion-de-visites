@@ -15,13 +15,13 @@
 <AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication4.HadaController">
    <children>
       <Pagination id="p" fx:id="p" layoutY="36.0" onMouseClicked="#slidemenu3" pageCount="10" prefHeight="476.0" prefWidth="1011.0" stylesheets="@style.css" />
-      <Pane id="layer2" fx:id="layer2" layoutX="1516.0" layoutY="-5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="676.0" prefWidth="274.0" style="-fx-background-color: linear-gradient(to RIGHT,#795AF3 ,#3929E0);">
+      <Pane id="layer2" fx:id="layer2" layoutX="1516.0" layoutY="-5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="676.0" prefWidth="293.0" style="-fx-background-color: linear-gradient(to RIGHT,#795AF3 ,#3929E0);">
          <children>
             <JFXComboBox id="state" fx:id="state" focusColor="WHITE" layoutX="42.0" layoutY="495.0" prefHeight="25.0" prefWidth="190.0" promptText="Select the state " style="-fx-prompt-text-fill: white;" unFocusColor="WHITE" visibleRowCount="2">
                <effect>
                   <Blend opacity="0.47" />
                </effect></JFXComboBox>
-            <Button id="save" fx:id="save" layoutX="69.0" layoutY="574.0" mnemonicParsing="false" onAction="#handleButtonActionlbl3" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: white; -fx-background-radius: 200; -fx-text-fill: blue;" stylesheets="@style.css" text="Save">
+            <Button id="save" fx:id="save" layoutX="17.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleButtonActionlbl3" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: white; -fx-background-radius: 200; -fx-text-fill: blue;" stylesheets="@style.css" text="Save">
                <effect>
                   <Glow />
                </effect>
@@ -59,13 +59,13 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="33.0" layoutY="114.0" text="24" textFill="WHITE">
+            <Label id="dayB" fx:id="dayB" layoutX="33.0" layoutY="114.0" text="24" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label layoutX="82.0" layoutY="122.0" text="APR" textFill="WHITE" />
-            <Label layoutX="82.0" layoutY="140.0" text="2020" textFill="WHITE" />
+            <Label id="mountB" fx:id="mountB" layoutX="82.0" layoutY="122.0" text="APR" textFill="WHITE" />
+            <Label id="yearB" fx:id="yearB" layoutX="82.0" layoutY="140.0" text="2020" textFill="WHITE" />
             <Separator layoutX="127.0" layoutY="99.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="0.0" />
             <Label layoutX="144.0" layoutY="93.0" text="Visit Starts" textFill="WHITE">
                <font>
@@ -119,6 +119,14 @@
                   <Font size="13.0" />
                </font>
             </Label>
+            <Button layoutX="161.0" layoutY="579.0" mnemonicParsing="false" onMouseClicked="#handleButtonActionlbl2" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: white; -fx-background-radius: 200; -fx-text-fill: blue;" stylesheets="@style.css" text="Extract">
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
       <Pane id="a2" fx:id="a2" layoutX="538.0" layoutY="56.0" onMouseClicked="#slidemenu2" prefHeight="210.0" prefWidth="518.0">

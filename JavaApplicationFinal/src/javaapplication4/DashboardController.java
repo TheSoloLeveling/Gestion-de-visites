@@ -6,6 +6,7 @@
 package javaapplication4;
 
 import Utils.Admin;
+import Utils.Crud;
 import Utils.Guerite;
 import Utils.ResponsableSite;
 import Utils.SingletonConnection;
@@ -29,6 +30,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
@@ -48,17 +50,48 @@ public class DashboardController implements Initializable {
     private BorderPane bor ; 
      @FXML
     private AnchorPane AnchorPane ; 
-	
+     @FXML 
+     private Label totaldem ; 
+     @FXML 
+     private Label totaldemA ; 
+     @FXML 
+     private Label totaldemR ; 
+     @FXML 
+     private Label tu ; 
+     @FXML 
+     private Label ts ; 
+     @FXML 
+     private Label tv ; 
+     
+	int a=0 ; 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+          a = Crud.countG()+Crud.countad()+Crud.countrs()+Crud.countus()+Crud.countsup() ;
+    tu.setText(""+a);
+    int b =Crud.countdemA() ; 
+    totaldemA.setText(""+b);
+    int b1 =Crud.countdemR() ; 
+    totaldemR.setText(""+b1);
+    int c = Crud.countdemS() ; 
+    ts.setText(""+c);
+    tv.setText(""+b);
+      totaldem.setText(""+(b+b1));
+        
     dark() ;
     load() ; 
-      ObservableList<PieChart.Data> Data  = FXCollections.observableArrayList( new PieChart.Data("site", 13) ,new PieChart.Data("site", 25),
-                new PieChart.Data("site", 25) , 
-                new PieChart.Data("site", 10) ,new PieChart.Data("site", 22)
+    
+    double a1 = (double)Crud.countG()/a*100 ; 
+    double a2=(double)Crud.countad()/a*100 ; 
+    double a3= (double) Crud.countrs()/a*100 ; 
+    double a4= (double) Crud.countsup()/a*100 ; 
+    double a5=(double) Crud.countus()/a*100 ; 
+    System.out.print( "fcrgfrgtrt:"+  ( (double) Crud.countG()/a));
+      ObservableList<PieChart.Data> Data  = FXCollections.observableArrayList( new PieChart.Data("geurite",a1 ) ,new PieChart.Data("admin", a2),
+                new PieChart.Data("responsablesite", a3) , 
+                new PieChart.Data("superadmin", a4) ,new PieChart.Data("user", a5)
                 ) ;
         pie.setData(Data);
     } 

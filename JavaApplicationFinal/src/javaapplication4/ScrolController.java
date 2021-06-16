@@ -5,11 +5,16 @@
  */
 package javaapplication4;
 
+import Utils.Crud;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javaapplication4.NewClass.index;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -44,12 +49,62 @@ public class ScrolController implements Initializable {
     @FXML
     private StackPane parentContainer;
         @FXML
+    private Label a;
+          @FXML
+    private Label b;
+            @FXML
+    private Label c;
+              @FXML
+    private Label d;
+                @FXML
+                
+    private Label e;
+                  @FXML
+    private Label f;
+                          @FXML
+    private Label i;
+                                  @FXML
+    private Label j;
+                                          @FXML
+    private Label k;
+                    @FXML
+                        private Label d1;
+                    @FXML
     private Label helper;
+                    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        String etat="" ; 
+        DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        Calendar calendar = Calendar.getInstance();
+         String date[] = format.format(Crud.getDemands().get(0).getDateB()).split("/");
+       String date2[] = format.format(Crud.getDemands().get(0).getDateE()).split("/");
+        if(Crud.getDemands().get(0).isEtat()==-1)
+            etat="Demand On hold" ;
+         if(Crud.getDemands().get(0).isEtat()==0)
+            etat="Demand Rejected" ;
+          if(Crud.getDemands().get(0).isEtat()==1)
+            etat="Demand Accepted" ;
+        a.setText(""+etat);
+         i.setText(Crud.getDemands().get(0).getNom());
+          j.setText(Crud.getDemands().get(0).getCnie());
+         k.setText(Crud.getDemands().get(0).getUe());
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
  
     }    
 @FXML

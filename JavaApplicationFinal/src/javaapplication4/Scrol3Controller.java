@@ -5,8 +5,12 @@
  */
 package javaapplication4;
 
+import Utils.Crud;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,12 +49,38 @@ public class Scrol3Controller implements Initializable {
     private StackPane parentContainer;
         @FXML
     private Label helper;
+         @FXML
+    private Label a;
+          @FXML
+    private Label b;
+            @FXML
+    private Label c;
+              @FXML
+    private Label d;
+        
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
- 
+     String etat="" ; 
+        DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        Calendar calendar = Calendar.getInstance();
+         String date[] = format.format(Crud.getDemands().get(0).getDateB()).split("/");
+       String date2[] = format.format(Crud.getDemands().get(0).getDateE()).split("/");
+        if(Crud.getDemands().get(2).isEtat()==-1)
+            etat="Demand On hold" ;
+         if(Crud.getDemands().get(2).isEtat()==0)
+            etat="Demand Rejected" ;
+          if(Crud.getDemands().get(2).isEtat()==1)
+            etat="Demand Accepted" ;
+        a.setText(""+etat);
+         b.setText(Crud.getDemands().get(2).getNom());
+          c.setText(Crud.getDemands().get(2).getCnie());
+         d.setText(Crud.getDemands().get(2).getUe());
+        
+        
+        
     }    
 @FXML
     private void load() {

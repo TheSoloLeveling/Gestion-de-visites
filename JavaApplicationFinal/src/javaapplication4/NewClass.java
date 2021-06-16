@@ -91,11 +91,15 @@ public class NewClass implements Initializable {
         
         
         String date[] = format1.format(Crud.getDemands().get(index).getDateB()).split("/");
+        String date1[] = format1.format(Crud.getDemands().get(index).getDateE()).split("/");
         String time1 = String.valueOf(Crud.getDemands().get(index).getTime());
         time.setText(time1);
-        year.setText(date[0]);
-        month.setText(date[1]);
-        day.setText(date[2]);
+        yearM.setText(date[0]);
+        monthM.setText(date[1]);
+        dayM.setText(date[2]);
+          year.setText(date1[0]);
+        month.setText(date1[1]);
+        day.setText(date1[2]);
         
         id.setText(Crud.getDemands().get(index).getId());
         System.out.println(id.getText());
@@ -109,7 +113,7 @@ public class NewClass implements Initializable {
         nom.setText(Crud.getDemands().get(index).getNom());
         prenom.setText(Crud.getDemands().get(index).getPrenom());
         site.setText(searchSite(Crud.getDemands().get(index).getEntreprise()));
-       
+        
        // g[HadaController.c].setCnie(Crud.getDemands().get(index).getCnie() );
         //g[HadaController.c].setDate(Crud.getDemands().get(index).getDate());
         //g[HadaController.c].setEntreprise(Crud.getDemands().get(index).getEntreprise());
@@ -121,8 +125,8 @@ public class NewClass implements Initializable {
                 g[HadaController.c].setNom(nom.getText());
                   g[HadaController.c].setPrenom(prenom.getText());
                     g[HadaController.c].setEtat(Crud.getDemands().get(index).isEtat());
-                    
-       System.out.println(Arrays.toString(NewClass.g   ));
+                    g[HadaController.c].setDateB(Crud.getDemands().get(index).getDateB());
+                     g[HadaController.c].setDateE(Crud.getDemands().get(index).getDateE());
 
           // g[HadaController.c].setTime(Crud.getDemands().get(index).getTime());
                   HadaController.c+=1 ;

@@ -1,10 +1,11 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package javaapplication4;
 
+import Utils.Crud;
 import com.jfoenix.controls.JFXComboBox;
 import com.mysql.cj.xdevapi.Statement;
 import java.io.IOException;
@@ -47,6 +48,8 @@ JFXComboBox  jc ;
 @FXML
 TextField  u1 ;
 @FXML
+TextField  lb ;
+@FXML
 TextField  u11 ;
 @FXML
 TextField  u111 ;
@@ -69,6 +72,8 @@ Circle c;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        lb.setText(""+Crud.countdemS()) ; 
         
         if(FXML1Controller.profile.equals("ad")){
             a.setVisible(false);
@@ -277,6 +282,11 @@ Circle c;
   
   
  
+  
+  
+
+  
+  
   
     }    
     
